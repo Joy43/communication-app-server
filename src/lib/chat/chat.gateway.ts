@@ -16,14 +16,9 @@ import { ConversationMutationService } from './services/conversation-mutation.se
 import { ConversationQueryService } from './services/conversation-query.service';
 
 @WebSocketGateway({
+  // everything allowed
   cors: {
-    origin: [
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'http://localhost:3002',
-      'http://localhost:5173',
-      'http://localhost:5174',
-    ],
+    origin: '*',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   },

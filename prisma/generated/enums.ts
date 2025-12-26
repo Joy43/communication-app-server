@@ -30,6 +30,17 @@ export const FileType = {
 export type FileType = (typeof FileType)[keyof typeof FileType]
 
 
+export const NotificationType = {
+  service: 'service',
+  message: 'message',
+  review: 'review',
+  payment: 'payment',
+  userRegistration: 'userRegistration'
+} as const
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+
 export const CallType = {
   AUDIO: 'AUDIO',
   VIDEO: 'VIDEO'

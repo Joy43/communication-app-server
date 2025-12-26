@@ -33,3 +33,10 @@ model UserNotification {
   @@unique([userId, notificationId])
   @@map("user_notifications")
 }
+enum NotificationType {
+  service
+  message
+  review
+  payment
+  userRegistration
+}

@@ -55,6 +55,8 @@ async function bootstrap() {
 
   // * set port
   const port = parseInt(configService.get<string>(ENVEnum.PORT) ?? '3000', 10);
+  // console show server local address
+  console.log(`Server is running on http://localhost:${port}`);
   await app.listen(port);
 }
 bootstrap();

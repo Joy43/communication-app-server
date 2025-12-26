@@ -26,7 +26,6 @@
     "db:studio": "npx prisma studio",
     "db:validate": "npx prisma validate",
     "db:format": "npx prisma format",
-    "prepare": "husky",
     "commit": "cz"
   },
   "dependencies": {
@@ -48,7 +47,7 @@
     "@prisma/client": "^7.1.0",
     "@prisma/client-runtime-utils": "^7.1.0",
     "axios": "^1.13.2",
-    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.3",
     "body-parser": "^2.2.1",
     "bullmq": "^5.65.1",
     "class-transformer": "^0.5.1",
@@ -80,6 +79,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/bcrypt": "^6.0.0",
+    "@types/bcryptjs": "^3.0.0",
     "@types/body-parser": "^1.19.6",
     "@types/express": "^5.0.6",
     "@types/he": "^1.2.3",
