@@ -1,4 +1,4 @@
-# NestJS + Prisma + AWS Starter
+# communication mobile app
 
 A production-ready, feature-rich starter template for building scalable backend applications with NestJS, Prisma ORM, and AWS integration. Includes authentication, real-time chat, file uploads, job queues, and complete Docker deployment setup.
 

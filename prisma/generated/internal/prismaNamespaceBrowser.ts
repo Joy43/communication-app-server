@@ -223,6 +223,8 @@ export const UserScalarFieldEnum = {
   lastLoginAt: 'lastLoginAt',
   lastActiveAt: 'lastActiveAt',
   profilePictureId: 'profilePictureId',
+  locationLon: 'locationLon',
+  locationLat: 'locationLat',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
