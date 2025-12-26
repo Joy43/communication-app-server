@@ -17,8 +17,13 @@ export class RegisterDto {
   name: string;
 
   @ApiProperty({
+<<<<<<< Updated upstream
     example: 'strongpassword123',
     description: 'Password',
+=======
+    example: '12345678',
+    description: 'Password (min 6 characters)',
+>>>>>>> Stashed changes
   })
   @IsNotEmpty()
   @MinLength(6)

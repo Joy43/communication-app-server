@@ -2,7 +2,7 @@ model User {
   id String @id @default(uuid())
 
   // Identity
-  name     String @default("Unnamed User")
+  name     String 
   email    String @unique
   password String 
 
