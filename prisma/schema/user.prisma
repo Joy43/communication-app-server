@@ -10,14 +10,14 @@ model User {
   role       UserRole   @default(USER)
   status     UserStatus @default(ACTIVE)
   isVerified Boolean    @default(false)
-
+  isOnline       Boolean  @default(false)
   // Activity
   lastLoginAt  DateTime?
   lastActiveAt DateTime?
 
   // Avatar
-  profilePictureId String?
-  profilePicture   FileInstance? @relation(fields: [profilePictureId], references: [id], onDelete: SetNull)
+
+  profilePicture   String?
 
   // Notifications & Auth
   notifications UserNotification[]

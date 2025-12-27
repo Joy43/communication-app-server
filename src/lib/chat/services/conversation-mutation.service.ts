@@ -54,7 +54,7 @@ export class ConversationMutationService {
             id: true,
             name: true,
             email: true,
-            profilePictureId: true,
+           profilePicture: true,
           },
         },
         receiver: {
@@ -62,7 +62,7 @@ export class ConversationMutationService {
             id: true,
             name: true,
             email: true,
-            profilePictureId: true,
+           profilePicture: true,
           },
         },
         lastMessage: {
@@ -102,7 +102,7 @@ export class ConversationMutationService {
               id: true,
               name: true,
               email: true,
-              profilePictureId: true,
+             profilePicture: true,
             },
           },
           receiver: {
@@ -110,7 +110,7 @@ export class ConversationMutationService {
               id: true,
               name: true,
               email: true,
-              profilePictureId: true,
+             profilePicture: true,
             },
           },
           lastMessage: {
@@ -334,7 +334,7 @@ export class ConversationMutationService {
             id: true,
             name: true,
             email: true,
-            profilePictureId: true,
+           profilePicture: true,
           },
         },
         receiver: {
@@ -342,7 +342,7 @@ export class ConversationMutationService {
             id: true,
             name: true,
             email: true,
-            profilePictureId: true,
+           profilePicture: true,
           },
         },
       },

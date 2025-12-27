@@ -59,30 +59,11 @@ export class ConversationQueryService {
       this.prisma.client.privateConversation.findMany({
         where: whereClause,
         include: {
-          initiator: {
-            select: {
-              id: true,
-              name: true,
-              email: true,
-              profilePictureId: true,
-            },
-          },
-          receiver: {
-            select: {
-              id: true,
-              name: true,
-              email: true,
-              profilePictureId: true,
-            },
-          },
+          initiator: true,
+          receiver: true,
           lastMessage: {
             include: {
-              sender: {
-                select: {
-                  id: true,
-                  name: true,
-                },
-              },
+              sender: true,
               file: true,
               statuses: {
                 where: { userId },
@@ -167,22 +148,8 @@ export class ConversationQueryService {
           OR: [{ initiatorId: userId }, { receiverId: userId }],
         },
         include: {
-          initiator: {
-            select: {
-              id: true,
-              name: true,
-              email: true,
-              profilePictureId: true,
-            },
-          },
-          receiver: {
-            select: {
-              id: true,
-              name: true,
-              email: true,
-              profilePictureId: true,
-            },
-          },
+          initiator: true,
+          receiver: true,
         },
       },
     );
@@ -196,13 +163,7 @@ export class ConversationQueryService {
       this.prisma.client.privateMessage.findMany({
         where: { conversationId },
         include: {
-          sender: {
-            select: {
-              id: true,
-              name: true,
-              profilePictureId: true,
-            },
-          },
+          sender: true,
           file: true,
           statuses: {
             where: { userId },

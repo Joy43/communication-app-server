@@ -6,7 +6,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { FileInstance, OtpType, User } from '@prisma';
-import * as bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcrypt';
 import { plainToInstance } from 'class-transformer';
 import { randomBytes, randomInt } from 'crypto';
 
@@ -23,19 +23,13 @@ export class AuthUtilsService {
   ) {}
 
   async sanitizeUser<T = UserResponseDto>(
-    user: User & { profilePicture?: FileInstance | null },
+    user: User,
   ): Promise<T> {
     if (!user) return null as T;
 
-    const profilePictureUrl =
-      user?.profilePictureId && user?.profilePicture
-        ? (user.profilePicture.url ?? null)
-        : null;
-
     const flatData = {
       ...user,
-      profilePictureId: user?.profilePictureId ?? null,
-      profilePictureUrl,
+      profilePictureUrl: user?.profilePicture ?? null,
     };
 
     return plainToInstance(UserResponseDto, flatData, {
@@ -127,7 +121,6 @@ export class AuthUtilsService {
   async getSanitizedUserById(id: string) {
     const user = await this.prisma.client.user.findUniqueOrThrow({
       where: { id },
-      include: { profilePicture: true },
     });
 
     return this.sanitizeUser<UserResponseDto>(user);
@@ -136,7 +129,6 @@ export class AuthUtilsService {
   async getUserByEmail(email: string) {
     const user = await this.prisma.client.user.findUnique({
       where: { email },
-      include: { profilePicture: true },
     });
 
     if (!user) return null;

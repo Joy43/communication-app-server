@@ -45,12 +45,9 @@ export class AuthUpdateProfileService {
       data: {
         name: dto.name?.trim() ? dto.name.trim() : user.name,
         ...(fileInstance && {
-          profilePicture: {
-            connect: fileInstance,
-          },
+          profilePicture: fileInstance.url,
         }),
       },
-      include: { profilePicture: true },
     });
 
     return successResponse(

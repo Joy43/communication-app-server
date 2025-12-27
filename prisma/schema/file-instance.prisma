@@ -9,7 +9,7 @@ model FileInstance {
   mimeType         String
   size             Int
 
-  users           User[]
+  // users           User[]
   privateMessages PrivateMessage[]
 
   createdAt DateTime @default(now())

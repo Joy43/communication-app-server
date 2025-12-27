@@ -123,7 +123,6 @@ export class AuthOtpService {
     const updatedUser = await this.prisma.client.user.update({
       where: { id: user.id },
       data: updateData,
-      include: { profilePicture: true },
     });
 
     // 5. Generate token

@@ -23,39 +23,44 @@ export class DefaultUsersService implements OnModuleInit {
         email: 'admin1@gmail.com',
         password: '12345678',
         role: 'ADMIN',
+        profilePicture: 'https://i.pravatar.cc/200?img=12',
       },
       {
         name: 'Admin Two',
         email: 'admin2@gmail.com',
         password: '12345678',
         role: 'ADMIN',
+        profilePicture: 'https://i.pravatar.cc/200?img=47',
       },
       {
         name: 'Manager',
         email: 'manager@gmail.com',
         password: 'Manager@123',
         role: 'ADMIN',
+        profilePicture: 'https://i.pravatar.cc/200?img=33',
       },
       {
         name: 'User One',
         email: 'user1@gmail.com',
         password: '12345678',
         role: 'USER',
+        profilePicture: 'https://i.pravatar.cc/200?img=68',
       },
       {
         name: 'User Two',
         email: 'user2@gmail.com',
         password: '12345678',
         role: 'USER',
+        profilePicture: 'https://i.pravatar.cc/200?img=45',
       },
       {
         name: 'User Three',
         email: 'user3@gmail.com',
-        password: 'User@123',
+        password: '12345678',
         role: 'USER',
+        profilePicture: 'https://i.pravatar.cc/200?img=59',
       },
     ];
-
     for (const user of users) {
       const exists = await this.prisma.client.user.findFirst({
         where: { email: user.email },
@@ -68,6 +73,7 @@ export class DefaultUsersService implements OnModuleInit {
             email: user.email,
             password: await this.authUtils.hash(user.password),
             role: 'USER',
+            profilePicture: user.profilePicture,
             isVerified: true,
             lastLoginAt: new Date(),
             lastActiveAt: new Date(),

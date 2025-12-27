@@ -5,12 +5,9 @@ CREATE TYPE "OtpType" AS ENUM ('VERIFICATION', 'RESET');
 CREATE TYPE "FileType" AS ENUM ('image', 'docs', 'link', 'document', 'any', 'video', 'audio');
 
 -- CreateEnum
-<<<<<<<< Updated upstream:prisma/migrations/20251225105842_start/migration.sql
 CREATE TYPE "NotificationType" AS ENUM ('service', 'message', 'review', 'payment', 'userRegistration');
 
 -- CreateEnum
-========
->>>>>>>> Stashed changes:prisma/migrations/20251225191556_init/migration.sql
 CREATE TYPE "CallType" AS ENUM ('AUDIO', 'VIDEO');
 
 -- CreateEnum
@@ -169,7 +166,7 @@ CREATE TABLE "private_message_statuses" (
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL DEFAULT 'Unnamed User',
+    "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "role" "UserRole" NOT NULL DEFAULT 'USER',
@@ -178,11 +175,8 @@ CREATE TABLE "users" (
     "lastLoginAt" TIMESTAMP(3),
     "lastActiveAt" TIMESTAMP(3),
     "profilePictureId" TEXT,
-<<<<<<<< Updated upstream:prisma/migrations/20251225105842_start/migration.sql
-    "locationLon" DOUBLE PRECISION,
-    "locationLat" DOUBLE PRECISION,
-========
->>>>>>>> Stashed changes:prisma/migrations/20251225191556_init/migration.sql
+    "locationLon" TEXT,
+    "locationLat" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
