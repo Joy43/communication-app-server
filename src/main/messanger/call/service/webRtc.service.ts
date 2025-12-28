@@ -1,7 +1,8 @@
 import { PrismaService } from '@/lib/prisma/prisma.service';
 import { forwardRef, Inject, Injectable, Logger } from '@nestjs/common';
-import { ChatGateway } from '../chat.gateway';
+
 import { CallService } from './call.service';
+import { PrivateChatGateway } from '../../private-message/message-gateway/message-gateway';
 
 @Injectable()
 export class WebRTCService {
@@ -9,8 +10,8 @@ export class WebRTCService {
 
   constructor(
     private readonly prisma: PrismaService,
-    @Inject(forwardRef(() => ChatGateway))
-    private readonly chatGateway: ChatGateway,
+    @Inject(forwardRef(() => PrivateChatGateway))
+    private readonly chatGateway: PrivateChatGateway,
     private readonly callService: CallService,
   ) {
     this.logger.log('WebRTCService initialized');

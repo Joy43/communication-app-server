@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
-import { CallController } from './controller/call.controller';
+import { forwardRef, Module } from '@nestjs/common';
+
+import { PrivateMessageModule } from '../private-message/private-message.module';
 import { CallService } from './service/call.service';
 
 @Module({
-  controllers: [CallController],
+  imports: [forwardRef(() => PrivateMessageModule)],
   providers: [CallService],
+  exports: [CallService],
 })
 export class CallModule {}

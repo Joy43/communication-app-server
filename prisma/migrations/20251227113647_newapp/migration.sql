@@ -172,9 +172,10 @@ CREATE TABLE "users" (
     "role" "UserRole" NOT NULL DEFAULT 'USER',
     "status" "UserStatus" NOT NULL DEFAULT 'ACTIVE',
     "isVerified" BOOLEAN NOT NULL DEFAULT false,
+    "isOnline" BOOLEAN NOT NULL DEFAULT false,
     "lastLoginAt" TIMESTAMP(3),
     "lastActiveAt" TIMESTAMP(3),
-    "profilePictureId" TEXT,
+    "profilePicture" TEXT,
     "locationLon" TEXT,
     "locationLat" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -254,6 +255,3 @@ ALTER TABLE "private_message_statuses" ADD CONSTRAINT "private_message_statuses_
 
 -- AddForeignKey
 ALTER TABLE "private_message_statuses" ADD CONSTRAINT "private_message_statuses_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "users" ADD CONSTRAINT "users_profilePictureId_fkey" FOREIGN KEY ("profilePictureId") REFERENCES "file_instances"("id") ON DELETE SET NULL ON UPDATE CASCADE;

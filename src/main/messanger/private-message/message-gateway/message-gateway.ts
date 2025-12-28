@@ -1,4 +1,4 @@
-import { Logger } from '@nestjs/common';
+import { forwardRef, Inject, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   ConnectedSocket,
@@ -17,6 +17,13 @@ import * as jwt from 'jsonwebtoken';
 import { Server, Socket } from 'socket.io';
 import { ENVEnum } from 'src/common/enum/env.enum';
 import { PrismaService } from 'src/lib/prisma/prisma.service';
+
+import {
+  RTCAnswerDto,
+  RTCIceCandidateDto,
+  RTCOfferDto,
+} from '../../call/dto/wertc.dto';
+import { CallService } from '../../call/service/call.service';
 import { PrivateChatService } from '../service/private-message.service';
 
 @WebSocketGateway({
@@ -28,10 +35,15 @@ export class PrivateChatGateway
 {
   private readonly logger = new Logger(PrivateChatGateway.name);
 
+  // Track userId -> socketId mapping
+  private userSocketMap = new Map<string, string>();
+
   constructor(
     private readonly privateChatService: PrivateChatService,
     private readonly configService: ConfigService,
     private readonly prisma: PrismaService,
+    @Inject(forwardRef(() => CallService))
+    private readonly callService: CallService,
   ) {}
 
   @WebSocketServer()
@@ -44,8 +56,6 @@ export class PrivateChatGateway
     );
   }
 
-  /** Handle socket connection and authentication */
-  /** Handle socket connection and authentication */
   async handleConnection(client: Socket) {
     const authHeader =
       client.handshake.headers.authorization || client.handshake.auth?.token;
@@ -59,7 +69,6 @@ export class PrivateChatGateway
       return;
     }
 
-    // Handle both "Bearer token" and direct token format
     const token = authHeader.startsWith('Bearer ')
       ? authHeader.split(' ')[1]
       : authHeader;
@@ -102,10 +111,11 @@ export class PrivateChatGateway
       client.data.userId = userId;
       client.join(userId);
 
-      // Mark user as active
+      // Store socket mapping
+      this.userSocketMap.set(userId, client.id);
+
       await this.privateChatService.markUserActive(userId);
 
-      // Notify all users that this user is now online
       this.server.emit(PrivateChatEvents.USER_STATUS_CHANGED, {
         userId,
         isOnline: true,
@@ -130,10 +140,14 @@ export class PrivateChatGateway
     if (userId) {
       client.leave(userId);
 
-      // Mark user as inactive
+      // Remove from socket mapping
+      this.userSocketMap.delete(userId);
+
+      // Handle call disconnection
+      this.callService.handleSocketDisconnect(client.id, userId);
+
       await this.privateChatService.markUserInactive(userId);
 
-      // Notify all users that this user is now offline
       this.server.emit(PrivateChatEvents.USER_STATUS_CHANGED, {
         userId,
         isOnline: false,
@@ -148,7 +162,8 @@ export class PrivateChatGateway
     }
   }
 
-  /** Load all conversations for the connected user */
+  /** -------------------- Chat Events -------------------- */
+
   @SubscribeMessage(PrivateChatEvents.LOAD_CONVERSATIONS)
   async handleLoadConversations(@ConnectedSocket() client: Socket) {
     const userId = this.getUserIdFromSocket(client);
@@ -170,7 +185,6 @@ export class PrivateChatGateway
     }
   }
 
-  /** Load a single conversation */
   @SubscribeMessage(PrivateChatEvents.LOAD_SINGLE_CONVERSATION)
   async handleLoadSingleConversation(
     @MessageBody() conversationId: string,
@@ -198,7 +212,6 @@ export class PrivateChatGateway
     }
   }
 
-  /** Send a message (create conversation if new) */
   @SubscribeMessage(PrivateChatEvents.SEND_MESSAGE)
   async handleMessage(
     @MessageBody() payload: SendPrivateMessageDto,
@@ -209,7 +222,6 @@ export class PrivateChatGateway
 
     const { recipientId } = payload;
 
-    // Prevent sending message to yourself
     if (userId === recipientId) {
       client.emit(PrivateChatEvents.ERROR, {
         message: 'Cannot send message to yourself',
@@ -219,7 +231,6 @@ export class PrivateChatGateway
     }
 
     try {
-      // Find existing conversation
       let conversation = await this.privateChatService.findConversation(
         userId,
         recipientId,
@@ -234,18 +245,15 @@ export class PrivateChatGateway
         isNewConversation = true;
       }
 
-      // Send message
       const message = await this.privateChatService.sendPrivateMessage(
         conversation.id,
         userId,
         payload,
       );
 
-      // Emit new message to both users
       this.server.to(userId).emit(PrivateChatEvents.NEW_MESSAGE, message);
       this.server.to(recipientId).emit(PrivateChatEvents.NEW_MESSAGE, message);
 
-      // If new conversation, send updated conversation lists
       if (isNewConversation) {
         const [senderConversations, recipientConversations] = await Promise.all(
           [
@@ -277,7 +285,6 @@ export class PrivateChatGateway
     }
   }
 
-  /** Mark messages as read */
   @SubscribeMessage(PrivateChatEvents.MARK_AS_READ)
   async handleMarkAsRead(
     @MessageBody() conversationId: string,
@@ -289,7 +296,6 @@ export class PrivateChatGateway
     try {
       await this.privateChatService.markMessagesAsRead(conversationId, userId);
 
-      // Notify the other user that messages have been read
       const conversation =
         await this.prisma.client.privateConversation.findUnique({
           where: { id: conversationId },
@@ -324,7 +330,6 @@ export class PrivateChatGateway
     }
   }
 
-  /** Delete a message */
   @SubscribeMessage(PrivateChatEvents.DELETE_MESSAGE)
   async handleDeleteMessage(
     @MessageBody() messageId: string,
@@ -339,7 +344,6 @@ export class PrivateChatGateway
         userId,
       );
 
-      // Notify both users about the deletion
       const conversation =
         await this.prisma.client.privateConversation.findUnique({
           where: { id: deletedMessage.conversationId },
@@ -371,7 +375,6 @@ export class PrivateChatGateway
     }
   }
 
-  /** Typing indicator - start */
   @SubscribeMessage(PrivateChatEvents.TYPING_START)
   async handleTypingStart(
     @MessageBody() data: { conversationId: string; recipientId: string },
@@ -386,7 +389,6 @@ export class PrivateChatGateway
     });
   }
 
-  /** Typing indicator - stop */
   @SubscribeMessage(PrivateChatEvents.TYPING_STOP)
   async handleTypingStop(
     @MessageBody() data: { conversationId: string; recipientId: string },
@@ -401,12 +403,133 @@ export class PrivateChatGateway
     });
   }
 
-  /** Helper for external services to emit new messages */
+  /** -------------------- Call Events -------------------- */
+
+  @SubscribeMessage('call:accept')
+  async handleAcceptCall(
+    @MessageBody() data: { callId: string },
+    @ConnectedSocket() client: Socket,
+  ) {
+    const userId = this.getUserIdFromSocket(client);
+    if (!userId) return;
+
+    try {
+      await this.callService.acceptCall(data.callId, userId, client.id);
+    } catch (error) {
+      client.emit(PrivateChatEvents.ERROR, {
+        message: 'Failed to accept call',
+        error: error.message,
+      });
+    }
+  }
+
+  @SubscribeMessage('call:reject')
+  async handleRejectCall(
+    @MessageBody() data: { callId: string },
+    @ConnectedSocket() client: Socket,
+  ) {
+    const userId = this.getUserIdFromSocket(client);
+    if (!userId) return;
+
+    try {
+      await this.callService.rejectCall(data.callId, userId);
+    } catch (error) {
+      client.emit(PrivateChatEvents.ERROR, {
+        message: 'Failed to reject call',
+        error: error.message,
+      });
+    }
+  }
+
+  @SubscribeMessage('call:end')
+  async handleEndCall(
+    @MessageBody() data: { callId: string },
+    @ConnectedSocket() client: Socket,
+  ) {
+    const userId = this.getUserIdFromSocket(client);
+    if (!userId) return;
+
+    try {
+      await this.callService.endCall(data.callId, userId);
+    } catch (error) {
+      client.emit(PrivateChatEvents.ERROR, {
+        message: 'Failed to end call',
+        error: error.message,
+      });
+    }
+  }
+
+  @SubscribeMessage('call:offer')
+  async handleCallOffer(
+    @MessageBody() data: RTCOfferDto,
+    @ConnectedSocket() client: Socket,
+  ) {
+    const userId = this.getUserIdFromSocket(client);
+    if (!userId) return;
+
+    try {
+      await this.callService.sendOffer(data.callId, userId, data.sdp);
+    } catch (error) {
+      client.emit(PrivateChatEvents.ERROR, {
+        message: 'Failed to send offer',
+        error: error.message,
+      });
+    }
+  }
+
+  @SubscribeMessage('call:answer')
+  async handleCallAnswer(
+    @MessageBody() data: RTCAnswerDto,
+    @ConnectedSocket() client: Socket,
+  ) {
+    const userId = this.getUserIdFromSocket(client);
+    if (!userId) return;
+
+    try {
+      await this.callService.sendAnswer(data.callId, userId, data.sdp);
+    } catch (error) {
+      client.emit(PrivateChatEvents.ERROR, {
+        message: 'Failed to send answer',
+        error: error.message,
+      });
+    }
+  }
+
+  @SubscribeMessage('call:ice-candidate')
+  async handleIceCandidate(
+    @MessageBody() data: RTCIceCandidateDto,
+    @ConnectedSocket() client: Socket,
+  ) {
+    const userId = this.getUserIdFromSocket(client);
+    if (!userId) return;
+
+    try {
+      await this.callService.sendIceCandidate(data.callId, userId, {
+        candidate: data.candidate,
+        sdpMid: data.sdpMid,
+        sdpMLineIndex: data.sdpMLineIndex,
+      });
+    } catch (error) {
+      client.emit(PrivateChatEvents.ERROR, {
+        message: 'Failed to send ICE candidate',
+        error: error.message,
+      });
+    }
+  }
+
+  /** -------------------- Helpers -------------------- */
+
   emitNewMessage(userId: string, message: any) {
     this.server.to(userId).emit(PrivateChatEvents.NEW_MESSAGE, message);
   }
 
-  /** Helper to get userId from socket with validation */
+  getUserSocket(userId: string): Socket | null {
+    const socketId = this.userSocketMap.get(userId);
+    if (!socketId) return null;
+
+    return this.server.sockets.sockets.get(socketId) || null;
+  }
+
   private getUserIdFromSocket(client: Socket): string | null {
     const userId = client.data?.userId;
     if (!userId) {

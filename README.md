@@ -367,7 +367,7 @@ UNLICENSED - Private/Commercial use
 
 ## 👤 Author
 
-[@shahadathhs](https://github.com/shahadathhs)
+[@Joy43](https://github.com/Joy43)
 
 ---
 
