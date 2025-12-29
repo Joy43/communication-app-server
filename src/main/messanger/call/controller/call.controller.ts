@@ -2,7 +2,7 @@ import {
   Body,
   Controller,
   Post,
-  UseGuards,
+ 
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -16,8 +16,7 @@ import { CallService } from '../service/call.service';
 
 @ApiTags('messenger - Calls')
 @Controller('calls')
-@ValidateAuth()
-@ApiBearerAuth()
+
 export class CallController {
   constructor(private readonly callService: CallService) {}
 

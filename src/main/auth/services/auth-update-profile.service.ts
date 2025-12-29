@@ -30,6 +30,7 @@ export class AuthUpdateProfileService {
       throw new AppError(404, 'User not found');
     }
 
+
     // * if image is provided, upload to S3 and update user
     let fileInstance: FileInstance | undefined;
     if (file) {
@@ -40,14 +41,24 @@ export class AuthUpdateProfileService {
       }
     }
 
+    // Build update data object with only provided fields
+    const updateData: any = {};
+
+    if (dto.name?.trim()) {
+      updateData.name = dto.name.trim();
+    }
+
+  
+
+  
+
+    if (fileInstance) {
+      updateData.profilePicture = fileInstance.url;
+    }
+
     const updatedUser = await this.prisma.client.user.update({
       where: { id: userId },
-      data: {
-        name: dto.name?.trim() ? dto.name.trim() : user.name,
-        ...(fileInstance && {
-          profilePicture: fileInstance.url,
-        }),
-      },
+      data: updateData,
     });
 
     return successResponse(
@@ -56,3 +67,4 @@ export class AuthUpdateProfileService {
     );
   }
 }
+  
