@@ -34,11 +34,7 @@ model User {
   /// Message delivery/read statuses
   messageStatuses PrivateMessageStatus[]
 
-  /// Calls user has initiated
-  callsInitiated PrivateCall[] @relation("CallInitiator")
 
-  /// Calls user participated in
-  callParticipants PrivateCallParticipant[]
   // location longitude
   locationLon String? @default("-71.0589")
   // location latitude
@@ -51,6 +47,9 @@ model User {
   // cover photo
   coverPhoto String?
 
+  // Calling relations
+  hostedCalls   Calling[] @relation("HostedCalls")
+  receivedCalls Calling[] @relation("ReceivedCalls")
   // Timestamps
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt

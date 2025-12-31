@@ -38,6 +38,11 @@ export type UserMinAggregateOutputType = {
   profilePicture: string | null
   locationLon: string | null
   locationLat: string | null
+  about: string | null
+  username: string | null
+  address: string | null
+  dateOfBirth: Date | null
+  coverPhoto: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,6 +61,11 @@ export type UserMaxAggregateOutputType = {
   profilePicture: string | null
   locationLon: string | null
   locationLat: string | null
+  about: string | null
+  username: string | null
+  address: string | null
+  dateOfBirth: Date | null
+  coverPhoto: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -74,6 +84,11 @@ export type UserCountAggregateOutputType = {
   profilePicture: number
   locationLon: number
   locationLat: number
+  about: number
+  username: number
+  address: number
+  dateOfBirth: number
+  coverPhoto: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -94,6 +109,11 @@ export type UserMinAggregateInputType = {
   profilePicture?: true
   locationLon?: true
   locationLat?: true
+  about?: true
+  username?: true
+  address?: true
+  dateOfBirth?: true
+  coverPhoto?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -112,6 +132,11 @@ export type UserMaxAggregateInputType = {
   profilePicture?: true
   locationLon?: true
   locationLat?: true
+  about?: true
+  username?: true
+  address?: true
+  dateOfBirth?: true
+  coverPhoto?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -130,6 +155,11 @@ export type UserCountAggregateInputType = {
   profilePicture?: true
   locationLon?: true
   locationLat?: true
+  about?: true
+  username?: true
+  address?: true
+  dateOfBirth?: true
+  coverPhoto?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -221,6 +251,11 @@ export type UserGroupByOutputType = {
   profilePicture: string | null
   locationLon: string | null
   locationLat: string | null
+  about: string | null
+  username: string | null
+  address: string | null
+  dateOfBirth: Date | null
+  coverPhoto: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -260,6 +295,11 @@ export type UserWhereInput = {
   profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableFilter<"User"> | string | null
+  about?: Prisma.StringNullableFilter<"User"> | string | null
+  username?: Prisma.StringNullableFilter<"User"> | string | null
+  address?: Prisma.StringNullableFilter<"User"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  coverPhoto?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   notifications?: Prisma.UserNotificationListRelationFilter
@@ -269,8 +309,8 @@ export type UserWhereInput = {
   conversationsReceived?: Prisma.PrivateConversationListRelationFilter
   messagesSent?: Prisma.PrivateMessageListRelationFilter
   messageStatuses?: Prisma.PrivateMessageStatusListRelationFilter
-  callsInitiated?: Prisma.PrivateCallListRelationFilter
-  callParticipants?: Prisma.PrivateCallParticipantListRelationFilter
+  hostedCalls?: Prisma.CallingListRelationFilter
+  receivedCalls?: Prisma.CallingListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -287,6 +327,11 @@ export type UserOrderByWithRelationInput = {
   profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLon?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLat?: Prisma.SortOrderInput | Prisma.SortOrder
+  about?: Prisma.SortOrderInput | Prisma.SortOrder
+  username?: Prisma.SortOrderInput | Prisma.SortOrder
+  address?: Prisma.SortOrderInput | Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverPhoto?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   notifications?: Prisma.UserNotificationOrderByRelationAggregateInput
@@ -296,13 +341,14 @@ export type UserOrderByWithRelationInput = {
   conversationsReceived?: Prisma.PrivateConversationOrderByRelationAggregateInput
   messagesSent?: Prisma.PrivateMessageOrderByRelationAggregateInput
   messageStatuses?: Prisma.PrivateMessageStatusOrderByRelationAggregateInput
-  callsInitiated?: Prisma.PrivateCallOrderByRelationAggregateInput
-  callParticipants?: Prisma.PrivateCallParticipantOrderByRelationAggregateInput
+  hostedCalls?: Prisma.CallingOrderByRelationAggregateInput
+  receivedCalls?: Prisma.CallingOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   email?: string
+  username?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
@@ -317,6 +363,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableFilter<"User"> | string | null
+  about?: Prisma.StringNullableFilter<"User"> | string | null
+  address?: Prisma.StringNullableFilter<"User"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  coverPhoto?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   notifications?: Prisma.UserNotificationListRelationFilter
@@ -326,9 +376,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   conversationsReceived?: Prisma.PrivateConversationListRelationFilter
   messagesSent?: Prisma.PrivateMessageListRelationFilter
   messageStatuses?: Prisma.PrivateMessageStatusListRelationFilter
-  callsInitiated?: Prisma.PrivateCallListRelationFilter
-  callParticipants?: Prisma.PrivateCallParticipantListRelationFilter
-}, "id" | "email">
+  hostedCalls?: Prisma.CallingListRelationFilter
+  receivedCalls?: Prisma.CallingListRelationFilter
+}, "id" | "email" | "username">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -344,6 +394,11 @@ export type UserOrderByWithAggregationInput = {
   profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLon?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLat?: Prisma.SortOrderInput | Prisma.SortOrder
+  about?: Prisma.SortOrderInput | Prisma.SortOrder
+  username?: Prisma.SortOrderInput | Prisma.SortOrder
+  address?: Prisma.SortOrderInput | Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverPhoto?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -368,6 +423,11 @@ export type UserScalarWhereWithAggregatesInput = {
   profilePicture?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  about?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  username?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  address?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  coverPhoto?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -386,6 +446,11 @@ export type UserCreateInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -395,8 +460,8 @@ export type UserCreateInput = {
   conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -413,6 +478,11 @@ export type UserUncheckedCreateInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -422,8 +492,8 @@ export type UserUncheckedCreateInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallUncheckedCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUpdateInput = {
@@ -440,6 +510,11 @@ export type UserUpdateInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -449,8 +524,8 @@ export type UserUpdateInput = {
   conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -467,6 +542,11 @@ export type UserUncheckedUpdateInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -476,8 +556,8 @@ export type UserUncheckedUpdateInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUncheckedUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -494,6 +574,11 @@ export type UserCreateManyInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -512,6 +597,11 @@ export type UserUpdateManyMutationInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -530,6 +620,11 @@ export type UserUncheckedUpdateManyInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -558,6 +653,11 @@ export type UserCountOrderByAggregateInput = {
   profilePicture?: Prisma.SortOrder
   locationLon?: Prisma.SortOrder
   locationLat?: Prisma.SortOrder
+  about?: Prisma.SortOrder
+  username?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  coverPhoto?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -576,6 +676,11 @@ export type UserMaxOrderByAggregateInput = {
   profilePicture?: Prisma.SortOrder
   locationLon?: Prisma.SortOrder
   locationLat?: Prisma.SortOrder
+  about?: Prisma.SortOrder
+  username?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  coverPhoto?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -594,6 +699,11 @@ export type UserMinOrderByAggregateInput = {
   profilePicture?: Prisma.SortOrder
   locationLon?: Prisma.SortOrder
   locationLat?: Prisma.SortOrder
+  about?: Prisma.SortOrder
+  username?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  coverPhoto?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -626,6 +736,36 @@ export type UserUpdateOneRequiredWithoutRefreshTokensNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRefreshTokensInput, Prisma.UserUpdateWithoutRefreshTokensInput>, Prisma.UserUncheckedUpdateWithoutRefreshTokensInput>
 }
 
+export type UserCreateNestedOneWithoutHostedCallsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutHostedCallsInput, Prisma.UserUncheckedCreateWithoutHostedCallsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHostedCallsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutReceivedCallsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedCallsInput, Prisma.UserUncheckedCreateWithoutReceivedCallsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedCallsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutHostedCallsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutHostedCallsInput, Prisma.UserUncheckedCreateWithoutHostedCallsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHostedCallsInput
+  upsert?: Prisma.UserUpsertWithoutHostedCallsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutHostedCallsInput, Prisma.UserUpdateWithoutHostedCallsInput>, Prisma.UserUncheckedUpdateWithoutHostedCallsInput>
+}
+
+export type UserUpdateOneWithoutReceivedCallsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedCallsInput, Prisma.UserUncheckedCreateWithoutReceivedCallsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedCallsInput
+  upsert?: Prisma.UserUpsertWithoutReceivedCallsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReceivedCallsInput, Prisma.UserUpdateWithoutReceivedCallsInput>, Prisma.UserUncheckedUpdateWithoutReceivedCallsInput>
+}
+
 export type UserCreateNestedOneWithoutNotificationsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
@@ -638,36 +778,6 @@ export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
   upsert?: Prisma.UserUpsertWithoutNotificationsInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
-}
-
-export type UserCreateNestedOneWithoutCallsInitiatedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCallsInitiatedInput, Prisma.UserUncheckedCreateWithoutCallsInitiatedInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCallsInitiatedInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneWithoutCallsInitiatedNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCallsInitiatedInput, Prisma.UserUncheckedCreateWithoutCallsInitiatedInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCallsInitiatedInput
-  upsert?: Prisma.UserUpsertWithoutCallsInitiatedInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCallsInitiatedInput, Prisma.UserUpdateWithoutCallsInitiatedInput>, Prisma.UserUncheckedUpdateWithoutCallsInitiatedInput>
-}
-
-export type UserCreateNestedOneWithoutCallParticipantsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCallParticipantsInput, Prisma.UserUncheckedCreateWithoutCallParticipantsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCallParticipantsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutCallParticipantsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCallParticipantsInput, Prisma.UserUncheckedCreateWithoutCallParticipantsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCallParticipantsInput
-  upsert?: Prisma.UserUpsertWithoutCallParticipantsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCallParticipantsInput, Prisma.UserUpdateWithoutCallParticipantsInput>, Prisma.UserUncheckedUpdateWithoutCallParticipantsInput>
 }
 
 export type UserCreateNestedOneWithoutConversationsInitiatedInput = {
@@ -748,6 +858,11 @@ export type UserCreateWithoutOtpsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -756,8 +871,8 @@ export type UserCreateWithoutOtpsInput = {
   conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUncheckedCreateWithoutOtpsInput = {
@@ -774,6 +889,11 @@ export type UserUncheckedCreateWithoutOtpsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -782,8 +902,8 @@ export type UserUncheckedCreateWithoutOtpsInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallUncheckedCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
 }
 
 export type UserCreateOrConnectWithoutOtpsInput = {
@@ -816,6 +936,11 @@ export type UserUpdateWithoutOtpsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -824,8 +949,8 @@ export type UserUpdateWithoutOtpsInput = {
   conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOtpsInput = {
@@ -842,6 +967,11 @@ export type UserUncheckedUpdateWithoutOtpsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -850,8 +980,8 @@ export type UserUncheckedUpdateWithoutOtpsInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUncheckedUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserCreateWithoutRefreshTokensInput = {
@@ -868,6 +998,11 @@ export type UserCreateWithoutRefreshTokensInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -876,8 +1011,8 @@ export type UserCreateWithoutRefreshTokensInput = {
   conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUncheckedCreateWithoutRefreshTokensInput = {
@@ -894,6 +1029,11 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -902,8 +1042,8 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallUncheckedCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
 }
 
 export type UserCreateOrConnectWithoutRefreshTokensInput = {
@@ -936,6 +1076,11 @@ export type UserUpdateWithoutRefreshTokensInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -944,8 +1089,8 @@ export type UserUpdateWithoutRefreshTokensInput = {
   conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRefreshTokensInput = {
@@ -962,6 +1107,11 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -970,8 +1120,288 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUncheckedUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+}
+
+export type UserCreateWithoutHostedCallsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+}
+
+export type UserUncheckedCreateWithoutHostedCallsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+}
+
+export type UserCreateOrConnectWithoutHostedCallsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutHostedCallsInput, Prisma.UserUncheckedCreateWithoutHostedCallsInput>
+}
+
+export type UserCreateWithoutReceivedCallsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+}
+
+export type UserUncheckedCreateWithoutReceivedCallsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+}
+
+export type UserCreateOrConnectWithoutReceivedCallsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedCallsInput, Prisma.UserUncheckedCreateWithoutReceivedCallsInput>
+}
+
+export type UserUpsertWithoutHostedCallsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutHostedCallsInput, Prisma.UserUncheckedUpdateWithoutHostedCallsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutHostedCallsInput, Prisma.UserUncheckedCreateWithoutHostedCallsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutHostedCallsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutHostedCallsInput, Prisma.UserUncheckedUpdateWithoutHostedCallsInput>
+}
+
+export type UserUpdateWithoutHostedCallsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+}
+
+export type UserUncheckedUpdateWithoutHostedCallsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+}
+
+export type UserUpsertWithoutReceivedCallsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReceivedCallsInput, Prisma.UserUncheckedUpdateWithoutReceivedCallsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedCallsInput, Prisma.UserUncheckedCreateWithoutReceivedCallsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReceivedCallsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReceivedCallsInput, Prisma.UserUncheckedUpdateWithoutReceivedCallsInput>
+}
+
+export type UserUpdateWithoutReceivedCallsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReceivedCallsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -988,6 +1418,11 @@ export type UserCreateWithoutNotificationsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
@@ -996,8 +1431,8 @@ export type UserCreateWithoutNotificationsInput = {
   conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -1014,6 +1449,11 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -1022,8 +1462,8 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallUncheckedCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -1056,6 +1496,11 @@ export type UserUpdateWithoutNotificationsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
@@ -1064,8 +1509,8 @@ export type UserUpdateWithoutNotificationsInput = {
   conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1082,6 +1527,11 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -1090,248 +1540,8 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUncheckedUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutCallsInitiatedInput = {
-  id?: string
-  name: string
-  email: string
-  password: string
-  role?: $Enums.UserRole
-  status?: $Enums.UserStatus
-  isVerified?: boolean
-  isOnline?: boolean
-  lastLoginAt?: Date | string | null
-  lastActiveAt?: Date | string | null
-  profilePicture?: string | null
-  locationLon?: string | null
-  locationLat?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
-  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
-  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
-  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
-  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
-  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
-  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
-  callParticipants?: Prisma.PrivateCallParticipantCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutCallsInitiatedInput = {
-  id?: string
-  name: string
-  email: string
-  password: string
-  role?: $Enums.UserRole
-  status?: $Enums.UserStatus
-  isVerified?: boolean
-  isOnline?: boolean
-  lastLoginAt?: Date | string | null
-  lastActiveAt?: Date | string | null
-  profilePicture?: string | null
-  locationLon?: string | null
-  locationLat?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
-  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
-  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
-  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
-  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
-  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
-  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutCallsInitiatedInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutCallsInitiatedInput, Prisma.UserUncheckedCreateWithoutCallsInitiatedInput>
-}
-
-export type UserUpsertWithoutCallsInitiatedInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutCallsInitiatedInput, Prisma.UserUncheckedUpdateWithoutCallsInitiatedInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutCallsInitiatedInput, Prisma.UserUncheckedCreateWithoutCallsInitiatedInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutCallsInitiatedInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutCallsInitiatedInput, Prisma.UserUncheckedUpdateWithoutCallsInitiatedInput>
-}
-
-export type UserUpdateWithoutCallsInitiatedInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
-  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
-  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
-  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
-  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
-  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
-  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutCallsInitiatedInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
-  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
-  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
-  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
-  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
-  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutCallParticipantsInput = {
-  id?: string
-  name: string
-  email: string
-  password: string
-  role?: $Enums.UserRole
-  status?: $Enums.UserStatus
-  isVerified?: boolean
-  isOnline?: boolean
-  lastLoginAt?: Date | string | null
-  lastActiveAt?: Date | string | null
-  profilePicture?: string | null
-  locationLon?: string | null
-  locationLat?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
-  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
-  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
-  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
-  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
-  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
-  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallCreateNestedManyWithoutInitiatorInput
-}
-
-export type UserUncheckedCreateWithoutCallParticipantsInput = {
-  id?: string
-  name: string
-  email: string
-  password: string
-  role?: $Enums.UserRole
-  status?: $Enums.UserStatus
-  isVerified?: boolean
-  isOnline?: boolean
-  lastLoginAt?: Date | string | null
-  lastActiveAt?: Date | string | null
-  profilePicture?: string | null
-  locationLon?: string | null
-  locationLat?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
-  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
-  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
-  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
-  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
-  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
-  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallUncheckedCreateNestedManyWithoutInitiatorInput
-}
-
-export type UserCreateOrConnectWithoutCallParticipantsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutCallParticipantsInput, Prisma.UserUncheckedCreateWithoutCallParticipantsInput>
-}
-
-export type UserUpsertWithoutCallParticipantsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutCallParticipantsInput, Prisma.UserUncheckedUpdateWithoutCallParticipantsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutCallParticipantsInput, Prisma.UserUncheckedCreateWithoutCallParticipantsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutCallParticipantsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutCallParticipantsInput, Prisma.UserUncheckedUpdateWithoutCallParticipantsInput>
-}
-
-export type UserUpdateWithoutCallParticipantsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
-  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
-  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
-  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
-  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
-  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
-  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUpdateManyWithoutInitiatorNestedInput
-}
-
-export type UserUncheckedUpdateWithoutCallParticipantsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
-  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
-  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
-  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
-  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
-  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUncheckedUpdateManyWithoutInitiatorNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserCreateWithoutConversationsInitiatedInput = {
@@ -1348,6 +1558,11 @@ export type UserCreateWithoutConversationsInitiatedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1356,8 +1571,8 @@ export type UserCreateWithoutConversationsInitiatedInput = {
   conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUncheckedCreateWithoutConversationsInitiatedInput = {
@@ -1374,6 +1589,11 @@ export type UserUncheckedCreateWithoutConversationsInitiatedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1382,8 +1602,8 @@ export type UserUncheckedCreateWithoutConversationsInitiatedInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallUncheckedCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
 }
 
 export type UserCreateOrConnectWithoutConversationsInitiatedInput = {
@@ -1405,6 +1625,11 @@ export type UserCreateWithoutConversationsReceivedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1413,8 +1638,8 @@ export type UserCreateWithoutConversationsReceivedInput = {
   conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUncheckedCreateWithoutConversationsReceivedInput = {
@@ -1431,6 +1656,11 @@ export type UserUncheckedCreateWithoutConversationsReceivedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1439,8 +1669,8 @@ export type UserUncheckedCreateWithoutConversationsReceivedInput = {
   conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallUncheckedCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
 }
 
 export type UserCreateOrConnectWithoutConversationsReceivedInput = {
@@ -1473,6 +1703,11 @@ export type UserUpdateWithoutConversationsInitiatedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1481,8 +1716,8 @@ export type UserUpdateWithoutConversationsInitiatedInput = {
   conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationsInitiatedInput = {
@@ -1499,6 +1734,11 @@ export type UserUncheckedUpdateWithoutConversationsInitiatedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1507,8 +1747,8 @@ export type UserUncheckedUpdateWithoutConversationsInitiatedInput = {
   conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUncheckedUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUpsertWithoutConversationsReceivedInput = {
@@ -1536,6 +1776,11 @@ export type UserUpdateWithoutConversationsReceivedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1544,8 +1789,8 @@ export type UserUpdateWithoutConversationsReceivedInput = {
   conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationsReceivedInput = {
@@ -1562,6 +1807,11 @@ export type UserUncheckedUpdateWithoutConversationsReceivedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1570,8 +1820,8 @@ export type UserUncheckedUpdateWithoutConversationsReceivedInput = {
   conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUncheckedUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserCreateWithoutMessagesSentInput = {
@@ -1588,6 +1838,11 @@ export type UserCreateWithoutMessagesSentInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1596,8 +1851,8 @@ export type UserCreateWithoutMessagesSentInput = {
   conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
   conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUncheckedCreateWithoutMessagesSentInput = {
@@ -1614,6 +1869,11 @@ export type UserUncheckedCreateWithoutMessagesSentInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1622,8 +1882,8 @@ export type UserUncheckedCreateWithoutMessagesSentInput = {
   conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
   conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
-  callsInitiated?: Prisma.PrivateCallUncheckedCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
 }
 
 export type UserCreateOrConnectWithoutMessagesSentInput = {
@@ -1656,6 +1916,11 @@ export type UserUpdateWithoutMessagesSentInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1664,8 +1929,8 @@ export type UserUpdateWithoutMessagesSentInput = {
   conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
   conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesSentInput = {
@@ -1682,6 +1947,11 @@ export type UserUncheckedUpdateWithoutMessagesSentInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1690,8 +1960,8 @@ export type UserUncheckedUpdateWithoutMessagesSentInput = {
   conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
   conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
-  callsInitiated?: Prisma.PrivateCallUncheckedUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserCreateWithoutMessageStatusesInput = {
@@ -1708,6 +1978,11 @@ export type UserCreateWithoutMessageStatusesInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1716,8 +1991,8 @@ export type UserCreateWithoutMessageStatusesInput = {
   conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
   conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
-  callsInitiated?: Prisma.PrivateCallCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
 }
 
 export type UserUncheckedCreateWithoutMessageStatusesInput = {
@@ -1734,6 +2009,11 @@ export type UserUncheckedCreateWithoutMessageStatusesInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  dateOfBirth?: Date | string | null
+  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1742,8 +2022,8 @@ export type UserUncheckedCreateWithoutMessageStatusesInput = {
   conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
   conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
-  callsInitiated?: Prisma.PrivateCallUncheckedCreateNestedManyWithoutInitiatorInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
 }
 
 export type UserCreateOrConnectWithoutMessageStatusesInput = {
@@ -1776,6 +2056,11 @@ export type UserUpdateWithoutMessageStatusesInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1784,8 +2069,8 @@ export type UserUpdateWithoutMessageStatusesInput = {
   conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
   conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
-  callsInitiated?: Prisma.PrivateCallUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageStatusesInput = {
@@ -1802,6 +2087,11 @@ export type UserUncheckedUpdateWithoutMessageStatusesInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1810,8 +2100,8 @@ export type UserUncheckedUpdateWithoutMessageStatusesInput = {
   conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
   conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
-  callsInitiated?: Prisma.PrivateCallUncheckedUpdateManyWithoutInitiatorNestedInput
-  callParticipants?: Prisma.PrivateCallParticipantUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
 }
 
 
@@ -1827,8 +2117,8 @@ export type UserCountOutputType = {
   conversationsReceived: number
   messagesSent: number
   messageStatuses: number
-  callsInitiated: number
-  callParticipants: number
+  hostedCalls: number
+  receivedCalls: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1839,8 +2129,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   conversationsReceived?: boolean | UserCountOutputTypeCountConversationsReceivedArgs
   messagesSent?: boolean | UserCountOutputTypeCountMessagesSentArgs
   messageStatuses?: boolean | UserCountOutputTypeCountMessageStatusesArgs
-  callsInitiated?: boolean | UserCountOutputTypeCountCallsInitiatedArgs
-  callParticipants?: boolean | UserCountOutputTypeCountCallParticipantsArgs
+  hostedCalls?: boolean | UserCountOutputTypeCountHostedCallsArgs
+  receivedCalls?: boolean | UserCountOutputTypeCountReceivedCallsArgs
 }
 
 /**
@@ -1905,15 +2195,15 @@ export type UserCountOutputTypeCountMessageStatusesArgs<ExtArgs extends runtime.
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountCallsInitiatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PrivateCallWhereInput
+export type UserCountOutputTypeCountHostedCallsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CallingWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountCallParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PrivateCallParticipantWhereInput
+export type UserCountOutputTypeCountReceivedCallsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CallingWhereInput
 }
 
 
@@ -1931,6 +2221,11 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
+  about?: boolean
+  username?: boolean
+  address?: boolean
+  dateOfBirth?: boolean
+  coverPhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
@@ -1940,8 +2235,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   conversationsReceived?: boolean | Prisma.User$conversationsReceivedArgs<ExtArgs>
   messagesSent?: boolean | Prisma.User$messagesSentArgs<ExtArgs>
   messageStatuses?: boolean | Prisma.User$messageStatusesArgs<ExtArgs>
-  callsInitiated?: boolean | Prisma.User$callsInitiatedArgs<ExtArgs>
-  callParticipants?: boolean | Prisma.User$callParticipantsArgs<ExtArgs>
+  hostedCalls?: boolean | Prisma.User$hostedCallsArgs<ExtArgs>
+  receivedCalls?: boolean | Prisma.User$receivedCallsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1959,6 +2254,11 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
+  about?: boolean
+  username?: boolean
+  address?: boolean
+  dateOfBirth?: boolean
+  coverPhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -1977,6 +2277,11 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
+  about?: boolean
+  username?: boolean
+  address?: boolean
+  dateOfBirth?: boolean
+  coverPhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -1995,11 +2300,16 @@ export type UserSelectScalar = {
   profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
+  about?: boolean
+  username?: boolean
+  address?: boolean
+  dateOfBirth?: boolean
+  coverPhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "status" | "isVerified" | "isOnline" | "lastLoginAt" | "lastActiveAt" | "profilePicture" | "locationLon" | "locationLat" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "status" | "isVerified" | "isOnline" | "lastLoginAt" | "lastActiveAt" | "profilePicture" | "locationLon" | "locationLat" | "about" | "username" | "address" | "dateOfBirth" | "coverPhoto" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
@@ -2008,8 +2318,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   conversationsReceived?: boolean | Prisma.User$conversationsReceivedArgs<ExtArgs>
   messagesSent?: boolean | Prisma.User$messagesSentArgs<ExtArgs>
   messageStatuses?: boolean | Prisma.User$messageStatusesArgs<ExtArgs>
-  callsInitiated?: boolean | Prisma.User$callsInitiatedArgs<ExtArgs>
-  callParticipants?: boolean | Prisma.User$callParticipantsArgs<ExtArgs>
+  hostedCalls?: boolean | Prisma.User$hostedCallsArgs<ExtArgs>
+  receivedCalls?: boolean | Prisma.User$receivedCallsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2031,14 +2341,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
      * Message delivery/read statuses
      */
     messageStatuses: Prisma.$PrivateMessageStatusPayload<ExtArgs>[]
-    /**
-     * Calls user has initiated
-     */
-    callsInitiated: Prisma.$PrivateCallPayload<ExtArgs>[]
-    /**
-     * Calls user participated in
-     */
-    callParticipants: Prisma.$PrivateCallParticipantPayload<ExtArgs>[]
+    hostedCalls: Prisma.$CallingPayload<ExtArgs>[]
+    receivedCalls: Prisma.$CallingPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2052,14 +2356,13 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     lastLoginAt: Date | null
     lastActiveAt: Date | null
     profilePicture: string | null
-    /**
-     * location longitude
-     */
     locationLon: string | null
-    /**
-     * location latitude
-     */
     locationLat: string | null
+    about: string | null
+    username: string | null
+    address: string | null
+    dateOfBirth: Date | null
+    coverPhoto: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -2463,8 +2766,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   conversationsReceived<T extends Prisma.User$conversationsReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$conversationsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrivateConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messagesSent<T extends Prisma.User$messagesSentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messagesSentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrivateMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messageStatuses<T extends Prisma.User$messageStatusesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messageStatusesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrivateMessageStatusPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  callsInitiated<T extends Prisma.User$callsInitiatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$callsInitiatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrivateCallPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  callParticipants<T extends Prisma.User$callParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$callParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrivateCallParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  hostedCalls<T extends Prisma.User$hostedCallsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$hostedCallsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CallingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  receivedCalls<T extends Prisma.User$receivedCallsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$receivedCallsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CallingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2507,6 +2810,11 @@ export interface UserFieldRefs {
   readonly profilePicture: Prisma.FieldRef<"User", 'String'>
   readonly locationLon: Prisma.FieldRef<"User", 'String'>
   readonly locationLat: Prisma.FieldRef<"User", 'String'>
+  readonly about: Prisma.FieldRef<"User", 'String'>
+  readonly username: Prisma.FieldRef<"User", 'String'>
+  readonly address: Prisma.FieldRef<"User", 'String'>
+  readonly dateOfBirth: Prisma.FieldRef<"User", 'DateTime'>
+  readonly coverPhoto: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
@@ -3065,51 +3373,51 @@ export type User$messageStatusesArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
- * User.callsInitiated
+ * User.hostedCalls
  */
-export type User$callsInitiatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$hostedCallsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the PrivateCall
+   * Select specific fields to fetch from the Calling
    */
-  select?: Prisma.PrivateCallSelect<ExtArgs> | null
+  select?: Prisma.CallingSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the PrivateCall
+   * Omit specific fields from the Calling
    */
-  omit?: Prisma.PrivateCallOmit<ExtArgs> | null
+  omit?: Prisma.CallingOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.PrivateCallInclude<ExtArgs> | null
-  where?: Prisma.PrivateCallWhereInput
-  orderBy?: Prisma.PrivateCallOrderByWithRelationInput | Prisma.PrivateCallOrderByWithRelationInput[]
-  cursor?: Prisma.PrivateCallWhereUniqueInput
+  include?: Prisma.CallingInclude<ExtArgs> | null
+  where?: Prisma.CallingWhereInput
+  orderBy?: Prisma.CallingOrderByWithRelationInput | Prisma.CallingOrderByWithRelationInput[]
+  cursor?: Prisma.CallingWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.PrivateCallScalarFieldEnum | Prisma.PrivateCallScalarFieldEnum[]
+  distinct?: Prisma.CallingScalarFieldEnum | Prisma.CallingScalarFieldEnum[]
 }
 
 /**
- * User.callParticipants
+ * User.receivedCalls
  */
-export type User$callParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$receivedCallsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the PrivateCallParticipant
+   * Select specific fields to fetch from the Calling
    */
-  select?: Prisma.PrivateCallParticipantSelect<ExtArgs> | null
+  select?: Prisma.CallingSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the PrivateCallParticipant
+   * Omit specific fields from the Calling
    */
-  omit?: Prisma.PrivateCallParticipantOmit<ExtArgs> | null
+  omit?: Prisma.CallingOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.PrivateCallParticipantInclude<ExtArgs> | null
-  where?: Prisma.PrivateCallParticipantWhereInput
-  orderBy?: Prisma.PrivateCallParticipantOrderByWithRelationInput | Prisma.PrivateCallParticipantOrderByWithRelationInput[]
-  cursor?: Prisma.PrivateCallParticipantWhereUniqueInput
+  include?: Prisma.CallingInclude<ExtArgs> | null
+  where?: Prisma.CallingWhereInput
+  orderBy?: Prisma.CallingOrderByWithRelationInput | Prisma.CallingOrderByWithRelationInput[]
+  cursor?: Prisma.CallingWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.PrivateCallParticipantScalarFieldEnum | Prisma.PrivateCallParticipantScalarFieldEnum[]
+  distinct?: Prisma.CallingScalarFieldEnum | Prisma.CallingScalarFieldEnum[]
 }
 
 /**

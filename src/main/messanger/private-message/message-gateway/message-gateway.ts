@@ -18,12 +18,6 @@ import { Server, Socket } from 'socket.io';
 import { ENVEnum } from 'src/common/enum/env.enum';
 import { PrismaService } from 'src/lib/prisma/prisma.service';
 
-import {
-  RTCAnswerDto,
-  RTCIceCandidateDto,
-  RTCOfferDto,
-} from '../../call/dto/wertc.dto';
-import { CallService } from '../../call/service/call.service';
 import { PrivateChatService } from '../service/private-message.service';
 
 @WebSocketGateway({
@@ -42,8 +36,7 @@ export class PrivateChatGateway
     private readonly privateChatService: PrivateChatService,
     private readonly configService: ConfigService,
     private readonly prisma: PrismaService,
-    @Inject(forwardRef(() => CallService))
-    private readonly callService: CallService,
+
   ) {}
 
   @WebSocketServer()
@@ -143,8 +136,7 @@ export class PrivateChatGateway
       // Remove from socket mapping
       this.userSocketMap.delete(userId);
 
-      // Handle call disconnection
-      this.callService.handleSocketDisconnect(client.id, userId);
+
 
       await this.privateChatService.markUserInactive(userId);
 
@@ -403,119 +395,6 @@ export class PrivateChatGateway
     });
   }
 
-  /** -------------------- Call Events -------------------- */
-
-  @SubscribeMessage('call:accept')
-  async handleAcceptCall(
-    @MessageBody() data: { callId: string },
-    @ConnectedSocket() client: Socket,
-  ) {
-    const userId = this.getUserIdFromSocket(client);
-    if (!userId) return;
-
-    try {
-      await this.callService.acceptCall(data.callId, userId, client.id);
-    } catch (error) {
-      client.emit(PrivateChatEvents.ERROR, {
-        message: 'Failed to accept call',
-        error: error.message,
-      });
-    }
-  }
-
-  @SubscribeMessage('call:reject')
-  async handleRejectCall(
-    @MessageBody() data: { callId: string },
-    @ConnectedSocket() client: Socket,
-  ) {
-    const userId = this.getUserIdFromSocket(client);
-    if (!userId) return;
-
-    try {
-      await this.callService.rejectCall(data.callId, userId);
-    } catch (error) {
-      client.emit(PrivateChatEvents.ERROR, {
-        message: 'Failed to reject call',
-        error: error.message,
-      });
-    }
-  }
-
-  @SubscribeMessage('call:end')
-  async handleEndCall(
-    @MessageBody() data: { callId: string },
-    @ConnectedSocket() client: Socket,
-  ) {
-    const userId = this.getUserIdFromSocket(client);
-    if (!userId) return;
-
-    try {
-      await this.callService.endCall(data.callId, userId);
-    } catch (error) {
-      client.emit(PrivateChatEvents.ERROR, {
-        message: 'Failed to end call',
-        error: error.message,
-      });
-    }
-  }
-
-  @SubscribeMessage('call:offer')
-  async handleCallOffer(
-    @MessageBody() data: RTCOfferDto,
-    @ConnectedSocket() client: Socket,
-  ) {
-    const userId = this.getUserIdFromSocket(client);
-    if (!userId) return;
-
-    try {
-      await this.callService.sendOffer(data.callId, userId, data.sdp);
-    } catch (error) {
-      client.emit(PrivateChatEvents.ERROR, {
-        message: 'Failed to send offer',
-        error: error.message,
-      });
-    }
-  }
-
-  @SubscribeMessage('call:answer')
-  async handleCallAnswer(
-    @MessageBody() data: RTCAnswerDto,
-    @ConnectedSocket() client: Socket,
-  ) {
-    const userId = this.getUserIdFromSocket(client);
-    if (!userId) return;
-
-    try {
-      await this.callService.sendAnswer(data.callId, userId, data.sdp);
-    } catch (error) {
-      client.emit(PrivateChatEvents.ERROR, {
-        message: 'Failed to send answer',
-        error: error.message,
-      });
-    }
-  }
-
-  @SubscribeMessage('call:ice-candidate')
-  async handleIceCandidate(
-    @MessageBody() data: RTCIceCandidateDto,
-    @ConnectedSocket() client: Socket,
-  ) {
-    const userId = this.getUserIdFromSocket(client);
-    if (!userId) return;
-
-    try {
-      await this.callService.sendIceCandidate(data.callId, userId, {
-        candidate: data.candidate,
-        sdpMid: data.sdpMid,
-        sdpMLineIndex: data.sdpMLineIndex,
-      });
-    } catch (error) {
-      client.emit(PrivateChatEvents.ERROR, {
-        message: 'Failed to send ICE candidate',
-        error: error.message,
-      });
-    }
-  }
 
   /** -------------------- Helpers -------------------- */
 

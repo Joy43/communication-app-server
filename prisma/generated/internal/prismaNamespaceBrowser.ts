@@ -53,11 +53,11 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   UserOtp: 'UserOtp',
   RefreshToken: 'RefreshToken',
+  Calling: 'Calling',
+  CallParticipant: 'CallParticipant',
   FileInstance: 'FileInstance',
   Notification: 'Notification',
   UserNotification: 'UserNotification',
-  PrivateCall: 'PrivateCall',
-  PrivateCallParticipant: 'PrivateCallParticipant',
   PrivateConversation: 'PrivateConversation',
   PrivateMessage: 'PrivateMessage',
   PrivateMessageStatus: 'PrivateMessageStatus',
@@ -105,6 +105,38 @@ export const RefreshTokenScalarFieldEnum = {
 export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
 
 
+export const CallingScalarFieldEnum = {
+  id: 'id',
+  hostUserId: 'hostUserId',
+  recipientUserId: 'recipientUserId',
+  status: 'status',
+  title: 'title',
+  isPrivate: 'isPrivate',
+  startedAt: 'startedAt',
+  endedAt: 'endedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CallingScalarFieldEnum = (typeof CallingScalarFieldEnum)[keyof typeof CallingScalarFieldEnum]
+
+
+export const CallParticipantScalarFieldEnum = {
+  id: 'id',
+  callId: 'callId',
+  socketId: 'socketId',
+  userName: 'userName',
+  hasVideo: 'hasVideo',
+  hasAudio: 'hasAudio',
+  joinedAt: 'joinedAt',
+  leftAt: 'leftAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CallParticipantScalarFieldEnum = (typeof CallParticipantScalarFieldEnum)[keyof typeof CallParticipantScalarFieldEnum]
+
+
 export const FileInstanceScalarFieldEnum = {
   id: 'id',
   filename: 'filename',
@@ -144,33 +176,6 @@ export const UserNotificationScalarFieldEnum = {
 } as const
 
 export type UserNotificationScalarFieldEnum = (typeof UserNotificationScalarFieldEnum)[keyof typeof UserNotificationScalarFieldEnum]
-
-
-export const PrivateCallScalarFieldEnum = {
-  id: 'id',
-  conversationId: 'conversationId',
-  initiatorId: 'initiatorId',
-  type: 'type',
-  status: 'status',
-  startedAt: 'startedAt',
-  endedAt: 'endedAt',
-  createdAt: 'createdAt'
-} as const
-
-export type PrivateCallScalarFieldEnum = (typeof PrivateCallScalarFieldEnum)[keyof typeof PrivateCallScalarFieldEnum]
-
-
-export const PrivateCallParticipantScalarFieldEnum = {
-  id: 'id',
-  callId: 'callId',
-  userId: 'userId',
-  status: 'status',
-  joinedAt: 'joinedAt',
-  leftAt: 'leftAt',
-  createdAt: 'createdAt'
-} as const
-
-export type PrivateCallParticipantScalarFieldEnum = (typeof PrivateCallParticipantScalarFieldEnum)[keyof typeof PrivateCallParticipantScalarFieldEnum]
 
 
 export const PrivateConversationScalarFieldEnum = {
@@ -226,6 +231,11 @@ export const UserScalarFieldEnum = {
   profilePicture: 'profilePicture',
   locationLon: 'locationLon',
   locationLat: 'locationLat',
+  about: 'about',
+  username: 'username',
+  address: 'address',
+  dateOfBirth: 'dateOfBirth',
+  coverPhoto: 'coverPhoto',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -256,6 +266,14 @@ export const QueryMode = {
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
 export const JsonNullValueFilter = {
   DbNull: 'DbNull',
   JsonNull: 'JsonNull',
@@ -263,12 +281,4 @@ export const JsonNullValueFilter = {
 } as const
 
 export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

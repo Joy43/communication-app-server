@@ -10,11 +10,11 @@
  */
 export type * from './models/UserOtp'
 export type * from './models/RefreshToken'
+export type * from './models/Calling'
+export type * from './models/CallParticipant'
 export type * from './models/FileInstance'
 export type * from './models/Notification'
 export type * from './models/UserNotification'
-export type * from './models/PrivateCall'
-export type * from './models/PrivateCallParticipant'
 export type * from './models/PrivateConversation'
 export type * from './models/PrivateMessage'
 export type * from './models/PrivateMessageStatus'

@@ -17,6 +17,26 @@ export const OtpType = {
 export type OtpType = (typeof OtpType)[keyof typeof OtpType]
 
 
+export const CallType = {
+  AUDIO: 'AUDIO',
+  VIDEO: 'VIDEO'
+} as const
+
+export type CallType = (typeof CallType)[keyof typeof CallType]
+
+
+export const CallStatus = {
+  CALLING: 'CALLING',
+  RINING: 'RINING',
+  ACTIVE: 'ACTIVE',
+  END: 'END',
+  MISSED: 'MISSED',
+  DECLINED: 'DECLINED'
+} as const
+
+export type CallStatus = (typeof CallStatus)[keyof typeof CallStatus]
+
+
 export const FileType = {
   image: 'image',
   docs: 'docs',
@@ -39,33 +59,6 @@ export const NotificationType = {
 } as const
 
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
-
-
-export const CallType = {
-  AUDIO: 'AUDIO',
-  VIDEO: 'VIDEO'
-} as const
-
-export type CallType = (typeof CallType)[keyof typeof CallType]
-
-
-export const CallStatus = {
-  INITIATED: 'INITIATED',
-  ONGOING: 'ONGOING',
-  ENDED: 'ENDED',
-  MISSED: 'MISSED'
-} as const
-
-export type CallStatus = (typeof CallStatus)[keyof typeof CallStatus]
-
-
-export const CallParticipantStatus = {
-  JOINED: 'JOINED',
-  LEFT: 'LEFT',
-  MISSED: 'MISSED'
-} as const
-
-export type CallParticipantStatus = (typeof CallParticipantStatus)[keyof typeof CallParticipantStatus]
 
 
 export const ConversationStatus = {

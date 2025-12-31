@@ -1,13 +1,11 @@
-import { forwardRef, Module } from '@nestjs/common';
-
-import { PrivateMessageModule } from '../private-message/private-message.module';
-import { CallService } from './service/call.service';
-import { CallController } from './controller/call.controller';
+import { PrismaService } from '@/lib/prisma/prisma.service';
+import { Module } from '@nestjs/common';
+import { CallController } from './call.controller';
+import { CallGateway } from './call.gateway';
+import { CallService } from './call.service';
 
 @Module({
-  imports: [forwardRef(() => PrivateMessageModule)],
-  controllers:[CallController],
-  providers: [CallService],
-  exports: [CallService],
+  controllers: [CallController],
+  providers: [CallGateway, CallService, PrismaService],
 })
 export class CallModule {}

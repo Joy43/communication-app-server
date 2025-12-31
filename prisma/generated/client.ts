@@ -48,6 +48,16 @@ export type UserOtp = Prisma.UserOtpModel
  */
 export type RefreshToken = Prisma.RefreshTokenModel
 /**
+ * Model Calling
+ * 
+ */
+export type Calling = Prisma.CallingModel
+/**
+ * Model CallParticipant
+ * 
+ */
+export type CallParticipant = Prisma.CallParticipantModel
+/**
  * Model FileInstance
  * 
  */
@@ -62,16 +72,6 @@ export type Notification = Prisma.NotificationModel
  * 
  */
 export type UserNotification = Prisma.UserNotificationModel
-/**
- * Model PrivateCall
- * 
- */
-export type PrivateCall = Prisma.PrivateCallModel
-/**
- * Model PrivateCallParticipant
- * 
- */
-export type PrivateCallParticipant = Prisma.PrivateCallParticipantModel
 /**
  * Model PrivateConversation
  * 

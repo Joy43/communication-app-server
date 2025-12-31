@@ -2,19 +2,16 @@
 CREATE TYPE "OtpType" AS ENUM ('VERIFICATION', 'RESET');
 
 -- CreateEnum
+CREATE TYPE "CallType" AS ENUM ('AUDIO', 'VIDEO');
+
+-- CreateEnum
+CREATE TYPE "CallStatus" AS ENUM ('CALLING', 'RINING', 'ACTIVE', 'END', 'MISSED', 'DECLINED');
+
+-- CreateEnum
 CREATE TYPE "FileType" AS ENUM ('image', 'docs', 'link', 'document', 'any', 'video', 'audio');
 
 -- CreateEnum
 CREATE TYPE "NotificationType" AS ENUM ('service', 'message', 'review', 'payment', 'userRegistration');
-
--- CreateEnum
-CREATE TYPE "CallType" AS ENUM ('AUDIO', 'VIDEO');
-
--- CreateEnum
-CREATE TYPE "CallStatus" AS ENUM ('INITIATED', 'ONGOING', 'ENDED', 'MISSED');
-
--- CreateEnum
-CREATE TYPE "CallParticipantStatus" AS ENUM ('JOINED', 'LEFT', 'MISSED');
 
 -- CreateEnum
 CREATE TYPE "ConversationStatus" AS ENUM ('ACTIVE', 'ARCHIVED', 'BLOCKED');
@@ -57,6 +54,38 @@ CREATE TABLE "refresh_tokens" (
 );
 
 -- CreateTable
+CREATE TABLE "calls" (
+    "id" TEXT NOT NULL,
+    "hostUserId" TEXT NOT NULL,
+    "recipientUserId" TEXT,
+    "status" "CallStatus" NOT NULL DEFAULT 'CALLING',
+    "title" TEXT,
+    "isPrivate" BOOLEAN NOT NULL DEFAULT false,
+    "startedAt" TIMESTAMP(3),
+    "endedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "calls_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "call_participants" (
+    "id" TEXT NOT NULL,
+    "callId" TEXT NOT NULL,
+    "socketId" TEXT NOT NULL,
+    "userName" TEXT NOT NULL,
+    "hasVideo" BOOLEAN NOT NULL DEFAULT false,
+    "hasAudio" BOOLEAN NOT NULL DEFAULT false,
+    "joinedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "leftAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "call_participants_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "file_instances" (
     "id" TEXT NOT NULL,
     "filename" TEXT NOT NULL,
@@ -95,33 +124,6 @@ CREATE TABLE "user_notifications" (
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "user_notifications_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "private_calls" (
-    "id" TEXT NOT NULL,
-    "conversationId" TEXT NOT NULL,
-    "initiatorId" TEXT,
-    "type" "CallType" NOT NULL,
-    "status" "CallStatus" NOT NULL DEFAULT 'INITIATED',
-    "startedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "endedAt" TIMESTAMP(3),
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "private_calls_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "private_call_participants" (
-    "id" TEXT NOT NULL,
-    "callId" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
-    "status" "CallParticipantStatus" NOT NULL DEFAULT 'JOINED',
-    "joinedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "leftAt" TIMESTAMP(3),
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "private_call_participants_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -176,8 +178,13 @@ CREATE TABLE "users" (
     "lastLoginAt" TIMESTAMP(3),
     "lastActiveAt" TIMESTAMP(3),
     "profilePicture" TEXT,
-    "locationLon" TEXT,
-    "locationLat" TEXT,
+    "locationLon" TEXT DEFAULT '-71.0589',
+    "locationLat" TEXT DEFAULT '42.3601',
+    "about" TEXT DEFAULT 'User about information',
+    "username" TEXT,
+    "address" TEXT,
+    "dateOfBirth" TIMESTAMP(3),
+    "coverPhoto" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -191,10 +198,19 @@ CREATE INDEX "user_otps_userId_idx" ON "user_otps"("userId");
 CREATE UNIQUE INDEX "refresh_tokens_token_key" ON "refresh_tokens"("token");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "user_notifications_userId_notificationId_key" ON "user_notifications"("userId", "notificationId");
+CREATE INDEX "calls_hostUserId_idx" ON "calls"("hostUserId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "private_call_participants_callId_userId_key" ON "private_call_participants"("callId", "userId");
+CREATE INDEX "calls_recipientUserId_idx" ON "calls"("recipientUserId");
+
+-- CreateIndex
+CREATE INDEX "call_participants_callId_idx" ON "call_participants"("callId");
+
+-- CreateIndex
+CREATE INDEX "call_participants_socketId_idx" ON "call_participants"("socketId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_notifications_userId_notificationId_key" ON "user_notifications"("userId", "notificationId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "private_conversations_initiatorId_receiverId_key" ON "private_conversations"("initiatorId", "receiverId");
@@ -208,6 +224,9 @@ CREATE UNIQUE INDEX "private_message_statuses_messageId_userId_key" ON "private_
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "users_username_key" ON "users"("username");
+
 -- AddForeignKey
 ALTER TABLE "user_otps" ADD CONSTRAINT "user_otps_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -215,22 +234,19 @@ ALTER TABLE "user_otps" ADD CONSTRAINT "user_otps_userId_fkey" FOREIGN KEY ("use
 ALTER TABLE "refresh_tokens" ADD CONSTRAINT "refresh_tokens_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "calls" ADD CONSTRAINT "calls_hostUserId_fkey" FOREIGN KEY ("hostUserId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "calls" ADD CONSTRAINT "calls_recipientUserId_fkey" FOREIGN KEY ("recipientUserId") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "call_participants" ADD CONSTRAINT "call_participants_callId_fkey" FOREIGN KEY ("callId") REFERENCES "calls"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "user_notifications" ADD CONSTRAINT "user_notifications_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "user_notifications" ADD CONSTRAINT "user_notifications_notificationId_fkey" FOREIGN KEY ("notificationId") REFERENCES "notifications"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "private_calls" ADD CONSTRAINT "private_calls_conversationId_fkey" FOREIGN KEY ("conversationId") REFERENCES "private_conversations"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "private_calls" ADD CONSTRAINT "private_calls_initiatorId_fkey" FOREIGN KEY ("initiatorId") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "private_call_participants" ADD CONSTRAINT "private_call_participants_callId_fkey" FOREIGN KEY ("callId") REFERENCES "private_calls"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "private_call_participants" ADD CONSTRAINT "private_call_participants_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "private_conversations" ADD CONSTRAINT "private_conversations_initiatorId_fkey" FOREIGN KEY ("initiatorId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
