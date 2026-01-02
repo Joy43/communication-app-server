@@ -1,8 +1,8 @@
 import { Controller, Get, Param } from "@nestjs/common";
-import { CallService } from "./call.service";
+import { CallService } from "../call.service";
 
 
-@Controller("realtime-call")
+@Controller("call")
 export class CallController {
     constructor(private readonly callService: CallService) {}
 

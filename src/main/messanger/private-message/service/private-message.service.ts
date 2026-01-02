@@ -407,13 +407,13 @@ export class PrivateChatService {
         name: true,
         email: true,
         profilePicture: true,
-        isOnline: true, // Assuming you have this field
-        lastActiveAt: true, // Correct field name
+        isOnline: true,
+        lastActiveAt: true, 
       },
       orderBy: [
-        { isOnline: 'desc' }, // Online users first
-        { lastActiveAt: 'desc' }, // Then by last seen
-        { name: 'asc' }, // Then alphabetically
+        { isOnline: 'desc' }, 
+        { lastActiveAt: 'desc' }, 
+        { name: 'asc' },
       ],
     });
 

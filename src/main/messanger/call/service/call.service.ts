@@ -1,8 +1,5 @@
 import { PrismaService } from '@/lib/prisma/prisma.service';
 import { Injectable, Logger } from '@nestjs/common';
-import { PrivateChatGateway } from '../../private-message/message-gateway/message-gateway';
-
-
 @Injectable()
 export class CallService {
   private readonly logger = new Logger(CallService.name);
@@ -11,17 +8,15 @@ export class CallService {
 
   constructor(
     private readonly prisma: PrismaService,
-    private readonly chatGateway: PrivateChatGateway,
+
   ) {}
 
   /** -------------------- Public Methods -------------------- */
-
   async initiateCall(
     callId: string,
     callerId: string,
     recipientId: string,
     callerSocketId: string,
-    isVideo: boolean = false,
   ) {
     this.logger.log(
       `Initiating call ${callId} from ${callerId} to ${recipientId}`,
@@ -46,13 +41,7 @@ export class CallService {
 
     this.setRingTimeout(callId);
 
-    // Emit to recipient via gateway
-    this.chatGateway.server.emit('call:incoming', {
-      callId,
-      callerId,
-      recipientId,
-      isVideo,
-    });
+   
 
     return { success: true };
   }
@@ -70,13 +59,7 @@ export class CallService {
       data: { status: 'ACTIVE' },
     });
 
-    // Notify caller that call was accepted
-    this.chatGateway.server.emit('call:accepted', {
-      callId,
-      userId,
-    });
-
-    return { success: true };
+  return { success: true };
   }
 
   async rejectCall(callId: string, userId: string) {
@@ -92,11 +75,7 @@ export class CallService {
       },
     });
 
-    // Notify caller that call was rejected
-    this.chatGateway.server.emit('call:rejected', {
-      callId,
-      userId,
-    });
+  
 
     this.callSocketMap.delete(callId);
 
@@ -122,11 +101,7 @@ export class CallService {
       });
     }
 
-    // Notify other participants
-    this.chatGateway.server.emit('call:ended', {
-      callId,
-      userId,
-    });
+  
 
     this.callSocketMap.delete(callId);
 
@@ -165,8 +140,7 @@ export class CallService {
           },
         });
 
-        // Notify participants
-        this.chatGateway.server.emit('call:missed', { callId });
+     
 
         this.callSocketMap.delete(callId);
         this.logger.log(`Call ${callId} marked as missed due to timeout`);

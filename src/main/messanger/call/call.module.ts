@@ -1,8 +1,8 @@
 import { PrismaService } from '@/lib/prisma/prisma.service';
 import { Module } from '@nestjs/common';
-import { CallController } from './call.controller';
 import { CallGateway } from './call.gateway';
 import { CallService } from './call.service';
+import { CallController } from './controller/call.controller';
 
 @Module({
   controllers: [CallController],
