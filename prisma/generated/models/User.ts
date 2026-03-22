@@ -41,8 +41,6 @@ export type UserMinAggregateOutputType = {
   about: string | null
   username: string | null
   address: string | null
-  dateOfBirth: Date | null
-  coverPhoto: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -64,8 +62,6 @@ export type UserMaxAggregateOutputType = {
   about: string | null
   username: string | null
   address: string | null
-  dateOfBirth: Date | null
-  coverPhoto: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -87,8 +83,6 @@ export type UserCountAggregateOutputType = {
   about: number
   username: number
   address: number
-  dateOfBirth: number
-  coverPhoto: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -112,8 +106,6 @@ export type UserMinAggregateInputType = {
   about?: true
   username?: true
   address?: true
-  dateOfBirth?: true
-  coverPhoto?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -135,8 +127,6 @@ export type UserMaxAggregateInputType = {
   about?: true
   username?: true
   address?: true
-  dateOfBirth?: true
-  coverPhoto?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -158,8 +148,6 @@ export type UserCountAggregateInputType = {
   about?: true
   username?: true
   address?: true
-  dateOfBirth?: true
-  coverPhoto?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -254,8 +242,6 @@ export type UserGroupByOutputType = {
   about: string | null
   username: string | null
   address: string | null
-  dateOfBirth: Date | null
-  coverPhoto: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -298,8 +284,6 @@ export type UserWhereInput = {
   about?: Prisma.StringNullableFilter<"User"> | string | null
   username?: Prisma.StringNullableFilter<"User"> | string | null
   address?: Prisma.StringNullableFilter<"User"> | string | null
-  dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  coverPhoto?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   notifications?: Prisma.UserNotificationListRelationFilter
@@ -311,6 +295,23 @@ export type UserWhereInput = {
   messageStatuses?: Prisma.PrivateMessageStatusListRelationFilter
   hostedCalls?: Prisma.CallingListRelationFilter
   receivedCalls?: Prisma.CallingListRelationFilter
+  followers?: Prisma.FollowListRelationFilter
+  following?: Prisma.FollowListRelationFilter
+  follows?: Prisma.UserFollowListRelationFilter
+  followedBy?: Prisma.UserFollowListRelationFilter
+  profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
+  comments?: Prisma.CommentListRelationFilter
+  taggedInPosts?: Prisma.PostTagUserListRelationFilter
+  savedPosts?: Prisma.SavedPostListRelationFilter
+  communityMemberships?: Prisma.CommunitiesMembershipListRelationFilter
+  likedCommunities?: Prisma.CommunityListRelationFilter
+  communityFollowers?: Prisma.CommunityFollowerListRelationFilter
+  ownedCommunities?: Prisma.CommunityListRelationFilter
+  friendRequestsSent?: Prisma.FriendRequestListRelationFilter
+  friendRequestsReceived?: Prisma.FriendRequestListRelationFilter
+  posts?: Prisma.PostListRelationFilter
+  likedPosts?: Prisma.LikeListRelationFilter
+  sharedPosts?: Prisma.ShareListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -330,8 +331,6 @@ export type UserOrderByWithRelationInput = {
   about?: Prisma.SortOrderInput | Prisma.SortOrder
   username?: Prisma.SortOrderInput | Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
-  dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
-  coverPhoto?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   notifications?: Prisma.UserNotificationOrderByRelationAggregateInput
@@ -343,6 +342,23 @@ export type UserOrderByWithRelationInput = {
   messageStatuses?: Prisma.PrivateMessageStatusOrderByRelationAggregateInput
   hostedCalls?: Prisma.CallingOrderByRelationAggregateInput
   receivedCalls?: Prisma.CallingOrderByRelationAggregateInput
+  followers?: Prisma.FollowOrderByRelationAggregateInput
+  following?: Prisma.FollowOrderByRelationAggregateInput
+  follows?: Prisma.UserFollowOrderByRelationAggregateInput
+  followedBy?: Prisma.UserFollowOrderByRelationAggregateInput
+  profile?: Prisma.ProfileOrderByWithRelationInput
+  comments?: Prisma.CommentOrderByRelationAggregateInput
+  taggedInPosts?: Prisma.PostTagUserOrderByRelationAggregateInput
+  savedPosts?: Prisma.SavedPostOrderByRelationAggregateInput
+  communityMemberships?: Prisma.CommunitiesMembershipOrderByRelationAggregateInput
+  likedCommunities?: Prisma.CommunityOrderByRelationAggregateInput
+  communityFollowers?: Prisma.CommunityFollowerOrderByRelationAggregateInput
+  ownedCommunities?: Prisma.CommunityOrderByRelationAggregateInput
+  friendRequestsSent?: Prisma.FriendRequestOrderByRelationAggregateInput
+  friendRequestsReceived?: Prisma.FriendRequestOrderByRelationAggregateInput
+  posts?: Prisma.PostOrderByRelationAggregateInput
+  likedPosts?: Prisma.LikeOrderByRelationAggregateInput
+  sharedPosts?: Prisma.ShareOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -365,8 +381,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   locationLat?: Prisma.StringNullableFilter<"User"> | string | null
   about?: Prisma.StringNullableFilter<"User"> | string | null
   address?: Prisma.StringNullableFilter<"User"> | string | null
-  dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  coverPhoto?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   notifications?: Prisma.UserNotificationListRelationFilter
@@ -378,6 +392,23 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   messageStatuses?: Prisma.PrivateMessageStatusListRelationFilter
   hostedCalls?: Prisma.CallingListRelationFilter
   receivedCalls?: Prisma.CallingListRelationFilter
+  followers?: Prisma.FollowListRelationFilter
+  following?: Prisma.FollowListRelationFilter
+  follows?: Prisma.UserFollowListRelationFilter
+  followedBy?: Prisma.UserFollowListRelationFilter
+  profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
+  comments?: Prisma.CommentListRelationFilter
+  taggedInPosts?: Prisma.PostTagUserListRelationFilter
+  savedPosts?: Prisma.SavedPostListRelationFilter
+  communityMemberships?: Prisma.CommunitiesMembershipListRelationFilter
+  likedCommunities?: Prisma.CommunityListRelationFilter
+  communityFollowers?: Prisma.CommunityFollowerListRelationFilter
+  ownedCommunities?: Prisma.CommunityListRelationFilter
+  friendRequestsSent?: Prisma.FriendRequestListRelationFilter
+  friendRequestsReceived?: Prisma.FriendRequestListRelationFilter
+  posts?: Prisma.PostListRelationFilter
+  likedPosts?: Prisma.LikeListRelationFilter
+  sharedPosts?: Prisma.ShareListRelationFilter
 }, "id" | "email" | "username">
 
 export type UserOrderByWithAggregationInput = {
@@ -397,8 +428,6 @@ export type UserOrderByWithAggregationInput = {
   about?: Prisma.SortOrderInput | Prisma.SortOrder
   username?: Prisma.SortOrderInput | Prisma.SortOrder
   address?: Prisma.SortOrderInput | Prisma.SortOrder
-  dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
-  coverPhoto?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -426,8 +455,6 @@ export type UserScalarWhereWithAggregatesInput = {
   about?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   username?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   address?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  dateOfBirth?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-  coverPhoto?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -449,8 +476,6 @@ export type UserCreateInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -462,6 +487,23 @@ export type UserCreateInput = {
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -481,8 +523,6 @@ export type UserUncheckedCreateInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -494,6 +534,23 @@ export type UserUncheckedCreateInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -513,8 +570,6 @@ export type UserUpdateInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -526,6 +581,23 @@ export type UserUpdateInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -545,8 +617,6 @@ export type UserUncheckedUpdateInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -558,6 +628,23 @@ export type UserUncheckedUpdateInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -577,8 +664,6 @@ export type UserCreateManyInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -600,8 +685,6 @@ export type UserUpdateManyMutationInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -623,8 +706,6 @@ export type UserUncheckedUpdateManyInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -637,6 +718,16 @@ export type UserScalarRelationFilter = {
 export type UserNullableScalarRelationFilter = {
   is?: Prisma.UserWhereInput | null
   isNot?: Prisma.UserWhereInput | null
+}
+
+export type UserListRelationFilter = {
+  every?: Prisma.UserWhereInput
+  some?: Prisma.UserWhereInput
+  none?: Prisma.UserWhereInput
+}
+
+export type UserOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -656,8 +747,6 @@ export type UserCountOrderByAggregateInput = {
   about?: Prisma.SortOrder
   username?: Prisma.SortOrder
   address?: Prisma.SortOrder
-  dateOfBirth?: Prisma.SortOrder
-  coverPhoto?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -679,8 +768,6 @@ export type UserMaxOrderByAggregateInput = {
   about?: Prisma.SortOrder
   username?: Prisma.SortOrder
   address?: Prisma.SortOrder
-  dateOfBirth?: Prisma.SortOrder
-  coverPhoto?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -702,8 +789,6 @@ export type UserMinOrderByAggregateInput = {
   about?: Prisma.SortOrder
   username?: Prisma.SortOrder
   address?: Prisma.SortOrder
-  dateOfBirth?: Prisma.SortOrder
-  coverPhoto?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -766,6 +851,170 @@ export type UserUpdateOneWithoutReceivedCallsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReceivedCallsInput, Prisma.UserUpdateWithoutReceivedCallsInput>, Prisma.UserUncheckedUpdateWithoutReceivedCallsInput>
 }
 
+export type UserCreateNestedOneWithoutCommentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommentsInput, Prisma.UserUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommentsInput, Prisma.UserUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommentsInput
+  upsert?: Prisma.UserUpsertWithoutCommentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCommentsInput, Prisma.UserUpdateWithoutCommentsInput>, Prisma.UserUncheckedUpdateWithoutCommentsInput>
+}
+
+export type UserCreateNestedOneWithoutOwnedCommunitiesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOwnedCommunitiesInput, Prisma.UserUncheckedCreateWithoutOwnedCommunitiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOwnedCommunitiesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedManyWithoutLikedCommunitiesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedCommunitiesInput, Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput> | Prisma.UserCreateWithoutLikedCommunitiesInput[] | Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedCommunitiesInput | Prisma.UserCreateOrConnectWithoutLikedCommunitiesInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUncheckedCreateNestedManyWithoutLikedCommunitiesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedCommunitiesInput, Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput> | Prisma.UserCreateWithoutLikedCommunitiesInput[] | Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedCommunitiesInput | Prisma.UserCreateOrConnectWithoutLikedCommunitiesInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUpdateOneRequiredWithoutOwnedCommunitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOwnedCommunitiesInput, Prisma.UserUncheckedCreateWithoutOwnedCommunitiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOwnedCommunitiesInput
+  upsert?: Prisma.UserUpsertWithoutOwnedCommunitiesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOwnedCommunitiesInput, Prisma.UserUpdateWithoutOwnedCommunitiesInput>, Prisma.UserUncheckedUpdateWithoutOwnedCommunitiesInput>
+}
+
+export type UserUpdateManyWithoutLikedCommunitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedCommunitiesInput, Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput> | Prisma.UserCreateWithoutLikedCommunitiesInput[] | Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedCommunitiesInput | Prisma.UserCreateOrConnectWithoutLikedCommunitiesInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutLikedCommunitiesInput | Prisma.UserUpsertWithWhereUniqueWithoutLikedCommunitiesInput[]
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutLikedCommunitiesInput | Prisma.UserUpdateWithWhereUniqueWithoutLikedCommunitiesInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutLikedCommunitiesInput | Prisma.UserUpdateManyWithWhereWithoutLikedCommunitiesInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
+export type UserUncheckedUpdateManyWithoutLikedCommunitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedCommunitiesInput, Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput> | Prisma.UserCreateWithoutLikedCommunitiesInput[] | Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedCommunitiesInput | Prisma.UserCreateOrConnectWithoutLikedCommunitiesInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutLikedCommunitiesInput | Prisma.UserUpsertWithWhereUniqueWithoutLikedCommunitiesInput[]
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutLikedCommunitiesInput | Prisma.UserUpdateWithWhereUniqueWithoutLikedCommunitiesInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutLikedCommunitiesInput | Prisma.UserUpdateManyWithWhereWithoutLikedCommunitiesInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
+export type UserCreateNestedOneWithoutCommunityMembershipsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityMembershipsInput, Prisma.UserUncheckedCreateWithoutCommunityMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCommunityMembershipsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityMembershipsInput, Prisma.UserUncheckedCreateWithoutCommunityMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityMembershipsInput
+  upsert?: Prisma.UserUpsertWithoutCommunityMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCommunityMembershipsInput, Prisma.UserUpdateWithoutCommunityMembershipsInput>, Prisma.UserUncheckedUpdateWithoutCommunityMembershipsInput>
+}
+
+export type UserCreateNestedOneWithoutCommunityFollowersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityFollowersInput, Prisma.UserUncheckedCreateWithoutCommunityFollowersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityFollowersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCommunityFollowersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityFollowersInput, Prisma.UserUncheckedCreateWithoutCommunityFollowersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityFollowersInput
+  upsert?: Prisma.UserUpsertWithoutCommunityFollowersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCommunityFollowersInput, Prisma.UserUpdateWithoutCommunityFollowersInput>, Prisma.UserUncheckedUpdateWithoutCommunityFollowersInput>
+}
+
+export type UserCreateNestedOneWithoutFollowingInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowingInput, Prisma.UserUncheckedCreateWithoutFollowingInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowingInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutFollowersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowersInput, Prisma.UserUncheckedCreateWithoutFollowersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutFollowingNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowingInput, Prisma.UserUncheckedCreateWithoutFollowingInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowingInput
+  upsert?: Prisma.UserUpsertWithoutFollowingInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFollowingInput, Prisma.UserUpdateWithoutFollowingInput>, Prisma.UserUncheckedUpdateWithoutFollowingInput>
+}
+
+export type UserUpdateOneRequiredWithoutFollowersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowersInput, Prisma.UserUncheckedCreateWithoutFollowersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowersInput
+  upsert?: Prisma.UserUpsertWithoutFollowersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFollowersInput, Prisma.UserUpdateWithoutFollowersInput>, Prisma.UserUncheckedUpdateWithoutFollowersInput>
+}
+
+export type UserCreateNestedOneWithoutFriendRequestsSentInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFriendRequestsSentInput, Prisma.UserUncheckedCreateWithoutFriendRequestsSentInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFriendRequestsSentInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutFriendRequestsReceivedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFriendRequestsReceivedInput, Prisma.UserUncheckedCreateWithoutFriendRequestsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFriendRequestsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutFriendRequestsSentNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFriendRequestsSentInput, Prisma.UserUncheckedCreateWithoutFriendRequestsSentInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFriendRequestsSentInput
+  upsert?: Prisma.UserUpsertWithoutFriendRequestsSentInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFriendRequestsSentInput, Prisma.UserUpdateWithoutFriendRequestsSentInput>, Prisma.UserUncheckedUpdateWithoutFriendRequestsSentInput>
+}
+
+export type UserUpdateOneRequiredWithoutFriendRequestsReceivedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFriendRequestsReceivedInput, Prisma.UserUncheckedCreateWithoutFriendRequestsReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFriendRequestsReceivedInput
+  upsert?: Prisma.UserUpsertWithoutFriendRequestsReceivedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFriendRequestsReceivedInput, Prisma.UserUpdateWithoutFriendRequestsReceivedInput>, Prisma.UserUncheckedUpdateWithoutFriendRequestsReceivedInput>
+}
+
+export type UserCreateNestedOneWithoutLikedPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLikedPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikedPostsInput
+  upsert?: Prisma.UserUpsertWithoutLikedPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLikedPostsInput, Prisma.UserUpdateWithoutLikedPostsInput>, Prisma.UserUncheckedUpdateWithoutLikedPostsInput>
+}
+
 export type UserCreateNestedOneWithoutNotificationsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
@@ -778,6 +1027,48 @@ export type UserUpdateOneRequiredWithoutNotificationsNestedInput = {
   upsert?: Prisma.UserUpsertWithoutNotificationsInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UserUpdateWithoutNotificationsInput>, Prisma.UserUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type UserCreateNestedOneWithoutTaggedInPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTaggedInPostsInput, Prisma.UserUncheckedCreateWithoutTaggedInPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTaggedInPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTaggedInPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTaggedInPostsInput, Prisma.UserUncheckedCreateWithoutTaggedInPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTaggedInPostsInput
+  upsert?: Prisma.UserUpsertWithoutTaggedInPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTaggedInPostsInput, Prisma.UserUpdateWithoutTaggedInPostsInput>, Prisma.UserUncheckedUpdateWithoutTaggedInPostsInput>
+}
+
+export type UserCreateNestedOneWithoutPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostsInput
+  upsert?: Prisma.UserUpsertWithoutPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPostsInput, Prisma.UserUpdateWithoutPostsInput>, Prisma.UserUncheckedUpdateWithoutPostsInput>
+}
+
+export type UserCreateNestedOneWithoutSavedPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedPostsInput, Prisma.UserUncheckedCreateWithoutSavedPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSavedPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedPostsInput, Prisma.UserUncheckedCreateWithoutSavedPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedPostsInput
+  upsert?: Prisma.UserUpsertWithoutSavedPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSavedPostsInput, Prisma.UserUpdateWithoutSavedPostsInput>, Prisma.UserUncheckedUpdateWithoutSavedPostsInput>
 }
 
 export type UserCreateNestedOneWithoutConversationsInitiatedInput = {
@@ -836,12 +1127,68 @@ export type UserUpdateOneRequiredWithoutMessageStatusesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMessageStatusesInput, Prisma.UserUpdateWithoutMessageStatusesInput>, Prisma.UserUncheckedUpdateWithoutMessageStatusesInput>
 }
 
+export type UserCreateNestedOneWithoutProfileInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProfileInput, Prisma.UserUncheckedCreateWithoutProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProfileInput, Prisma.UserUncheckedCreateWithoutProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProfileInput
+  upsert?: Prisma.UserUpsertWithoutProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutProfileInput, Prisma.UserUpdateWithoutProfileInput>, Prisma.UserUncheckedUpdateWithoutProfileInput>
+}
+
+export type UserCreateNestedOneWithoutSharedPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSharedPostsInput, Prisma.UserUncheckedCreateWithoutSharedPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSharedPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSharedPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSharedPostsInput, Prisma.UserUncheckedCreateWithoutSharedPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSharedPostsInput
+  upsert?: Prisma.UserUpsertWithoutSharedPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSharedPostsInput, Prisma.UserUpdateWithoutSharedPostsInput>, Prisma.UserUncheckedUpdateWithoutSharedPostsInput>
+}
+
 export type EnumUserRoleFieldUpdateOperationsInput = {
   set?: $Enums.UserRole
 }
 
 export type EnumUserStatusFieldUpdateOperationsInput = {
   set?: $Enums.UserStatus
+}
+
+export type UserCreateNestedOneWithoutFollowsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowsInput, Prisma.UserUncheckedCreateWithoutFollowsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutFollowedByInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowedByInput, Prisma.UserUncheckedCreateWithoutFollowedByInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowedByInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutFollowsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowsInput, Prisma.UserUncheckedCreateWithoutFollowsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowsInput
+  upsert?: Prisma.UserUpsertWithoutFollowsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFollowsInput, Prisma.UserUpdateWithoutFollowsInput>, Prisma.UserUncheckedUpdateWithoutFollowsInput>
+}
+
+export type UserUpdateOneRequiredWithoutFollowedByNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFollowedByInput, Prisma.UserUncheckedCreateWithoutFollowedByInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowedByInput
+  upsert?: Prisma.UserUpsertWithoutFollowedByInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFollowedByInput, Prisma.UserUpdateWithoutFollowedByInput>, Prisma.UserUncheckedUpdateWithoutFollowedByInput>
 }
 
 export type UserCreateWithoutOtpsInput = {
@@ -861,8 +1208,6 @@ export type UserCreateWithoutOtpsInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -873,6 +1218,23 @@ export type UserCreateWithoutOtpsInput = {
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOtpsInput = {
@@ -892,8 +1254,6 @@ export type UserUncheckedCreateWithoutOtpsInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -904,6 +1264,23 @@ export type UserUncheckedCreateWithoutOtpsInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOtpsInput = {
@@ -939,8 +1316,6 @@ export type UserUpdateWithoutOtpsInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -951,6 +1326,23 @@ export type UserUpdateWithoutOtpsInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOtpsInput = {
@@ -970,8 +1362,6 @@ export type UserUncheckedUpdateWithoutOtpsInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -982,6 +1372,23 @@ export type UserUncheckedUpdateWithoutOtpsInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRefreshTokensInput = {
@@ -1001,8 +1408,6 @@ export type UserCreateWithoutRefreshTokensInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1013,6 +1418,23 @@ export type UserCreateWithoutRefreshTokensInput = {
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRefreshTokensInput = {
@@ -1032,8 +1454,6 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1044,6 +1464,23 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRefreshTokensInput = {
@@ -1079,8 +1516,6 @@ export type UserUpdateWithoutRefreshTokensInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1091,6 +1526,23 @@ export type UserUpdateWithoutRefreshTokensInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRefreshTokensInput = {
@@ -1110,8 +1562,6 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1122,6 +1572,23 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHostedCallsInput = {
@@ -1141,8 +1608,6 @@ export type UserCreateWithoutHostedCallsInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1153,6 +1618,23 @@ export type UserCreateWithoutHostedCallsInput = {
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
   receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHostedCallsInput = {
@@ -1172,8 +1654,6 @@ export type UserUncheckedCreateWithoutHostedCallsInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1184,6 +1664,23 @@ export type UserUncheckedCreateWithoutHostedCallsInput = {
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
   receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHostedCallsInput = {
@@ -1208,8 +1705,6 @@ export type UserCreateWithoutReceivedCallsInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1220,6 +1715,23 @@ export type UserCreateWithoutReceivedCallsInput = {
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReceivedCallsInput = {
@@ -1239,8 +1751,6 @@ export type UserUncheckedCreateWithoutReceivedCallsInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1251,6 +1761,23 @@ export type UserUncheckedCreateWithoutReceivedCallsInput = {
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReceivedCallsInput = {
@@ -1286,8 +1813,6 @@ export type UserUpdateWithoutHostedCallsInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1298,6 +1823,23 @@ export type UserUpdateWithoutHostedCallsInput = {
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
   receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHostedCallsInput = {
@@ -1317,8 +1859,6 @@ export type UserUncheckedUpdateWithoutHostedCallsInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1329,6 +1869,23 @@ export type UserUncheckedUpdateWithoutHostedCallsInput = {
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
   receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutReceivedCallsInput = {
@@ -1359,8 +1916,6 @@ export type UserUpdateWithoutReceivedCallsInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1371,6 +1926,23 @@ export type UserUpdateWithoutReceivedCallsInput = {
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceivedCallsInput = {
@@ -1390,8 +1962,6 @@ export type UserUncheckedUpdateWithoutReceivedCallsInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1402,6 +1972,1960 @@ export type UserUncheckedUpdateWithoutReceivedCallsInput = {
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCommentsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCommentsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCommentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommentsInput, Prisma.UserUncheckedCreateWithoutCommentsInput>
+}
+
+export type UserUpsertWithoutCommentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCommentsInput, Prisma.UserUncheckedUpdateWithoutCommentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommentsInput, Prisma.UserUncheckedCreateWithoutCommentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCommentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCommentsInput, Prisma.UserUncheckedUpdateWithoutCommentsInput>
+}
+
+export type UserUpdateWithoutCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutOwnedCommunitiesInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutOwnedCommunitiesInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutOwnedCommunitiesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutOwnedCommunitiesInput, Prisma.UserUncheckedCreateWithoutOwnedCommunitiesInput>
+}
+
+export type UserCreateWithoutLikedCommunitiesInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutLikedCommunitiesInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutLikedCommunitiesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLikedCommunitiesInput, Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput>
+}
+
+export type UserUpsertWithoutOwnedCommunitiesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutOwnedCommunitiesInput, Prisma.UserUncheckedUpdateWithoutOwnedCommunitiesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutOwnedCommunitiesInput, Prisma.UserUncheckedCreateWithoutOwnedCommunitiesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutOwnedCommunitiesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutOwnedCommunitiesInput, Prisma.UserUncheckedUpdateWithoutOwnedCommunitiesInput>
+}
+
+export type UserUpdateWithoutOwnedCommunitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutOwnedCommunitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithWhereUniqueWithoutLikedCommunitiesInput = {
+  where: Prisma.UserWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLikedCommunitiesInput, Prisma.UserUncheckedUpdateWithoutLikedCommunitiesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLikedCommunitiesInput, Prisma.UserUncheckedCreateWithoutLikedCommunitiesInput>
+}
+
+export type UserUpdateWithWhereUniqueWithoutLikedCommunitiesInput = {
+  where: Prisma.UserWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLikedCommunitiesInput, Prisma.UserUncheckedUpdateWithoutLikedCommunitiesInput>
+}
+
+export type UserUpdateManyWithWhereWithoutLikedCommunitiesInput = {
+  where: Prisma.UserScalarWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutLikedCommunitiesInput>
+}
+
+export type UserScalarWhereInput = {
+  AND?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  OR?: Prisma.UserScalarWhereInput[]
+  NOT?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  id?: Prisma.StringFilter<"User"> | string
+  name?: Prisma.StringFilter<"User"> | string
+  email?: Prisma.StringFilter<"User"> | string
+  password?: Prisma.StringFilter<"User"> | string
+  role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
+  isVerified?: Prisma.BoolFilter<"User"> | boolean
+  isOnline?: Prisma.BoolFilter<"User"> | boolean
+  lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  lastActiveAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
+  locationLon?: Prisma.StringNullableFilter<"User"> | string | null
+  locationLat?: Prisma.StringNullableFilter<"User"> | string | null
+  about?: Prisma.StringNullableFilter<"User"> | string | null
+  username?: Prisma.StringNullableFilter<"User"> | string | null
+  address?: Prisma.StringNullableFilter<"User"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+}
+
+export type UserCreateWithoutCommunityMembershipsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCommunityMembershipsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityMembershipsInput, Prisma.UserUncheckedCreateWithoutCommunityMembershipsInput>
+}
+
+export type UserUpsertWithoutCommunityMembershipsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCommunityMembershipsInput, Prisma.UserUncheckedUpdateWithoutCommunityMembershipsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityMembershipsInput, Prisma.UserUncheckedCreateWithoutCommunityMembershipsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCommunityMembershipsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCommunityMembershipsInput, Prisma.UserUncheckedUpdateWithoutCommunityMembershipsInput>
+}
+
+export type UserUpdateWithoutCommunityMembershipsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCommunityFollowersInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCommunityFollowersInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCommunityFollowersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityFollowersInput, Prisma.UserUncheckedCreateWithoutCommunityFollowersInput>
+}
+
+export type UserUpsertWithoutCommunityFollowersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCommunityFollowersInput, Prisma.UserUncheckedUpdateWithoutCommunityFollowersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityFollowersInput, Prisma.UserUncheckedCreateWithoutCommunityFollowersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCommunityFollowersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCommunityFollowersInput, Prisma.UserUncheckedUpdateWithoutCommunityFollowersInput>
+}
+
+export type UserUpdateWithoutCommunityFollowersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCommunityFollowersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutFollowingInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutFollowingInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutFollowingInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowingInput, Prisma.UserUncheckedCreateWithoutFollowingInput>
+}
+
+export type UserCreateWithoutFollowersInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutFollowersInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutFollowersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowersInput, Prisma.UserUncheckedCreateWithoutFollowersInput>
+}
+
+export type UserUpsertWithoutFollowingInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFollowingInput, Prisma.UserUncheckedUpdateWithoutFollowingInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowingInput, Prisma.UserUncheckedCreateWithoutFollowingInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFollowingInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFollowingInput, Prisma.UserUncheckedUpdateWithoutFollowingInput>
+}
+
+export type UserUpdateWithoutFollowingInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutFollowingInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutFollowersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFollowersInput, Prisma.UserUncheckedUpdateWithoutFollowersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowersInput, Prisma.UserUncheckedCreateWithoutFollowersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFollowersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFollowersInput, Prisma.UserUncheckedUpdateWithoutFollowersInput>
+}
+
+export type UserUpdateWithoutFollowersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutFollowersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutFriendRequestsSentInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutFriendRequestsSentInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutFriendRequestsSentInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFriendRequestsSentInput, Prisma.UserUncheckedCreateWithoutFriendRequestsSentInput>
+}
+
+export type UserCreateWithoutFriendRequestsReceivedInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutFriendRequestsReceivedInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutFriendRequestsReceivedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFriendRequestsReceivedInput, Prisma.UserUncheckedCreateWithoutFriendRequestsReceivedInput>
+}
+
+export type UserUpsertWithoutFriendRequestsSentInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFriendRequestsSentInput, Prisma.UserUncheckedUpdateWithoutFriendRequestsSentInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFriendRequestsSentInput, Prisma.UserUncheckedCreateWithoutFriendRequestsSentInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFriendRequestsSentInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFriendRequestsSentInput, Prisma.UserUncheckedUpdateWithoutFriendRequestsSentInput>
+}
+
+export type UserUpdateWithoutFriendRequestsSentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutFriendRequestsSentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutFriendRequestsReceivedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFriendRequestsReceivedInput, Prisma.UserUncheckedUpdateWithoutFriendRequestsReceivedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFriendRequestsReceivedInput, Prisma.UserUncheckedCreateWithoutFriendRequestsReceivedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFriendRequestsReceivedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFriendRequestsReceivedInput, Prisma.UserUncheckedUpdateWithoutFriendRequestsReceivedInput>
+}
+
+export type UserUpdateWithoutFriendRequestsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutFriendRequestsReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutLikedPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutLikedPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutLikedPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput>
+}
+
+export type UserUpsertWithoutLikedPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLikedPostsInput, Prisma.UserUncheckedUpdateWithoutLikedPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLikedPostsInput, Prisma.UserUncheckedCreateWithoutLikedPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLikedPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLikedPostsInput, Prisma.UserUncheckedUpdateWithoutLikedPostsInput>
+}
+
+export type UserUpdateWithoutLikedPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLikedPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -1421,8 +3945,6 @@ export type UserCreateWithoutNotificationsInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
@@ -1433,6 +3955,23 @@ export type UserCreateWithoutNotificationsInput = {
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -1452,8 +3991,6 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -1464,6 +4001,23 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -1499,8 +4053,6 @@ export type UserUpdateWithoutNotificationsInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
@@ -1511,6 +4063,23 @@ export type UserUpdateWithoutNotificationsInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1530,8 +4099,6 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -1542,6 +4109,623 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutTaggedInPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutTaggedInPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutTaggedInPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTaggedInPostsInput, Prisma.UserUncheckedCreateWithoutTaggedInPostsInput>
+}
+
+export type UserUpsertWithoutTaggedInPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTaggedInPostsInput, Prisma.UserUncheckedUpdateWithoutTaggedInPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTaggedInPostsInput, Prisma.UserUncheckedCreateWithoutTaggedInPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTaggedInPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTaggedInPostsInput, Prisma.UserUncheckedUpdateWithoutTaggedInPostsInput>
+}
+
+export type UserUpdateWithoutTaggedInPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
+}
+
+export type UserUpsertWithoutPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPostsInput, Prisma.UserUncheckedUpdateWithoutPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPostsInput, Prisma.UserUncheckedUpdateWithoutPostsInput>
+}
+
+export type UserUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSavedPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSavedPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSavedPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedPostsInput, Prisma.UserUncheckedCreateWithoutSavedPostsInput>
+}
+
+export type UserUpsertWithoutSavedPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSavedPostsInput, Prisma.UserUncheckedUpdateWithoutSavedPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedPostsInput, Prisma.UserUncheckedCreateWithoutSavedPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSavedPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSavedPostsInput, Prisma.UserUncheckedUpdateWithoutSavedPostsInput>
+}
+
+export type UserUpdateWithoutSavedPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSavedPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutConversationsInitiatedInput = {
@@ -1561,8 +4745,6 @@ export type UserCreateWithoutConversationsInitiatedInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1573,6 +4755,23 @@ export type UserCreateWithoutConversationsInitiatedInput = {
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationsInitiatedInput = {
@@ -1592,8 +4791,6 @@ export type UserUncheckedCreateWithoutConversationsInitiatedInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1604,6 +4801,23 @@ export type UserUncheckedCreateWithoutConversationsInitiatedInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutConversationsInitiatedInput = {
@@ -1628,8 +4842,6 @@ export type UserCreateWithoutConversationsReceivedInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1640,6 +4852,23 @@ export type UserCreateWithoutConversationsReceivedInput = {
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationsReceivedInput = {
@@ -1659,8 +4888,6 @@ export type UserUncheckedCreateWithoutConversationsReceivedInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1671,6 +4898,23 @@ export type UserUncheckedCreateWithoutConversationsReceivedInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutConversationsReceivedInput = {
@@ -1706,8 +4950,6 @@ export type UserUpdateWithoutConversationsInitiatedInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1718,6 +4960,23 @@ export type UserUpdateWithoutConversationsInitiatedInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationsInitiatedInput = {
@@ -1737,8 +4996,6 @@ export type UserUncheckedUpdateWithoutConversationsInitiatedInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1749,6 +5006,23 @@ export type UserUncheckedUpdateWithoutConversationsInitiatedInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutConversationsReceivedInput = {
@@ -1779,8 +5053,6 @@ export type UserUpdateWithoutConversationsReceivedInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1791,6 +5063,23 @@ export type UserUpdateWithoutConversationsReceivedInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationsReceivedInput = {
@@ -1810,8 +5099,6 @@ export type UserUncheckedUpdateWithoutConversationsReceivedInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1822,6 +5109,23 @@ export type UserUncheckedUpdateWithoutConversationsReceivedInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessagesSentInput = {
@@ -1841,8 +5145,6 @@ export type UserCreateWithoutMessagesSentInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1853,6 +5155,23 @@ export type UserCreateWithoutMessagesSentInput = {
   messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessagesSentInput = {
@@ -1872,8 +5191,6 @@ export type UserUncheckedCreateWithoutMessagesSentInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1884,6 +5201,23 @@ export type UserUncheckedCreateWithoutMessagesSentInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
   hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessagesSentInput = {
@@ -1919,8 +5253,6 @@ export type UserUpdateWithoutMessagesSentInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1931,6 +5263,23 @@ export type UserUpdateWithoutMessagesSentInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesSentInput = {
@@ -1950,8 +5299,6 @@ export type UserUncheckedUpdateWithoutMessagesSentInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1962,6 +5309,23 @@ export type UserUncheckedUpdateWithoutMessagesSentInput = {
   messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
   hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessageStatusesInput = {
@@ -1981,8 +5345,6 @@ export type UserCreateWithoutMessageStatusesInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1993,6 +5355,23 @@ export type UserCreateWithoutMessageStatusesInput = {
   messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
   hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessageStatusesInput = {
@@ -2012,8 +5391,6 @@ export type UserUncheckedCreateWithoutMessageStatusesInput = {
   about?: string | null
   username?: string | null
   address?: string | null
-  dateOfBirth?: Date | string | null
-  coverPhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -2024,6 +5401,23 @@ export type UserUncheckedCreateWithoutMessageStatusesInput = {
   messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
   hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
   receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessageStatusesInput = {
@@ -2059,8 +5453,6 @@ export type UserUpdateWithoutMessageStatusesInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -2071,6 +5463,23 @@ export type UserUpdateWithoutMessageStatusesInput = {
   messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
   hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageStatusesInput = {
@@ -2090,8 +5499,6 @@ export type UserUncheckedUpdateWithoutMessageStatusesInput = {
   about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -2102,6 +5509,936 @@ export type UserUncheckedUpdateWithoutMessageStatusesInput = {
   messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
   hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
   receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutProfileInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutProfileInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutProfileInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutProfileInput, Prisma.UserUncheckedCreateWithoutProfileInput>
+}
+
+export type UserUpsertWithoutProfileInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutProfileInput, Prisma.UserUncheckedUpdateWithoutProfileInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutProfileInput, Prisma.UserUncheckedCreateWithoutProfileInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutProfileInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutProfileInput, Prisma.UserUncheckedUpdateWithoutProfileInput>
+}
+
+export type UserUpdateWithoutProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSharedPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSharedPostsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSharedPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSharedPostsInput, Prisma.UserUncheckedCreateWithoutSharedPostsInput>
+}
+
+export type UserUpsertWithoutSharedPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSharedPostsInput, Prisma.UserUncheckedUpdateWithoutSharedPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSharedPostsInput, Prisma.UserUncheckedCreateWithoutSharedPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSharedPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSharedPostsInput, Prisma.UserUncheckedUpdateWithoutSharedPostsInput>
+}
+
+export type UserUpdateWithoutSharedPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSharedPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutFollowsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutFollowsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutFollowsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowsInput, Prisma.UserUncheckedCreateWithoutFollowsInput>
+}
+
+export type UserCreateWithoutFollowedByInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutFollowedByInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  profilePicture?: string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  about?: string | null
+  username?: string | null
+  address?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutFollowedByInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowedByInput, Prisma.UserUncheckedCreateWithoutFollowedByInput>
+}
+
+export type UserUpsertWithoutFollowsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFollowsInput, Prisma.UserUncheckedUpdateWithoutFollowsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowsInput, Prisma.UserUncheckedCreateWithoutFollowsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFollowsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFollowsInput, Prisma.UserUncheckedUpdateWithoutFollowsInput>
+}
+
+export type UserUpdateWithoutFollowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutFollowsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutFollowedByInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFollowedByInput, Prisma.UserUncheckedUpdateWithoutFollowedByInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFollowedByInput, Prisma.UserUncheckedCreateWithoutFollowedByInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFollowedByInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFollowedByInput, Prisma.UserUncheckedUpdateWithoutFollowedByInput>
+}
+
+export type UserUpdateWithoutFollowedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutFollowedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpdateWithoutLikedCommunitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLikedCommunitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateManyWithoutLikedCommunitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -2119,6 +6456,22 @@ export type UserCountOutputType = {
   messageStatuses: number
   hostedCalls: number
   receivedCalls: number
+  followers: number
+  following: number
+  follows: number
+  followedBy: number
+  comments: number
+  taggedInPosts: number
+  savedPosts: number
+  communityMemberships: number
+  likedCommunities: number
+  communityFollowers: number
+  ownedCommunities: number
+  friendRequestsSent: number
+  friendRequestsReceived: number
+  posts: number
+  likedPosts: number
+  sharedPosts: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2131,6 +6484,22 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   messageStatuses?: boolean | UserCountOutputTypeCountMessageStatusesArgs
   hostedCalls?: boolean | UserCountOutputTypeCountHostedCallsArgs
   receivedCalls?: boolean | UserCountOutputTypeCountReceivedCallsArgs
+  followers?: boolean | UserCountOutputTypeCountFollowersArgs
+  following?: boolean | UserCountOutputTypeCountFollowingArgs
+  follows?: boolean | UserCountOutputTypeCountFollowsArgs
+  followedBy?: boolean | UserCountOutputTypeCountFollowedByArgs
+  comments?: boolean | UserCountOutputTypeCountCommentsArgs
+  taggedInPosts?: boolean | UserCountOutputTypeCountTaggedInPostsArgs
+  savedPosts?: boolean | UserCountOutputTypeCountSavedPostsArgs
+  communityMemberships?: boolean | UserCountOutputTypeCountCommunityMembershipsArgs
+  likedCommunities?: boolean | UserCountOutputTypeCountLikedCommunitiesArgs
+  communityFollowers?: boolean | UserCountOutputTypeCountCommunityFollowersArgs
+  ownedCommunities?: boolean | UserCountOutputTypeCountOwnedCommunitiesArgs
+  friendRequestsSent?: boolean | UserCountOutputTypeCountFriendRequestsSentArgs
+  friendRequestsReceived?: boolean | UserCountOutputTypeCountFriendRequestsReceivedArgs
+  posts?: boolean | UserCountOutputTypeCountPostsArgs
+  likedPosts?: boolean | UserCountOutputTypeCountLikedPostsArgs
+  sharedPosts?: boolean | UserCountOutputTypeCountSharedPostsArgs
 }
 
 /**
@@ -2206,6 +6575,118 @@ export type UserCountOutputTypeCountReceivedCallsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.CallingWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFollowersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FollowWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFollowingArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FollowWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFollowsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserFollowWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFollowedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserFollowWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTaggedInPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostTagUserWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSavedPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SavedPostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCommunityMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommunitiesMembershipWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLikedCommunitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommunityWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCommunityFollowersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommunityFollowerWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountOwnedCommunitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommunityWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFriendRequestsSentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FriendRequestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFriendRequestsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FriendRequestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLikedPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LikeWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSharedPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ShareWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2224,8 +6705,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   about?: boolean
   username?: boolean
   address?: boolean
-  dateOfBirth?: boolean
-  coverPhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
@@ -2237,6 +6716,23 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   messageStatuses?: boolean | Prisma.User$messageStatusesArgs<ExtArgs>
   hostedCalls?: boolean | Prisma.User$hostedCallsArgs<ExtArgs>
   receivedCalls?: boolean | Prisma.User$receivedCallsArgs<ExtArgs>
+  followers?: boolean | Prisma.User$followersArgs<ExtArgs>
+  following?: boolean | Prisma.User$followingArgs<ExtArgs>
+  follows?: boolean | Prisma.User$followsArgs<ExtArgs>
+  followedBy?: boolean | Prisma.User$followedByArgs<ExtArgs>
+  profile?: boolean | Prisma.User$profileArgs<ExtArgs>
+  comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
+  taggedInPosts?: boolean | Prisma.User$taggedInPostsArgs<ExtArgs>
+  savedPosts?: boolean | Prisma.User$savedPostsArgs<ExtArgs>
+  communityMemberships?: boolean | Prisma.User$communityMembershipsArgs<ExtArgs>
+  likedCommunities?: boolean | Prisma.User$likedCommunitiesArgs<ExtArgs>
+  communityFollowers?: boolean | Prisma.User$communityFollowersArgs<ExtArgs>
+  ownedCommunities?: boolean | Prisma.User$ownedCommunitiesArgs<ExtArgs>
+  friendRequestsSent?: boolean | Prisma.User$friendRequestsSentArgs<ExtArgs>
+  friendRequestsReceived?: boolean | Prisma.User$friendRequestsReceivedArgs<ExtArgs>
+  posts?: boolean | Prisma.User$postsArgs<ExtArgs>
+  likedPosts?: boolean | Prisma.User$likedPostsArgs<ExtArgs>
+  sharedPosts?: boolean | Prisma.User$sharedPostsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2257,8 +6753,6 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   about?: boolean
   username?: boolean
   address?: boolean
-  dateOfBirth?: boolean
-  coverPhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -2280,8 +6774,6 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   about?: boolean
   username?: boolean
   address?: boolean
-  dateOfBirth?: boolean
-  coverPhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -2303,13 +6795,11 @@ export type UserSelectScalar = {
   about?: boolean
   username?: boolean
   address?: boolean
-  dateOfBirth?: boolean
-  coverPhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "status" | "isVerified" | "isOnline" | "lastLoginAt" | "lastActiveAt" | "profilePicture" | "locationLon" | "locationLat" | "about" | "username" | "address" | "dateOfBirth" | "coverPhoto" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "status" | "isVerified" | "isOnline" | "lastLoginAt" | "lastActiveAt" | "profilePicture" | "locationLon" | "locationLat" | "about" | "username" | "address" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
@@ -2320,6 +6810,23 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   messageStatuses?: boolean | Prisma.User$messageStatusesArgs<ExtArgs>
   hostedCalls?: boolean | Prisma.User$hostedCallsArgs<ExtArgs>
   receivedCalls?: boolean | Prisma.User$receivedCallsArgs<ExtArgs>
+  followers?: boolean | Prisma.User$followersArgs<ExtArgs>
+  following?: boolean | Prisma.User$followingArgs<ExtArgs>
+  follows?: boolean | Prisma.User$followsArgs<ExtArgs>
+  followedBy?: boolean | Prisma.User$followedByArgs<ExtArgs>
+  profile?: boolean | Prisma.User$profileArgs<ExtArgs>
+  comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
+  taggedInPosts?: boolean | Prisma.User$taggedInPostsArgs<ExtArgs>
+  savedPosts?: boolean | Prisma.User$savedPostsArgs<ExtArgs>
+  communityMemberships?: boolean | Prisma.User$communityMembershipsArgs<ExtArgs>
+  likedCommunities?: boolean | Prisma.User$likedCommunitiesArgs<ExtArgs>
+  communityFollowers?: boolean | Prisma.User$communityFollowersArgs<ExtArgs>
+  ownedCommunities?: boolean | Prisma.User$ownedCommunitiesArgs<ExtArgs>
+  friendRequestsSent?: boolean | Prisma.User$friendRequestsSentArgs<ExtArgs>
+  friendRequestsReceived?: boolean | Prisma.User$friendRequestsReceivedArgs<ExtArgs>
+  posts?: boolean | Prisma.User$postsArgs<ExtArgs>
+  likedPosts?: boolean | Prisma.User$likedPostsArgs<ExtArgs>
+  sharedPosts?: boolean | Prisma.User$sharedPostsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2343,6 +6850,23 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     messageStatuses: Prisma.$PrivateMessageStatusPayload<ExtArgs>[]
     hostedCalls: Prisma.$CallingPayload<ExtArgs>[]
     receivedCalls: Prisma.$CallingPayload<ExtArgs>[]
+    followers: Prisma.$FollowPayload<ExtArgs>[]
+    following: Prisma.$FollowPayload<ExtArgs>[]
+    follows: Prisma.$UserFollowPayload<ExtArgs>[]
+    followedBy: Prisma.$UserFollowPayload<ExtArgs>[]
+    profile: Prisma.$ProfilePayload<ExtArgs> | null
+    comments: Prisma.$CommentPayload<ExtArgs>[]
+    taggedInPosts: Prisma.$PostTagUserPayload<ExtArgs>[]
+    savedPosts: Prisma.$SavedPostPayload<ExtArgs>[]
+    communityMemberships: Prisma.$CommunitiesMembershipPayload<ExtArgs>[]
+    likedCommunities: Prisma.$CommunityPayload<ExtArgs>[]
+    communityFollowers: Prisma.$CommunityFollowerPayload<ExtArgs>[]
+    ownedCommunities: Prisma.$CommunityPayload<ExtArgs>[]
+    friendRequestsSent: Prisma.$FriendRequestPayload<ExtArgs>[]
+    friendRequestsReceived: Prisma.$FriendRequestPayload<ExtArgs>[]
+    posts: Prisma.$PostPayload<ExtArgs>[]
+    likedPosts: Prisma.$LikePayload<ExtArgs>[]
+    sharedPosts: Prisma.$SharePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2361,8 +6885,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     about: string | null
     username: string | null
     address: string | null
-    dateOfBirth: Date | null
-    coverPhoto: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -2768,6 +7290,23 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   messageStatuses<T extends Prisma.User$messageStatusesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messageStatusesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrivateMessageStatusPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   hostedCalls<T extends Prisma.User$hostedCallsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$hostedCallsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CallingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   receivedCalls<T extends Prisma.User$receivedCallsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$receivedCallsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CallingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  followers<T extends Prisma.User$followersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$followersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  following<T extends Prisma.User$followingArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$followingArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  follows<T extends Prisma.User$followsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$followsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserFollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  followedBy<T extends Prisma.User$followedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$followedByArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserFollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  profile<T extends Prisma.User$profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$profileArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  comments<T extends Prisma.User$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  taggedInPosts<T extends Prisma.User$taggedInPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$taggedInPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostTagUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  savedPosts<T extends Prisma.User$savedPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$savedPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  communityMemberships<T extends Prisma.User$communityMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunitiesMembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  likedCommunities<T extends Prisma.User$likedCommunitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$likedCommunitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  communityFollowers<T extends Prisma.User$communityFollowersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityFollowersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ownedCommunities<T extends Prisma.User$ownedCommunitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ownedCommunitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  friendRequestsSent<T extends Prisma.User$friendRequestsSentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$friendRequestsSentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FriendRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  friendRequestsReceived<T extends Prisma.User$friendRequestsReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$friendRequestsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FriendRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  posts<T extends Prisma.User$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  likedPosts<T extends Prisma.User$likedPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$likedPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sharedPosts<T extends Prisma.User$sharedPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sharedPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SharePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2813,8 +7352,6 @@ export interface UserFieldRefs {
   readonly about: Prisma.FieldRef<"User", 'String'>
   readonly username: Prisma.FieldRef<"User", 'String'>
   readonly address: Prisma.FieldRef<"User", 'String'>
-  readonly dateOfBirth: Prisma.FieldRef<"User", 'DateTime'>
-  readonly coverPhoto: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
@@ -3418,6 +7955,409 @@ export type User$receivedCallsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.CallingScalarFieldEnum | Prisma.CallingScalarFieldEnum[]
+}
+
+/**
+ * User.followers
+ */
+export type User$followersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Follow
+   */
+  select?: Prisma.FollowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Follow
+   */
+  omit?: Prisma.FollowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FollowInclude<ExtArgs> | null
+  where?: Prisma.FollowWhereInput
+  orderBy?: Prisma.FollowOrderByWithRelationInput | Prisma.FollowOrderByWithRelationInput[]
+  cursor?: Prisma.FollowWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FollowScalarFieldEnum | Prisma.FollowScalarFieldEnum[]
+}
+
+/**
+ * User.following
+ */
+export type User$followingArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Follow
+   */
+  select?: Prisma.FollowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Follow
+   */
+  omit?: Prisma.FollowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FollowInclude<ExtArgs> | null
+  where?: Prisma.FollowWhereInput
+  orderBy?: Prisma.FollowOrderByWithRelationInput | Prisma.FollowOrderByWithRelationInput[]
+  cursor?: Prisma.FollowWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FollowScalarFieldEnum | Prisma.FollowScalarFieldEnum[]
+}
+
+/**
+ * User.follows
+ */
+export type User$followsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserFollow
+   */
+  select?: Prisma.UserFollowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserFollow
+   */
+  omit?: Prisma.UserFollowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserFollowInclude<ExtArgs> | null
+  where?: Prisma.UserFollowWhereInput
+  orderBy?: Prisma.UserFollowOrderByWithRelationInput | Prisma.UserFollowOrderByWithRelationInput[]
+  cursor?: Prisma.UserFollowWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserFollowScalarFieldEnum | Prisma.UserFollowScalarFieldEnum[]
+}
+
+/**
+ * User.followedBy
+ */
+export type User$followedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserFollow
+   */
+  select?: Prisma.UserFollowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserFollow
+   */
+  omit?: Prisma.UserFollowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserFollowInclude<ExtArgs> | null
+  where?: Prisma.UserFollowWhereInput
+  orderBy?: Prisma.UserFollowOrderByWithRelationInput | Prisma.UserFollowOrderByWithRelationInput[]
+  cursor?: Prisma.UserFollowWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserFollowScalarFieldEnum | Prisma.UserFollowScalarFieldEnum[]
+}
+
+/**
+ * User.profile
+ */
+export type User$profileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Profile
+   */
+  select?: Prisma.ProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Profile
+   */
+  omit?: Prisma.ProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProfileInclude<ExtArgs> | null
+  where?: Prisma.ProfileWhereInput
+}
+
+/**
+ * User.comments
+ */
+export type User$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Comment
+   */
+  select?: Prisma.CommentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Comment
+   */
+  omit?: Prisma.CommentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommentInclude<ExtArgs> | null
+  where?: Prisma.CommentWhereInput
+  orderBy?: Prisma.CommentOrderByWithRelationInput | Prisma.CommentOrderByWithRelationInput[]
+  cursor?: Prisma.CommentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommentScalarFieldEnum | Prisma.CommentScalarFieldEnum[]
+}
+
+/**
+ * User.taggedInPosts
+ */
+export type User$taggedInPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PostTagUser
+   */
+  select?: Prisma.PostTagUserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PostTagUser
+   */
+  omit?: Prisma.PostTagUserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostTagUserInclude<ExtArgs> | null
+  where?: Prisma.PostTagUserWhereInput
+  orderBy?: Prisma.PostTagUserOrderByWithRelationInput | Prisma.PostTagUserOrderByWithRelationInput[]
+  cursor?: Prisma.PostTagUserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostTagUserScalarFieldEnum | Prisma.PostTagUserScalarFieldEnum[]
+}
+
+/**
+ * User.savedPosts
+ */
+export type User$savedPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SavedPost
+   */
+  select?: Prisma.SavedPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SavedPost
+   */
+  omit?: Prisma.SavedPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavedPostInclude<ExtArgs> | null
+  where?: Prisma.SavedPostWhereInput
+  orderBy?: Prisma.SavedPostOrderByWithRelationInput | Prisma.SavedPostOrderByWithRelationInput[]
+  cursor?: Prisma.SavedPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SavedPostScalarFieldEnum | Prisma.SavedPostScalarFieldEnum[]
+}
+
+/**
+ * User.communityMemberships
+ */
+export type User$communityMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CommunitiesMembership
+   */
+  select?: Prisma.CommunitiesMembershipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CommunitiesMembership
+   */
+  omit?: Prisma.CommunitiesMembershipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommunitiesMembershipInclude<ExtArgs> | null
+  where?: Prisma.CommunitiesMembershipWhereInput
+  orderBy?: Prisma.CommunitiesMembershipOrderByWithRelationInput | Prisma.CommunitiesMembershipOrderByWithRelationInput[]
+  cursor?: Prisma.CommunitiesMembershipWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunitiesMembershipScalarFieldEnum | Prisma.CommunitiesMembershipScalarFieldEnum[]
+}
+
+/**
+ * User.likedCommunities
+ */
+export type User$likedCommunitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Community
+   */
+  select?: Prisma.CommunitySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Community
+   */
+  omit?: Prisma.CommunityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommunityInclude<ExtArgs> | null
+  where?: Prisma.CommunityWhereInput
+  orderBy?: Prisma.CommunityOrderByWithRelationInput | Prisma.CommunityOrderByWithRelationInput[]
+  cursor?: Prisma.CommunityWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunityScalarFieldEnum | Prisma.CommunityScalarFieldEnum[]
+}
+
+/**
+ * User.communityFollowers
+ */
+export type User$communityFollowersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CommunityFollower
+   */
+  select?: Prisma.CommunityFollowerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CommunityFollower
+   */
+  omit?: Prisma.CommunityFollowerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommunityFollowerInclude<ExtArgs> | null
+  where?: Prisma.CommunityFollowerWhereInput
+  orderBy?: Prisma.CommunityFollowerOrderByWithRelationInput | Prisma.CommunityFollowerOrderByWithRelationInput[]
+  cursor?: Prisma.CommunityFollowerWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunityFollowerScalarFieldEnum | Prisma.CommunityFollowerScalarFieldEnum[]
+}
+
+/**
+ * User.ownedCommunities
+ */
+export type User$ownedCommunitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Community
+   */
+  select?: Prisma.CommunitySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Community
+   */
+  omit?: Prisma.CommunityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommunityInclude<ExtArgs> | null
+  where?: Prisma.CommunityWhereInput
+  orderBy?: Prisma.CommunityOrderByWithRelationInput | Prisma.CommunityOrderByWithRelationInput[]
+  cursor?: Prisma.CommunityWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunityScalarFieldEnum | Prisma.CommunityScalarFieldEnum[]
+}
+
+/**
+ * User.friendRequestsSent
+ */
+export type User$friendRequestsSentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FriendRequest
+   */
+  select?: Prisma.FriendRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FriendRequest
+   */
+  omit?: Prisma.FriendRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FriendRequestInclude<ExtArgs> | null
+  where?: Prisma.FriendRequestWhereInput
+  orderBy?: Prisma.FriendRequestOrderByWithRelationInput | Prisma.FriendRequestOrderByWithRelationInput[]
+  cursor?: Prisma.FriendRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FriendRequestScalarFieldEnum | Prisma.FriendRequestScalarFieldEnum[]
+}
+
+/**
+ * User.friendRequestsReceived
+ */
+export type User$friendRequestsReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FriendRequest
+   */
+  select?: Prisma.FriendRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FriendRequest
+   */
+  omit?: Prisma.FriendRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FriendRequestInclude<ExtArgs> | null
+  where?: Prisma.FriendRequestWhereInput
+  orderBy?: Prisma.FriendRequestOrderByWithRelationInput | Prisma.FriendRequestOrderByWithRelationInput[]
+  cursor?: Prisma.FriendRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FriendRequestScalarFieldEnum | Prisma.FriendRequestScalarFieldEnum[]
+}
+
+/**
+ * User.posts
+ */
+export type User$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Post
+   */
+  select?: Prisma.PostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Post
+   */
+  omit?: Prisma.PostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostInclude<ExtArgs> | null
+  where?: Prisma.PostWhereInput
+  orderBy?: Prisma.PostOrderByWithRelationInput | Prisma.PostOrderByWithRelationInput[]
+  cursor?: Prisma.PostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
+}
+
+/**
+ * User.likedPosts
+ */
+export type User$likedPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Like
+   */
+  select?: Prisma.LikeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Like
+   */
+  omit?: Prisma.LikeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LikeInclude<ExtArgs> | null
+  where?: Prisma.LikeWhereInput
+  orderBy?: Prisma.LikeOrderByWithRelationInput | Prisma.LikeOrderByWithRelationInput[]
+  cursor?: Prisma.LikeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LikeScalarFieldEnum | Prisma.LikeScalarFieldEnum[]
+}
+
+/**
+ * User.sharedPosts
+ */
+export type User$sharedPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Share
+   */
+  select?: Prisma.ShareSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Share
+   */
+  omit?: Prisma.ShareOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ShareInclude<ExtArgs> | null
+  where?: Prisma.ShareWhereInput
+  orderBy?: Prisma.ShareOrderByWithRelationInput | Prisma.ShareOrderByWithRelationInput[]
+  cursor?: Prisma.ShareWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ShareScalarFieldEnum | Prisma.ShareScalarFieldEnum[]
 }
 
 /**

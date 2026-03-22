@@ -37,6 +37,43 @@ export const CallStatus = {
 export type CallStatus = (typeof CallStatus)[keyof typeof CallStatus]
 
 
+export const CommunityType = {
+  ENVIRONMENT: 'ENVIRONMENT',
+  EDUCATION: 'EDUCATION',
+  HEALTH: 'HEALTH',
+  ANIMAL_WELFARE: 'ANIMAL_WELFARE',
+  HUMAN_RIGHTS: 'HUMAN_RIGHTS',
+  DISASTER_RELIEF: 'DISASTER_RELIEF',
+  ARTS_CULTURE: 'ARTS_CULTURE',
+  SPORTS_RECREATION: 'SPORTS_RECREATION',
+  TECHNOLOGY_INNOVATION: 'TECHNOLOGY_INNOVATION',
+  OTHER: 'OTHER'
+} as const
+
+export type CommunityType = (typeof CommunityType)[keyof typeof CommunityType]
+
+
+export const CapLevel = {
+  NONE: 'NONE',
+  BRONZE: 'BRONZE',
+  SILVER: 'SILVER',
+  GOLD: 'GOLD',
+  PLATINUM: 'PLATINUM'
+} as const
+
+export type CapLevel = (typeof CapLevel)[keyof typeof CapLevel]
+
+
+export const CommunityRole = {
+  ADMIN: 'ADMIN',
+  MODERATOR: 'MODERATOR',
+  MEMBER: 'MEMBER',
+  VIEWER: 'VIEWER'
+} as const
+
+export type CommunityRole = (typeof CommunityRole)[keyof typeof CommunityRole]
+
+
 export const FileType = {
   image: 'image',
   docs: 'docs',
@@ -50,6 +87,15 @@ export const FileType = {
 export type FileType = (typeof FileType)[keyof typeof FileType]
 
 
+export const FriendRequestStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type FriendRequestStatus = (typeof FriendRequestStatus)[keyof typeof FriendRequestStatus]
+
+
 export const NotificationType = {
   service: 'service',
   message: 'message',
@@ -59,6 +105,49 @@ export const NotificationType = {
 } as const
 
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+
+export const Feelings = {
+  HAPPY: 'HAPPY',
+  SAD: 'SAD',
+  ANGRY: 'ANGRY',
+  EXCITED: 'EXCITED',
+  NERVOUS: 'NERVOUS',
+  BORED: 'BORED',
+  CONFUSED: 'CONFUSED',
+  PROUD: 'PROUD',
+  GRATEFUL: 'GRATEFUL',
+  LONELY: 'LONELY'
+} as const
+
+export type Feelings = (typeof Feelings)[keyof typeof Feelings]
+
+
+export const PostVisibility = {
+  PUBLIC: 'PUBLIC',
+  FRIENDS_ONLY: 'FRIENDS_ONLY',
+  PRIVATE: 'PRIVATE'
+} as const
+
+export type PostVisibility = (typeof PostVisibility)[keyof typeof PostVisibility]
+
+
+export const PostFrom = {
+  REGULAR_PROFILE: 'REGULAR_PROFILE',
+  COMMUNITY: 'COMMUNITY'
+} as const
+
+export type PostFrom = (typeof PostFrom)[keyof typeof PostFrom]
+
+
+export const MediaType = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  AUDIO: 'AUDIO',
+  DOCUMENT: 'DOCUMENT'
+} as const
+
+export type MediaType = (typeof MediaType)[keyof typeof MediaType]
 
 
 export const ConversationStatus = {
@@ -89,6 +178,23 @@ export const MessageDeliveryStatus = {
 } as const
 
 export type MessageDeliveryStatus = (typeof MessageDeliveryStatus)[keyof typeof MessageDeliveryStatus]
+
+
+export const Gender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE',
+  TRANSGENDER: 'TRANSGENDER',
+  NON_BINARY: 'NON_BINARY',
+  GENDERQUEER: 'GENDERQUEER',
+  GENDERFLUID: 'GENDERFLUID',
+  AGENDER: 'AGENDER',
+  BIGENDER: 'BIGENDER',
+  TWO_SPIRIT: 'TWO_SPIRIT',
+  INTERSEX: 'INTERSEX',
+  PREFER_NOT_TO_SAY: 'PREFER_NOT_TO_SAY'
+} as const
+
+export type Gender = (typeof Gender)[keyof typeof Gender]
 
 
 export const UserRole = {

@@ -1,0 +1,48 @@
+model Profile {
+  id String @id @default(uuid())
+
+  // ------  Link to user -------
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // ------  Profile information -------
+  name                 String @default("")
+  username             String    @unique
+  title                String?  @default("")
+  bio                  String?   @db.Text
+  avatarUrl            String?  @default("https://example.com/default-avatar.png")
+  coverUrl             String?  @default("https://example.com/default-cover.png")
+  location             String?
+  balance              Float     @default(0.0)
+  isToggleNotification Boolean   @default(true)
+  //    ----  personal information ------
+  dateOfBirth          DateTime? @default(now())
+  gender               Gender    @default(MALE)
+  experience           String?
+
+  //  ------ Social metrics (denormalized for performance) -------
+  followersCount Int @default(0)
+  followingCount Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([username])
+  @@index([name])
+  @@map("profiles")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  TRANSGENDER
+  NON_BINARY
+  GENDERQUEER
+  GENDERFLUID
+  AGENDER
+  BIGENDER
+  TWO_SPIRIT
+  INTERSEX
+  PREFER_NOT_TO_SAY
+}
+

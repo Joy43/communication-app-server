@@ -1,0 +1,142 @@
+model Community {
+  id String @id @default(uuid())
+
+  // Community ownership
+  ownerId String
+  owner   User   @relation("CommunityOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+
+  //------  Community details ------
+  foundationDate DateTime
+  communityType  CommunityType
+
+  //------ Community metrics ------
+  likes                Int               @default(0)
+  isVerified           Boolean           @default(false)
+  capLevel             CapLevel          @default(NONE) 
+  isToggleNotification Boolean           @default(false)
+  // ---- RELATIONSHIPS ----
+  profile              CommunityProfile? 
+  about                CommunityAbout? 
+
+  // Community posts
+  posts Post[] @relation("CommunityPosts")
+
+  // Community memberships
+  memberships CommunitiesMembership[]
+
+  // Community social interactions
+  likers User[] @relation("CommunityLikers")
+
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  CommunityFollower CommunityFollower[]
+
+
+
+  @@index([ownerId])
+  @@index([communityType])
+  @@index([capLevel])
+  @@index([isVerified])
+  @@map("communities")
+}
+
+model CommunitiesMembership {
+  id String @id @default(uuid())
+
+  // User in the community
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Community membership details
+  communityId String
+  community   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+
+  role CommunityRole @default(MEMBER) 
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // User can only have one membership per community
+  @@unique([userId, communityId])
+  @@index([userId])
+  @@index([communityId])
+  @@map("community_memberships")
+}
+
+model CommunityAbout {
+  id String @id @default(uuid())
+
+  // Link to community
+  communityId String    @unique
+  community   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+
+  // Extended information
+  location     String? 
+  foundingDate DateTime? 
+  mission      String?   @db.Text 
+  website      String? 
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("community_about")
+}
+
+model CommunityFollower {
+  id String @id @default(uuid())
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  community   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+  communityId String
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, communityId]) 
+  @@map("community_followers")
+}
+
+enum CommunityType {
+  ENVIRONMENT
+  EDUCATION
+  HEALTH
+  ANIMAL_WELFARE
+  HUMAN_RIGHTS
+  DISASTER_RELIEF
+  ARTS_CULTURE
+  SPORTS_RECREATION
+  TECHNOLOGY_INNOVATION
+  OTHER
+}
+
+enum CapLevel {
+  NONE
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+}
+
+enum CommunityRole {
+  ADMIN
+  MODERATOR
+  MEMBER
+  VIEWER
+}
+
+model CommunityProfile {
+  id String @id @default(uuid())
+
+  communityId String    @unique
+  community   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
+
+  profileImage String?
+  bannerImage  String?
+  bio          String? @db.Text
+  website      String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("community_profiles")
+}

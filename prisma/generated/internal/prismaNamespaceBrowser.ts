@@ -55,13 +55,34 @@ export const ModelName = {
   RefreshToken: 'RefreshToken',
   Calling: 'Calling',
   CallParticipant: 'CallParticipant',
+  Comment: 'Comment',
+  Community: 'Community',
+  CommunitiesMembership: 'CommunitiesMembership',
+  CommunityAbout: 'CommunityAbout',
+  CommunityFollower: 'CommunityFollower',
+  CommunityProfile: 'CommunityProfile',
   FileInstance: 'FileInstance',
+  Follow: 'Follow',
+  FriendRequest: 'FriendRequest',
+  Like: 'Like',
+  Gif: 'Gif',
+  Location: 'Location',
   Notification: 'Notification',
   UserNotification: 'UserNotification',
+  PostMetadata: 'PostMetadata',
+  PostTagUser: 'PostTagUser',
+  Post: 'Post',
+  SavedPost: 'SavedPost',
+  PostMetrics: 'PostMetrics',
+  PostCategory: 'PostCategory',
+  DedicatedAd: 'DedicatedAd',
   PrivateConversation: 'PrivateConversation',
   PrivateMessage: 'PrivateMessage',
   PrivateMessageStatus: 'PrivateMessageStatus',
-  User: 'User'
+  Profile: 'Profile',
+  Share: 'Share',
+  User: 'User',
+  UserFollow: 'UserFollow'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -137,6 +158,87 @@ export const CallParticipantScalarFieldEnum = {
 export type CallParticipantScalarFieldEnum = (typeof CallParticipantScalarFieldEnum)[keyof typeof CallParticipantScalarFieldEnum]
 
 
+export const CommentScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  authorId: 'authorId',
+  text: 'text',
+  mediaUrl: 'mediaUrl',
+  mediaType: 'mediaType',
+  parentCommentId: 'parentCommentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
+
+
+export const CommunityScalarFieldEnum = {
+  id: 'id',
+  ownerId: 'ownerId',
+  foundationDate: 'foundationDate',
+  communityType: 'communityType',
+  likes: 'likes',
+  isVerified: 'isVerified',
+  capLevel: 'capLevel',
+  isToggleNotification: 'isToggleNotification',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunityScalarFieldEnum = (typeof CommunityScalarFieldEnum)[keyof typeof CommunityScalarFieldEnum]
+
+
+export const CommunitiesMembershipScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  communityId: 'communityId',
+  role: 'role',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunitiesMembershipScalarFieldEnum = (typeof CommunitiesMembershipScalarFieldEnum)[keyof typeof CommunitiesMembershipScalarFieldEnum]
+
+
+export const CommunityAboutScalarFieldEnum = {
+  id: 'id',
+  communityId: 'communityId',
+  location: 'location',
+  foundingDate: 'foundingDate',
+  mission: 'mission',
+  website: 'website',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunityAboutScalarFieldEnum = (typeof CommunityAboutScalarFieldEnum)[keyof typeof CommunityAboutScalarFieldEnum]
+
+
+export const CommunityFollowerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  communityId: 'communityId',
+  createdAt: 'createdAt'
+} as const
+
+export type CommunityFollowerScalarFieldEnum = (typeof CommunityFollowerScalarFieldEnum)[keyof typeof CommunityFollowerScalarFieldEnum]
+
+
+export const CommunityProfileScalarFieldEnum = {
+  id: 'id',
+  communityId: 'communityId',
+  profileImage: 'profileImage',
+  bannerImage: 'bannerImage',
+  bio: 'bio',
+  website: 'website',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunityProfileScalarFieldEnum = (typeof CommunityProfileScalarFieldEnum)[keyof typeof CommunityProfileScalarFieldEnum]
+
+
 export const FileInstanceScalarFieldEnum = {
   id: 'id',
   filename: 'filename',
@@ -151,6 +253,63 @@ export const FileInstanceScalarFieldEnum = {
 } as const
 
 export type FileInstanceScalarFieldEnum = (typeof FileInstanceScalarFieldEnum)[keyof typeof FileInstanceScalarFieldEnum]
+
+
+export const FollowScalarFieldEnum = {
+  id: 'id',
+  followerId: 'followerId',
+  followingId: 'followingId',
+  createdAt: 'createdAt'
+} as const
+
+export type FollowScalarFieldEnum = (typeof FollowScalarFieldEnum)[keyof typeof FollowScalarFieldEnum]
+
+
+export const FriendRequestScalarFieldEnum = {
+  id: 'id',
+  senderId: 'senderId',
+  receiverId: 'receiverId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FriendRequestScalarFieldEnum = (typeof FriendRequestScalarFieldEnum)[keyof typeof FriendRequestScalarFieldEnum]
+
+
+export const LikeScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  postId: 'postId',
+  commentId: 'commentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LikeScalarFieldEnum = (typeof LikeScalarFieldEnum)[keyof typeof LikeScalarFieldEnum]
+
+
+export const GifScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GifScalarFieldEnum = (typeof GifScalarFieldEnum)[keyof typeof GifScalarFieldEnum]
+
+
+export const LocationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  coordinates: 'coordinates',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
 
 
 export const NotificationScalarFieldEnum = {
@@ -176,6 +335,102 @@ export const UserNotificationScalarFieldEnum = {
 } as const
 
 export type UserNotificationScalarFieldEnum = (typeof UserNotificationScalarFieldEnum)[keyof typeof UserNotificationScalarFieldEnum]
+
+
+export const PostMetadataScalarFieldEnum = {
+  id: 'id',
+  feelings: 'feelings',
+  checkInId: 'checkInId',
+  gifId: 'gifId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostMetadataScalarFieldEnum = (typeof PostMetadataScalarFieldEnum)[keyof typeof PostMetadataScalarFieldEnum]
+
+
+export const PostTagUserScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostTagUserScalarFieldEnum = (typeof PostTagUserScalarFieldEnum)[keyof typeof PostTagUserScalarFieldEnum]
+
+
+export const PostScalarFieldEnum = {
+  id: 'id',
+  authorId: 'authorId',
+  text: 'text',
+  mediaUrls: 'mediaUrls',
+  mediaType: 'mediaType',
+  visibility: 'visibility',
+  postFrom: 'postFrom',
+  categoryId: 'categoryId',
+  communityId: 'communityId',
+  metadataId: 'metadataId',
+  acceptVolunteer: 'acceptVolunteer',
+  acceptDonation: 'acceptDonation',
+  isHidden: 'isHidden',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+
+
+export const SavedPostScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  postId: 'postId',
+  createdAt: 'createdAt'
+} as const
+
+export type SavedPostScalarFieldEnum = (typeof SavedPostScalarFieldEnum)[keyof typeof SavedPostScalarFieldEnum]
+
+
+export const PostMetricsScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  totalLikes: 'totalLikes',
+  totalComments: 'totalComments',
+  totalShares: 'totalShares',
+  totalViews: 'totalViews',
+  revenueGenerated: 'revenueGenerated',
+  lastUpdated: 'lastUpdated',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostMetricsScalarFieldEnum = (typeof PostMetricsScalarFieldEnum)[keyof typeof PostMetricsScalarFieldEnum]
+
+
+export const PostCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostCategoryScalarFieldEnum = (typeof PostCategoryScalarFieldEnum)[keyof typeof PostCategoryScalarFieldEnum]
+
+
+export const DedicatedAdScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  title: 'title',
+  description: 'description',
+  adUrl: 'adUrl',
+  budget: 'budget',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DedicatedAdScalarFieldEnum = (typeof DedicatedAdScalarFieldEnum)[keyof typeof DedicatedAdScalarFieldEnum]
 
 
 export const PrivateConversationScalarFieldEnum = {
@@ -217,6 +472,41 @@ export const PrivateMessageStatusScalarFieldEnum = {
 export type PrivateMessageStatusScalarFieldEnum = (typeof PrivateMessageStatusScalarFieldEnum)[keyof typeof PrivateMessageStatusScalarFieldEnum]
 
 
+export const ProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  username: 'username',
+  title: 'title',
+  bio: 'bio',
+  avatarUrl: 'avatarUrl',
+  coverUrl: 'coverUrl',
+  location: 'location',
+  balance: 'balance',
+  isToggleNotification: 'isToggleNotification',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  experience: 'experience',
+  followersCount: 'followersCount',
+  followingCount: 'followingCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
+
+
+export const ShareScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  postId: 'postId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ShareScalarFieldEnum = (typeof ShareScalarFieldEnum)[keyof typeof ShareScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -234,13 +524,20 @@ export const UserScalarFieldEnum = {
   about: 'about',
   username: 'username',
   address: 'address',
-  dateOfBirth: 'dateOfBirth',
-  coverPhoto: 'coverPhoto',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const UserFollowScalarFieldEnum = {
+  followerId: 'followerId',
+  followedId: 'followedId',
+  createdAt: 'createdAt'
+} as const
+
+export type UserFollowScalarFieldEnum = (typeof UserFollowScalarFieldEnum)[keyof typeof UserFollowScalarFieldEnum]
 
 
 export const SortOrder = {

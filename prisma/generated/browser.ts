@@ -38,10 +38,65 @@ export type Calling = Prisma.CallingModel
  */
 export type CallParticipant = Prisma.CallParticipantModel
 /**
+ * Model Comment
+ * 
+ */
+export type Comment = Prisma.CommentModel
+/**
+ * Model Community
+ * 
+ */
+export type Community = Prisma.CommunityModel
+/**
+ * Model CommunitiesMembership
+ * 
+ */
+export type CommunitiesMembership = Prisma.CommunitiesMembershipModel
+/**
+ * Model CommunityAbout
+ * 
+ */
+export type CommunityAbout = Prisma.CommunityAboutModel
+/**
+ * Model CommunityFollower
+ * 
+ */
+export type CommunityFollower = Prisma.CommunityFollowerModel
+/**
+ * Model CommunityProfile
+ * 
+ */
+export type CommunityProfile = Prisma.CommunityProfileModel
+/**
  * Model FileInstance
  * 
  */
 export type FileInstance = Prisma.FileInstanceModel
+/**
+ * Model Follow
+ * 
+ */
+export type Follow = Prisma.FollowModel
+/**
+ * Model FriendRequest
+ * 
+ */
+export type FriendRequest = Prisma.FriendRequestModel
+/**
+ * Model Like
+ * 
+ */
+export type Like = Prisma.LikeModel
+/**
+ * Model Gif
+ * 
+ */
+export type Gif = Prisma.GifModel
+/**
+ * Model Location
+ * 
+ */
+export type Location = Prisma.LocationModel
 /**
  * Model Notification
  * 
@@ -52,6 +107,41 @@ export type Notification = Prisma.NotificationModel
  * 
  */
 export type UserNotification = Prisma.UserNotificationModel
+/**
+ * Model PostMetadata
+ * 
+ */
+export type PostMetadata = Prisma.PostMetadataModel
+/**
+ * Model PostTagUser
+ * 
+ */
+export type PostTagUser = Prisma.PostTagUserModel
+/**
+ * Model Post
+ * 
+ */
+export type Post = Prisma.PostModel
+/**
+ * Model SavedPost
+ * 
+ */
+export type SavedPost = Prisma.SavedPostModel
+/**
+ * Model PostMetrics
+ * 
+ */
+export type PostMetrics = Prisma.PostMetricsModel
+/**
+ * Model PostCategory
+ * 
+ */
+export type PostCategory = Prisma.PostCategoryModel
+/**
+ * Model DedicatedAd
+ * 
+ */
+export type DedicatedAd = Prisma.DedicatedAdModel
 /**
  * Model PrivateConversation
  * 
@@ -68,7 +158,22 @@ export type PrivateMessage = Prisma.PrivateMessageModel
  */
 export type PrivateMessageStatus = Prisma.PrivateMessageStatusModel
 /**
+ * Model Profile
+ * 
+ */
+export type Profile = Prisma.ProfileModel
+/**
+ * Model Share
+ * 
+ */
+export type Share = Prisma.ShareModel
+/**
  * Model User
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model UserFollow
+ * 
+ */
+export type UserFollow = Prisma.UserFollowModel

@@ -475,14 +475,6 @@ export type EnumFileTypeFieldUpdateOperationsInput = {
   set?: $Enums.FileType
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type FileInstanceCreateNestedOneWithoutPrivateMessagesInput = {
   create?: Prisma.XOR<Prisma.FileInstanceCreateWithoutPrivateMessagesInput, Prisma.FileInstanceUncheckedCreateWithoutPrivateMessagesInput>
   connectOrCreate?: Prisma.FileInstanceCreateOrConnectWithoutPrivateMessagesInput

@@ -1,21 +1,19 @@
 model User {
   id String @id @default(uuid())
 
-  // Identity
+  // ---------  Identity  --------
   name     String 
   email    String @unique
   password String 
 
-  // Settings
+  // ------- Settings -------
   role       UserRole   @default(USER)
   status     UserStatus @default(ACTIVE)
   isVerified Boolean    @default(false)
   isOnline       Boolean  @default(false)
-  // Activity
+ 
   lastLoginAt  DateTime?
   lastActiveAt DateTime?
-
-  // Avatar
 
   profilePicture   String?
 
@@ -39,20 +37,43 @@ model User {
   locationLon String? @default("-71.0589")
   // location latitude
   locationLat String? @default("42.3601")
-  // user bio
+  //------- user bio ----------
   about       String? @default("User about information")
   username    String? @unique
   address     String?
-  dateOfBirth DateTime?
-  // cover photo
-  coverPhoto String?
 
-  // Calling relations
+
+  //  --------- Calling relations ---------
   hostedCalls   Calling[] @relation("HostedCalls")
   receivedCalls Calling[] @relation("ReceivedCalls")
-  // Timestamps
+  // ---- MANY-TO-MANY RELATIONSHIPS ----
+  followers Follow[] @relation("UserFollowers")
+  following Follow[] @relation("UserFollowing")
+
+  // ============== Following sytem ==================
+  // Users this user follows
+  follows    UserFollow[] @relation("follows")
+  // Users following this user
+  followedBy UserFollow[] @relation("followedBy")
+  profile       Profile?
+  comments      Comment[]
+  taggedInPosts PostTagUser[]
+  savedPosts    SavedPost[]
+
+  communityMemberships CommunitiesMembership[]
+  likedCommunities     Community[]             @relation("CommunityLikers")
+  communityFollowers   CommunityFollower[]
+  // -------- Timestamps ---------
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
+
+  // -------- Additional Relations --------
+  ownedCommunities Community[] @relation("CommunityOwner")
+  friendRequestsSent     FriendRequest[] @relation("FriendRequestSender")
+  friendRequestsReceived FriendRequest[] @relation("FriendRequestReceiver")
+  posts Post[]
+  likedPosts Like[]
+  sharedPosts Share[]
 
   @@map("users")
 }
