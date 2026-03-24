@@ -38,9 +38,6 @@ export type UserMinAggregateOutputType = {
   profilePicture: string | null
   locationLon: string | null
   locationLat: string | null
-  about: string | null
-  username: string | null
-  address: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,9 +56,6 @@ export type UserMaxAggregateOutputType = {
   profilePicture: string | null
   locationLon: string | null
   locationLat: string | null
-  about: string | null
-  username: string | null
-  address: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -80,9 +74,6 @@ export type UserCountAggregateOutputType = {
   profilePicture: number
   locationLon: number
   locationLat: number
-  about: number
-  username: number
-  address: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -103,9 +94,6 @@ export type UserMinAggregateInputType = {
   profilePicture?: true
   locationLon?: true
   locationLat?: true
-  about?: true
-  username?: true
-  address?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -124,9 +112,6 @@ export type UserMaxAggregateInputType = {
   profilePicture?: true
   locationLon?: true
   locationLat?: true
-  about?: true
-  username?: true
-  address?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -145,9 +130,6 @@ export type UserCountAggregateInputType = {
   profilePicture?: true
   locationLon?: true
   locationLat?: true
-  about?: true
-  username?: true
-  address?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -239,9 +221,6 @@ export type UserGroupByOutputType = {
   profilePicture: string | null
   locationLon: string | null
   locationLat: string | null
-  about: string | null
-  username: string | null
-  address: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -281,9 +260,6 @@ export type UserWhereInput = {
   profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableFilter<"User"> | string | null
-  about?: Prisma.StringNullableFilter<"User"> | string | null
-  username?: Prisma.StringNullableFilter<"User"> | string | null
-  address?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   notifications?: Prisma.UserNotificationListRelationFilter
@@ -328,9 +304,6 @@ export type UserOrderByWithRelationInput = {
   profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLon?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLat?: Prisma.SortOrderInput | Prisma.SortOrder
-  about?: Prisma.SortOrderInput | Prisma.SortOrder
-  username?: Prisma.SortOrderInput | Prisma.SortOrder
-  address?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   notifications?: Prisma.UserNotificationOrderByRelationAggregateInput
@@ -364,7 +337,6 @@ export type UserOrderByWithRelationInput = {
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   email?: string
-  username?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
@@ -379,8 +351,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableFilter<"User"> | string | null
-  about?: Prisma.StringNullableFilter<"User"> | string | null
-  address?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   notifications?: Prisma.UserNotificationListRelationFilter
@@ -409,7 +379,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   posts?: Prisma.PostListRelationFilter
   likedPosts?: Prisma.LikeListRelationFilter
   sharedPosts?: Prisma.ShareListRelationFilter
-}, "id" | "email" | "username">
+}, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -425,9 +395,6 @@ export type UserOrderByWithAggregationInput = {
   profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLon?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLat?: Prisma.SortOrderInput | Prisma.SortOrder
-  about?: Prisma.SortOrderInput | Prisma.SortOrder
-  username?: Prisma.SortOrderInput | Prisma.SortOrder
-  address?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -452,9 +419,6 @@ export type UserScalarWhereWithAggregatesInput = {
   profilePicture?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  about?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  username?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  address?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -473,9 +437,6 @@ export type UserCreateInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -520,9 +481,6 @@ export type UserUncheckedCreateInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -567,9 +525,6 @@ export type UserUpdateInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -614,9 +569,6 @@ export type UserUncheckedUpdateInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -661,9 +613,6 @@ export type UserCreateManyInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -682,9 +631,6 @@ export type UserUpdateManyMutationInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -703,9 +649,6 @@ export type UserUncheckedUpdateManyInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -744,9 +687,6 @@ export type UserCountOrderByAggregateInput = {
   profilePicture?: Prisma.SortOrder
   locationLon?: Prisma.SortOrder
   locationLat?: Prisma.SortOrder
-  about?: Prisma.SortOrder
-  username?: Prisma.SortOrder
-  address?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -765,9 +705,6 @@ export type UserMaxOrderByAggregateInput = {
   profilePicture?: Prisma.SortOrder
   locationLon?: Prisma.SortOrder
   locationLat?: Prisma.SortOrder
-  about?: Prisma.SortOrder
-  username?: Prisma.SortOrder
-  address?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -786,9 +723,6 @@ export type UserMinOrderByAggregateInput = {
   profilePicture?: Prisma.SortOrder
   locationLon?: Prisma.SortOrder
   locationLat?: Prisma.SortOrder
-  about?: Prisma.SortOrder
-  username?: Prisma.SortOrder
-  address?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1205,9 +1139,6 @@ export type UserCreateWithoutOtpsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1251,9 +1182,6 @@ export type UserUncheckedCreateWithoutOtpsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1313,9 +1241,6 @@ export type UserUpdateWithoutOtpsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1359,9 +1284,6 @@ export type UserUncheckedUpdateWithoutOtpsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1405,9 +1327,6 @@ export type UserCreateWithoutRefreshTokensInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1451,9 +1370,6 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1513,9 +1429,6 @@ export type UserUpdateWithoutRefreshTokensInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1559,9 +1472,6 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1605,9 +1515,6 @@ export type UserCreateWithoutHostedCallsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1651,9 +1558,6 @@ export type UserUncheckedCreateWithoutHostedCallsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1702,9 +1606,6 @@ export type UserCreateWithoutReceivedCallsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -1748,9 +1649,6 @@ export type UserUncheckedCreateWithoutReceivedCallsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -1810,9 +1708,6 @@ export type UserUpdateWithoutHostedCallsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1856,9 +1751,6 @@ export type UserUncheckedUpdateWithoutHostedCallsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -1913,9 +1805,6 @@ export type UserUpdateWithoutReceivedCallsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -1959,9 +1848,6 @@ export type UserUncheckedUpdateWithoutReceivedCallsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -2005,9 +1891,6 @@ export type UserCreateWithoutCommentsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -2051,9 +1934,6 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -2113,9 +1993,6 @@ export type UserUpdateWithoutCommentsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -2159,9 +2036,6 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -2205,9 +2079,6 @@ export type UserCreateWithoutOwnedCommunitiesInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -2251,9 +2122,6 @@ export type UserUncheckedCreateWithoutOwnedCommunitiesInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -2302,9 +2170,6 @@ export type UserCreateWithoutLikedCommunitiesInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -2348,9 +2213,6 @@ export type UserUncheckedCreateWithoutLikedCommunitiesInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -2410,9 +2272,6 @@ export type UserUpdateWithoutOwnedCommunitiesInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -2456,9 +2315,6 @@ export type UserUncheckedUpdateWithoutOwnedCommunitiesInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -2521,9 +2377,6 @@ export type UserScalarWhereInput = {
   profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableFilter<"User"> | string | null
-  about?: Prisma.StringNullableFilter<"User"> | string | null
-  username?: Prisma.StringNullableFilter<"User"> | string | null
-  address?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
 }
@@ -2542,9 +2395,6 @@ export type UserCreateWithoutCommunityMembershipsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -2588,9 +2438,6 @@ export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -2650,9 +2497,6 @@ export type UserUpdateWithoutCommunityMembershipsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -2696,9 +2540,6 @@ export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -2742,9 +2583,6 @@ export type UserCreateWithoutCommunityFollowersInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -2788,9 +2626,6 @@ export type UserUncheckedCreateWithoutCommunityFollowersInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -2850,9 +2685,6 @@ export type UserUpdateWithoutCommunityFollowersInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -2896,9 +2728,6 @@ export type UserUncheckedUpdateWithoutCommunityFollowersInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -2942,9 +2771,6 @@ export type UserCreateWithoutFollowingInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -2988,9 +2814,6 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -3039,9 +2862,6 @@ export type UserCreateWithoutFollowersInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -3085,9 +2905,6 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -3147,9 +2964,6 @@ export type UserUpdateWithoutFollowingInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -3193,9 +3007,6 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -3250,9 +3061,6 @@ export type UserUpdateWithoutFollowersInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -3296,9 +3104,6 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -3342,9 +3147,6 @@ export type UserCreateWithoutFriendRequestsSentInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -3388,9 +3190,6 @@ export type UserUncheckedCreateWithoutFriendRequestsSentInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -3439,9 +3238,6 @@ export type UserCreateWithoutFriendRequestsReceivedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -3485,9 +3281,6 @@ export type UserUncheckedCreateWithoutFriendRequestsReceivedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -3547,9 +3340,6 @@ export type UserUpdateWithoutFriendRequestsSentInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -3593,9 +3383,6 @@ export type UserUncheckedUpdateWithoutFriendRequestsSentInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -3650,9 +3437,6 @@ export type UserUpdateWithoutFriendRequestsReceivedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -3696,9 +3480,6 @@ export type UserUncheckedUpdateWithoutFriendRequestsReceivedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -3742,9 +3523,6 @@ export type UserCreateWithoutLikedPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -3788,9 +3566,6 @@ export type UserUncheckedCreateWithoutLikedPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -3850,9 +3625,6 @@ export type UserUpdateWithoutLikedPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -3896,9 +3668,6 @@ export type UserUncheckedUpdateWithoutLikedPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -3942,9 +3711,6 @@ export type UserCreateWithoutNotificationsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
@@ -3988,9 +3754,6 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
@@ -4050,9 +3813,6 @@ export type UserUpdateWithoutNotificationsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
@@ -4096,9 +3856,6 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
@@ -4142,9 +3899,6 @@ export type UserCreateWithoutTaggedInPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -4188,9 +3942,6 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -4250,9 +4001,6 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -4296,9 +4044,6 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -4342,9 +4087,6 @@ export type UserCreateWithoutPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -4388,9 +4130,6 @@ export type UserUncheckedCreateWithoutPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -4450,9 +4189,6 @@ export type UserUpdateWithoutPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -4496,9 +4232,6 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -4542,9 +4275,6 @@ export type UserCreateWithoutSavedPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -4588,9 +4318,6 @@ export type UserUncheckedCreateWithoutSavedPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -4650,9 +4377,6 @@ export type UserUpdateWithoutSavedPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -4696,9 +4420,6 @@ export type UserUncheckedUpdateWithoutSavedPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -4742,9 +4463,6 @@ export type UserCreateWithoutConversationsInitiatedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -4788,9 +4506,6 @@ export type UserUncheckedCreateWithoutConversationsInitiatedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -4839,9 +4554,6 @@ export type UserCreateWithoutConversationsReceivedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -4885,9 +4597,6 @@ export type UserUncheckedCreateWithoutConversationsReceivedInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -4947,9 +4656,6 @@ export type UserUpdateWithoutConversationsInitiatedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -4993,9 +4699,6 @@ export type UserUncheckedUpdateWithoutConversationsInitiatedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -5050,9 +4753,6 @@ export type UserUpdateWithoutConversationsReceivedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -5096,9 +4796,6 @@ export type UserUncheckedUpdateWithoutConversationsReceivedInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -5142,9 +4839,6 @@ export type UserCreateWithoutMessagesSentInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -5188,9 +4882,6 @@ export type UserUncheckedCreateWithoutMessagesSentInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -5250,9 +4941,6 @@ export type UserUpdateWithoutMessagesSentInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -5296,9 +4984,6 @@ export type UserUncheckedUpdateWithoutMessagesSentInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -5342,9 +5027,6 @@ export type UserCreateWithoutMessageStatusesInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -5388,9 +5070,6 @@ export type UserUncheckedCreateWithoutMessageStatusesInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -5450,9 +5129,6 @@ export type UserUpdateWithoutMessageStatusesInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -5496,9 +5172,6 @@ export type UserUncheckedUpdateWithoutMessageStatusesInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -5542,9 +5215,6 @@ export type UserCreateWithoutProfileInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -5588,9 +5258,6 @@ export type UserUncheckedCreateWithoutProfileInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -5650,9 +5317,6 @@ export type UserUpdateWithoutProfileInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -5696,9 +5360,6 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -5742,9 +5403,6 @@ export type UserCreateWithoutSharedPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -5788,9 +5446,6 @@ export type UserUncheckedCreateWithoutSharedPostsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -5850,9 +5505,6 @@ export type UserUpdateWithoutSharedPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -5896,9 +5548,6 @@ export type UserUncheckedUpdateWithoutSharedPostsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -5942,9 +5591,6 @@ export type UserCreateWithoutFollowsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -5988,9 +5634,6 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -6039,9 +5682,6 @@ export type UserCreateWithoutFollowedByInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
@@ -6085,9 +5725,6 @@ export type UserUncheckedCreateWithoutFollowedByInput = {
   profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
-  about?: string | null
-  username?: string | null
-  address?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
@@ -6147,9 +5784,6 @@ export type UserUpdateWithoutFollowsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -6193,9 +5827,6 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -6250,9 +5881,6 @@ export type UserUpdateWithoutFollowedByInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -6296,9 +5924,6 @@ export type UserUncheckedUpdateWithoutFollowedByInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -6342,9 +5967,6 @@ export type UserUpdateWithoutLikedCommunitiesInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
@@ -6388,9 +6010,6 @@ export type UserUncheckedUpdateWithoutLikedCommunitiesInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -6434,9 +6053,6 @@ export type UserUncheckedUpdateManyWithoutLikedCommunitiesInput = {
   profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  about?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -6702,9 +6318,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
-  about?: boolean
-  username?: boolean
-  address?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
@@ -6750,9 +6363,6 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
-  about?: boolean
-  username?: boolean
-  address?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -6771,9 +6381,6 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
-  about?: boolean
-  username?: boolean
-  address?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -6792,14 +6399,11 @@ export type UserSelectScalar = {
   profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
-  about?: boolean
-  username?: boolean
-  address?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "status" | "isVerified" | "isOnline" | "lastLoginAt" | "lastActiveAt" | "profilePicture" | "locationLon" | "locationLat" | "about" | "username" | "address" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "status" | "isVerified" | "isOnline" | "lastLoginAt" | "lastActiveAt" | "profilePicture" | "locationLon" | "locationLat" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
@@ -6882,9 +6486,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     profilePicture: string | null
     locationLon: string | null
     locationLat: string | null
-    about: string | null
-    username: string | null
-    address: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -7349,9 +6950,6 @@ export interface UserFieldRefs {
   readonly profilePicture: Prisma.FieldRef<"User", 'String'>
   readonly locationLon: Prisma.FieldRef<"User", 'String'>
   readonly locationLat: Prisma.FieldRef<"User", 'String'>
-  readonly about: Prisma.FieldRef<"User", 'String'>
-  readonly username: Prisma.FieldRef<"User", 'String'>
-  readonly address: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }

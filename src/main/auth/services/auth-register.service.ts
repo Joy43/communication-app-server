@@ -27,7 +27,7 @@ export class AuthRegisterService {
       throw new AppError(400, 'User already exists with this email');
     }
 
-    // Create new user
+    // -------  Create new user --------
     const newUser = await this.prisma.client.user.create({
       data: {
         email,
@@ -41,15 +41,29 @@ export class AuthRegisterService {
     const otp = await this.utils.generateOTPAndSave(newUser.id, 'VERIFICATION');
 
     // Send verification email
-    await this.authMailService.sendVerificationCodeEmail(
-      email,
-      otp.toString(),
-      {
-        subject: 'Verify your email',
-        message:
-          'Welcome to our platform! Your account has been successfully created.',
-      },
-    );
+    try {
+      await this.authMailService.sendVerificationCodeEmail(
+        email,
+        otp.toString(),
+        {
+          subject: 'Verify your email',
+          message:
+            'Welcome to our platform! Your account has been successfully created.',
+        },
+      );
+    } catch (error) {
+      // Clean up the created user and OTP so the user can try registering again
+      await this.prisma.client.userOtp.deleteMany({
+        where: { userId: newUser.id },
+      });
+      await this.prisma.client.user.delete({
+        where: { id: newUser.id },
+      });
+      throw new AppError(
+        500,
+        'Failed to send verification email. Please check your email configuration or try again later.',
+      );
+    }
 
     // Return sanitized response
     return successResponse(

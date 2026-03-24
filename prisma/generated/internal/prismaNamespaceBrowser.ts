@@ -520,9 +520,6 @@ export const UserScalarFieldEnum = {
   profilePicture: 'profilePicture',
   locationLon: 'locationLon',
   locationLat: 'locationLat',
-  about: 'about',
-  username: 'username',
-  address: 'address',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

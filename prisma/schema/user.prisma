@@ -15,9 +15,7 @@ model User {
   lastLoginAt  DateTime?
   lastActiveAt DateTime?
 
-  profilePicture   String?
-
-  // Notifications & Auth
+  // ------ Notifications & Auth  --------
   notifications UserNotification[]
   refreshTokens RefreshToken[]
   otps          UserOtp[]
@@ -37,10 +35,6 @@ model User {
   locationLon String? @default("-71.0589")
   // location latitude
   locationLat String? @default("42.3601")
-  //------- user bio ----------
-  about       String? @default("User about information")
-  username    String? @unique
-  address     String?
 
 
   //  --------- Calling relations ---------
