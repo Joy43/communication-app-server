@@ -120,9 +120,20 @@ export class AuthOtpService {
       updateData.isVerified = true;
     }
 
+    // -----create profile if not exists------
+    if (type === OtpType.VERIFICATION) {
+      await this.prisma.client.profile.create({
+        data: {
+          userId: user.id,
+          username: user.name || 'demo777',
+          
+        },
+      });
+    }
     const updatedUser = await this.prisma.client.user.update({
       where: { id: user.id },
       data: updateData,
+    
     });
 
     // 5. Generate token

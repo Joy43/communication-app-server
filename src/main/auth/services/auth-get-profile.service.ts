@@ -28,6 +28,8 @@ export class AuthGetProfileService {
       where,
       include: {
         notifications: true,
+        profile:true,
+
       },
     });
 
@@ -40,6 +42,7 @@ export class AuthGetProfileService {
     const data = {
       ...sanitizedUser,
       notifications,
+      profile:user.profile
     };
 
     return successResponse(data, 'User data fetched successfully');

@@ -35,6 +35,7 @@ export class AuthRegisterService {
         password: await this.utils.hash(password),
       },
     });
+   
 
     // Generate OTP and save
     const otp = await this.utils.generateOTPAndSave(newUser.id, 'VERIFICATION');

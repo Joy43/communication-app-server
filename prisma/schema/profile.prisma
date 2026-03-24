@@ -6,7 +6,6 @@ model Profile {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // ------  Profile information -------
-  name                 String @default("")
   username             String    @unique
   title                String?  @default("")
   bio                  String?   @db.Text
@@ -28,7 +27,6 @@ model Profile {
   updatedAt DateTime @updatedAt
 
   @@index([username])
-  @@index([name])
   @@map("profiles")
 }
 

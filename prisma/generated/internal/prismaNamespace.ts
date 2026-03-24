@@ -3216,7 +3216,6 @@ export type PrivateMessageStatusScalarFieldEnum = (typeof PrivateMessageStatusSc
 export const ProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  name: 'name',
   username: 'username',
   title: 'title',
   bio: 'bio',
