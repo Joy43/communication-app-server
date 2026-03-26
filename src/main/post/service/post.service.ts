@@ -2,11 +2,13 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreatePostDto } from '../dto/create-post.dto';
 import { UpdatePostDto } from '../dto/update-post.dto';
 import { PrismaService } from '@/lib/prisma/prisma.service';
-import { GetUser } from '@/core/jwt/jwt.decorator';
+import { HandleError } from '@/core/error/handle-error.decorator';
 
 @Injectable()
 export class PostService {
   constructor(private readonly prisma:PrismaService){}
+
+ @HandleError('Failed to create post') 
  async createPost(dto: CreatePostDto, userId: string) {
     const { taggedUserIds, dedicatedAds, ...rest } = dto;
 
@@ -29,7 +31,7 @@ export class PostService {
             }
           : undefined,
 
-        // -------Dedicated Ads ------
+        // -------Dedicated Ads ------------
         dedicatedAd: dedicatedAds?.length
           ? {
               create: dedicatedAds.map((ad) => ({
@@ -41,7 +43,7 @@ export class PostService {
             }
           : undefined,
 
-        // ------- Auto create metrics ------
+        // --------------  Auto create metrics  -------------
         metrics: {
           create: {},
         },
