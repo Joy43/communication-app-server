@@ -4,7 +4,7 @@ import { MailModule } from './mail/mail.module';
 import { PrismaModule } from './prisma/prisma.module';
 
 
-import { QueueModule } from './queue/queue.module';
+
 import { SeedModule } from './seed/seed.module';
 import { UtilsModule } from './utils/utils.module';
 
@@ -15,7 +15,7 @@ import { UtilsModule } from './utils/utils.module';
     MailModule,
     SeedModule,
     UtilsModule,
-    QueueModule,
+ 
   
   ],
   exports: [],
