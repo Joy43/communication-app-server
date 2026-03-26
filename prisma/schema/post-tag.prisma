@@ -12,7 +12,7 @@ model PostTagUser {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  //    -------  Prevent duplicate tags ------
+  //    --------------- Prevent duplicate tags -----------------
   @@unique([postId, userId])
   @@map("post_tag_users")
 }

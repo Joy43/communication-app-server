@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -9,12 +9,13 @@ import { AppModule } from './app.module';
 import { ENVEnum } from './common/enum/env.enum';
 import { AllExceptionsFilter } from './core/filter/http-exception.filter';
 
-
 async function bootstrap() {
+  const logger = new Logger('Bootstrap');
+
   const app = await NestFactory.create(AppModule, { rawBody: true });
   const configService = app.get(ConfigService);
 
-  // * enable cors
+  // enable cors
   app.enableCors({
     origin: [
       'http://localhost:3000',
@@ -27,13 +28,13 @@ async function bootstrap() {
     credentials: true,
   });
 
-  // * add global pipes
+  // global pipes
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
-  // * add global filters
+  // global filters
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  // * Swagger config with Bearer Auth
+  // Swagger
   const config = new DocumentBuilder()
     .setTitle('Backend API')
     .setDescription('The API description')
@@ -48,16 +49,17 @@ async function bootstrap() {
     },
   });
 
-  // * add body parser
+  // Stripe webhook raw body
   app.use(
     '/path-to-stripe-webhook',
     bodyParser.raw({ type: 'application/json' }),
   );
 
-  // * set port
   const port = parseInt(configService.get<string>(ENVEnum.PORT) ?? '3000', 10);
-  // console show server local address
-  console.log(`Server is running on http://localhost:${port}`);
+
   await app.listen(port);
+
+  logger.log(`🚀 Server running on: http://localhost:${port}`);
+  logger.log(`📚 Swagger docs: http://localhost:${port}/docs`);
 }
 bootstrap();
