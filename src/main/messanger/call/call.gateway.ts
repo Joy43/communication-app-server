@@ -126,6 +126,21 @@ export class CallGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.server.emit('call-declined', { callId: data.callId });
   }
 
+  @SubscribeMessage('cancel-call')
+  async cancelCall(
+    @MessageBody() data: { callId: string; recipientUserId: string },
+  ) {
+    await this.callService.markMissed(data.callId);
+
+    const recipientSocket = this.users.get(data.recipientUserId);
+
+    if (recipientSocket) {
+      this.server.to(recipientSocket).emit('call-cancelled', {
+        callId: data.callId,
+      });
+    }
+  }
+
   @SubscribeMessage('end-call')
   async endCall(
     @MessageBody()
