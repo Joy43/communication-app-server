@@ -35,7 +35,7 @@ export class DefaultUsersService implements OnModuleInit {
       {
         name: 'Manager',
         email: 'manager@gmail.com',
-        password: 'Manager@123',
+        password: '12345678',
         role: 'ADMIN',
         profilePicture: 'https://i.pravatar.cc/200?img=33',
       },
