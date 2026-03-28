@@ -29,6 +29,7 @@ import {
 import { PaginationDto } from '../dto/pagination.dto';
 import { UpdatePostDto } from '../dto/update-post.dto';
 import { PostService } from '../service/post.service';
+import { CreateTagDto } from '../dto/create-tag.dto';
 
 @ApiTags('Posts')
 @Controller('post')
@@ -242,5 +243,15 @@ export class PostController {
     @GetUser('sub') currentUserId: string,
   ) {
     return this.postService.isFollowing(targetUserId, currentUserId);
+  }
+
+  // ------ create tags -----
+  @ApiTags('Tags')
+  @ApiOperation({ summary: 'Create a tag' })
+  @ValidateUser()
+  @ApiBearerAuth()
+  @Post('create-tags')
+  createTag(@Body() dto: CreateTagDto ,@GetUser('sub') userId: string) {
+    return this.postService.createTag(dto,userId);
   }
 }

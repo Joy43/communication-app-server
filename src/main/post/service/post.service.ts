@@ -16,6 +16,8 @@ import {
 } from '../dto/Dedicated-Ads.dto';
 import { PaginationDto } from '../dto/pagination.dto';
 import { UpdatePostDto } from '../dto/update-post.dto';
+import { CreateTagDto } from '../dto/create-tag.dto';
+import { identity } from 'rxjs';
 
 @Injectable()
 export class PostService {
@@ -489,6 +491,7 @@ export class PostService {
     };
   }
 
+  //--------- ADMIN OPERATIONS ---------
   @HandleError('Failed to update ad')
   async updateDedicatedAd(
     adId: string,
@@ -521,6 +524,7 @@ export class PostService {
     };
   }
 
+  //--------- ADMIN OPERATIONS ---------
   @HandleError('Failed to delete ad')
   async deleteDedicatedAd(adId: string, userId: string) {
     const ad = await this.prisma.client.dedicatedAd.findUnique({
@@ -564,8 +568,6 @@ export class PostService {
     if (!targetUser) {
       throw new NotFoundException('User not found');
     }
-
-    // Check if already following
     const existingFollow = await this.prisma.client.userFollow.findUnique({
       where: {
         followerId_followedId: {
@@ -591,6 +593,8 @@ export class PostService {
       data: null,
     };
   }
+
+  // ==================== UNFOLLOW OPERATIONS ====================
 
   @HandleError('Failed to unfollow user')
   async unfollowUser(targetUserId: string, currentUserId: string) {
@@ -621,7 +625,7 @@ export class PostService {
       data: null,
     };
   }
-
+//--------- get followers and follow -------------
   @HandleError('Failed to fetch followers')
   async getFollowers(userId: string, pagination: PaginationDto) {
     const { page = 1, limit = 10 } = pagination;
@@ -659,7 +663,7 @@ export class PostService {
       },
     };
   }
-
+//--------- get followers and follow -------------
   @HandleError('Failed to fetch following')
   async getFollowing(userId: string, pagination: PaginationDto) {
     const { page = 1, limit = 10 } = pagination;
@@ -697,7 +701,7 @@ export class PostService {
       },
     };
   }
-
+//--------- check follow status -------------
   @HandleError('Failed to check follow status')
   async isFollowing(targetUserId: string, currentUserId: string) {
     const follow = await this.prisma.client.userFollow.findUnique({
@@ -716,4 +720,45 @@ export class PostService {
       },
     };
   }
+
+  //---------------- create and tags----------------
+
+    @HandleError('Failed to create tag')
+    async createTag(dto: CreateTagDto,userId: string) {
+      //---which crate tag with userid?--- for now, we are not associating tags with users, but you can modify the schema to include createdBy if needed
+      const creator = await this.prisma.client.user.findUnique({
+        where: { id: userId },
+      });
+
+      if (!creator) {
+        throw new NotFoundException('User not found');
+      }
+
+      const { name, description } = dto;
+      const existingTag = await this.prisma.client.postCategory.findUnique({
+        where: { name },
+      });
+
+      if (existingTag) {
+        throw new BadRequestException('Tag already exists');
+      }
+
+      const tag = await this.prisma.client.postCategory.create({
+        data: {
+          name,
+          description,
+        },
+      });
+
+      return {
+        message: 'Tag created successfully',
+        data: tag,
+        user:{
+          id: creator.id,
+          email: creator.email,
+          name: creator.name,
+        }
+      };
+      
+    }
 }

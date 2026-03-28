@@ -61,8 +61,8 @@ export class CreatePostDto {
   @ApiProperty({
     description: 'The media URLs associated with the post',
     example: [
-      'https://example.com/image1.jpg',
-      'https://example.com/image2.jpg',
+      'https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1000',
+      'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1000',
     ],
     required: false,
   })
@@ -132,12 +132,12 @@ export class CreatePostDto {
   @IsBoolean()
   acceptDonation?: boolean;
 
-  // Tagged Users
+  //------  Tagged Users ---------
   @ApiProperty({
     description: 'The IDs of users tagged in the post',
     example: [
-      '550e8400-e29b-41d4-a716-446655440000',
-      '550e8400-e29b-41d4-a716-446655440001',
+      'c8f1b83e-65f4-4ba0-b810-7682980fcc87',
+      '88e3ff3c-8f12-4e18-9cdd-71cef072da92',
     ],
     required: false,
   })
@@ -146,7 +146,7 @@ export class CreatePostDto {
   @IsUUID('all', { each: true })
   taggedUserIds?: string[];
 
-  // Dedicated Ads
+  //------  Dedicated Ads --------
   @ApiProperty({
     description: 'Dedicated ads associated with the post',
     type: [CreateDedicatedAdInputDto],
