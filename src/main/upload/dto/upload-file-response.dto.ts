@@ -28,9 +28,13 @@ export class UploadedFileDto {
 }
 
 export class UploadFilesResponseDto {
-  @ApiProperty({ type: [UploadedFileDto] })
-  files: UploadedFileDto[];
-
-  @ApiProperty({ example: 1 })
-  count: number;
+  @ApiProperty({
+    type: [String],
+    example: [
+      'https://res.cloudinary.com/xyz/image/upload/v123/file1.jpg',
+      'https://res.cloudinary.com/xyz/image/upload/v124/file2.png',
+      'https://res.cloudinary.com/xyz/image/upload/v125/file3.jpg',
+    ],
+  })
+  urls: string[];
 }

@@ -42,6 +42,7 @@ export class UploadService {
     );
   }
 
+  // -------- Delete files --------
   @HandleError('Failed to delete files', 'File')
   async deleteFiles(fileIds: string[]): Promise<TResponse<any>> {
     if (!fileIds?.length) throw new AppError(400, 'No file IDs provided');
@@ -52,7 +53,7 @@ export class UploadService {
 
     if (!files.length) throw new AppError(404, 'Files not found');
 
-    // Parallelize deletes
+
     await Promise.all(files.map((f) => this.s3.deleteFile(f.id)));
 
     return successResponse(
@@ -60,7 +61,7 @@ export class UploadService {
       'Files deleted successfully',
     );
   }
-
+//-------- Get paginated list of files --------
   @HandleError('Failed to get files', 'File')
   async getFiles(pg: PaginationDto): Promise<TPaginatedResponse<any>> {
     const page = pg.page && +pg.page > 0 ? +pg.page : 1;
@@ -83,6 +84,7 @@ export class UploadService {
     );
   }
 
+  // -------- Get file by ID --------
   @HandleError('Failed to get file', 'File')
   async getFileById(id: string): Promise<TResponse<any>> {
     const file = await this.prisma.client.fileInstance.findUnique({

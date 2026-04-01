@@ -5,8 +5,9 @@ import { MessangerModule } from './messanger/messanger.module';
 import { PostModule } from './post/post.module';
 import { ProfileModule } from './profile/profile.module';
 import { CommunityModule } from './community/community.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
-  imports: [AuthModule, UploadModule, MessangerModule, PostModule, ProfileModule, CommunityModule],
+  imports: [AuthModule, UploadModule, MessangerModule, PostModule, ProfileModule, CommunityModule, NotificationsModule],
 })
 export class MainModule {}
