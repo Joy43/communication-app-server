@@ -19,7 +19,7 @@ export class AuthRegisterService {
   async register(dto: RegisterDto): Promise<TResponse<any>> {
     const { email, password, name, fcmToken } = dto;
 
-    // Check if user email already exists
+    // --------- Check if user email already exists ---------
     const existingUser = await this.prisma.client.user.findUnique({
       where: { email },
     });
@@ -65,7 +65,7 @@ export class AuthRegisterService {
       );
     }
 
-    // Return sanitized response
+    //  ------- Return sanitized response -------
     return successResponse(
       {
         email: newUser.email,

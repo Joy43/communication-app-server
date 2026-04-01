@@ -18,9 +18,14 @@ export enum ENVEnum {
 
   SUPER_ADMIN_EMAIL = 'SUPER_ADMIN_EMAIL',
   SUPER_ADMIN_PASS = 'SUPER_ADMIN_PASS',
-
+//------------ AWS S3 -----------
   AWS_REGION = 'AWS_REGION',
   AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY_ID',
   AWS_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY',
   AWS_S3_BUCKET_NAME = 'AWS_S3_BUCKET_NAME',
+//------------ Cloudinary -----------
+  Cloud_Name='Cloud_Name',
+  API_key='API_key',
+  API_Secret='API_Secret',
+  CLOUDINARY_URL='CLOUDINARY_URL'
 }

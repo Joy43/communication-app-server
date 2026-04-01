@@ -53,7 +53,7 @@ export class CallGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
   }
 
-  // Call event
+  //------- Call event handlers -------
 
   @SubscribeMessage('start-call')
   async startCall(

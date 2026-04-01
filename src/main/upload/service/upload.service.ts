@@ -28,7 +28,7 @@ export class UploadService {
       throw new AppError(400, 'You can upload a maximum of 5 files');
     }
 
-    // Parallelize uploads
+    // -------- Parallelize uploads --------
     const results = await Promise.all(
       files.map((file) => this.s3.uploadFile(file)),
     );

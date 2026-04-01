@@ -22,10 +22,10 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import * as multer from 'multer';
-import { DeleteFilesRequestDto } from './dto/delete-file.dto';
-import { UploadFilesRequestDto } from './dto/upload-file-request.dto';
-import { UploadFilesResponseDto } from './dto/upload-file-response.dto';
-import { UploadService } from './upload.service';
+import { DeleteFilesRequestDto } from '../dto/delete-file.dto';
+import { UploadFilesRequestDto } from '../dto/upload-file-request.dto';
+import { UploadFilesResponseDto } from '../dto/upload-file-response.dto';
+import { UploadService } from '../service/upload.service';
 
 @ApiBearerAuth()
 @ValidateAuth()
