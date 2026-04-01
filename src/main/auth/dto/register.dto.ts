@@ -37,4 +37,11 @@ export class RegisterDto {
   })
   @IsOptional()
   locationLat: string;
+
+    @ApiProperty({
+      example: '1RERR23FFERE456RER78',
+      description: 'fcmToken',
+    })
+    @IsOptional()
+    fcmToken: string;
 }

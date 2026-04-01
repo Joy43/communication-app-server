@@ -49,6 +49,7 @@ export class AuthLoginService {
       data: {
         lastLoginAt: new Date(),
         lastActiveAt: new Date(),
+        fcmToken: dto.fcmToken || user.fcmToken,
       },
     });
 

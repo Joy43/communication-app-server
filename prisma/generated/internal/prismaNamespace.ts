@@ -400,6 +400,7 @@ export const ModelName = {
   Like: 'Like',
   Gif: 'Gif',
   Location: 'Location',
+  NotificationToggle: 'NotificationToggle',
   Notification: 'Notification',
   UserNotification: 'UserNotification',
   PostMetadata: 'PostMetadata',
@@ -431,7 +432,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "userOtp" | "refreshToken" | "calling" | "callParticipant" | "comment" | "community" | "communitiesMembership" | "communityAbout" | "communityFollower" | "communityProfile" | "fileInstance" | "follow" | "friendRequest" | "like" | "gif" | "location" | "notification" | "userNotification" | "postMetadata" | "postTagUser" | "post" | "savedPost" | "postMetrics" | "postCategory" | "dedicatedAd" | "privateConversation" | "privateMessage" | "privateMessageStatus" | "profile" | "share" | "user" | "userFollow"
+    modelProps: "userOtp" | "refreshToken" | "calling" | "callParticipant" | "comment" | "community" | "communitiesMembership" | "communityAbout" | "communityFollower" | "communityProfile" | "fileInstance" | "follow" | "friendRequest" | "like" | "gif" | "location" | "notificationToggle" | "notification" | "userNotification" | "postMetadata" | "postTagUser" | "post" | "savedPost" | "postMetrics" | "postCategory" | "dedicatedAd" | "privateConversation" | "privateMessage" | "privateMessageStatus" | "profile" | "share" | "user" | "userFollow"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1616,6 +1617,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.LocationCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.LocationCountAggregateOutputType> | number
+        }
+      }
+    }
+    NotificationToggle: {
+      payload: Prisma.$NotificationTogglePayload<ExtArgs>
+      fields: Prisma.NotificationToggleFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.NotificationToggleFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.NotificationToggleFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload>
+        }
+        findFirst: {
+          args: Prisma.NotificationToggleFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.NotificationToggleFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload>
+        }
+        findMany: {
+          args: Prisma.NotificationToggleFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload>[]
+        }
+        create: {
+          args: Prisma.NotificationToggleCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload>
+        }
+        createMany: {
+          args: Prisma.NotificationToggleCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.NotificationToggleCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload>[]
+        }
+        delete: {
+          args: Prisma.NotificationToggleDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload>
+        }
+        update: {
+          args: Prisma.NotificationToggleUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload>
+        }
+        deleteMany: {
+          args: Prisma.NotificationToggleDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.NotificationToggleUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.NotificationToggleUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload>[]
+        }
+        upsert: {
+          args: Prisma.NotificationToggleUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificationTogglePayload>
+        }
+        aggregate: {
+          args: Prisma.NotificationToggleAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNotificationToggle>
+        }
+        groupBy: {
+          args: Prisma.NotificationToggleGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificationToggleGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.NotificationToggleCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificationToggleCountAggregateOutputType> | number
         }
       }
     }
@@ -3053,6 +3128,42 @@ export const LocationScalarFieldEnum = {
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
 
 
+export const NotificationToggleScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  userUpdates: 'userUpdates',
+  serviceCreate: 'serviceCreate',
+  review: 'review',
+  post: 'post',
+  message: 'message',
+  inquiry: 'inquiry',
+  userRegistration: 'userRegistration',
+  service: 'service',
+  follow: 'follow',
+  orderUpdate: 'orderUpdate',
+  uploadProof: 'uploadProof',
+  paymentReminder: 'paymentReminder',
+  newOrder: 'newOrder',
+  serviceRequestAccepted: 'serviceRequestAccepted',
+  serviceRequestRejected: 'serviceRequestRejected',
+  serviceRequestCancelled: 'serviceRequestCancelled',
+  paymentSuccessful: 'paymentSuccessful',
+  paymentFailed: 'paymentFailed',
+  inquiryResponse: 'inquiryResponse',
+  reviewReceived: 'reviewReceived',
+  postLiked: 'postLiked',
+  postCommented: 'postCommented',
+  postShared: 'postShared',
+  postReplied: 'postReplied',
+  donationReceived: 'donationReceived',
+  communityCreated: 'communityCreated',
+  communityJoined: 'communityJoined',
+  userId: 'userId'
+} as const
+
+export type NotificationToggleScalarFieldEnum = (typeof NotificationToggleScalarFieldEnum)[keyof typeof NotificationToggleScalarFieldEnum]
+
+
 export const NotificationScalarFieldEnum = {
   id: 'id',
   type: 'type',
@@ -3256,13 +3367,14 @@ export const UserScalarFieldEnum = {
   status: 'status',
   isVerified: 'isVerified',
   isOnline: 'isOnline',
+  fcmToken: 'fcmToken',
   lastLoginAt: 'lastLoginAt',
   lastActiveAt: 'lastActiveAt',
-  profilePicture: 'profilePicture',
   locationLon: 'locationLon',
   locationLat: 'locationLat',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  profilePicture: 'profilePicture'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3285,11 +3397,12 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const JsonNullValueInput = {
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
   JsonNull: JsonNull
 } as const
 
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -3748,6 +3861,7 @@ export type GlobalOmitConfig = {
   like?: Prisma.LikeOmit
   gif?: Prisma.GifOmit
   location?: Prisma.LocationOmit
+  notificationToggle?: Prisma.NotificationToggleOmit
   notification?: Prisma.NotificationOmit
   userNotification?: Prisma.UserNotificationOmit
   postMetadata?: Prisma.PostMetadataOmit

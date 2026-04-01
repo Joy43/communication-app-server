@@ -33,13 +33,14 @@ export type UserMinAggregateOutputType = {
   status: $Enums.UserStatus | null
   isVerified: boolean | null
   isOnline: boolean | null
+  fcmToken: string | null
   lastLoginAt: Date | null
   lastActiveAt: Date | null
-  profilePicture: string | null
   locationLon: string | null
   locationLat: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  profilePicture: string | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -51,13 +52,14 @@ export type UserMaxAggregateOutputType = {
   status: $Enums.UserStatus | null
   isVerified: boolean | null
   isOnline: boolean | null
+  fcmToken: string | null
   lastLoginAt: Date | null
   lastActiveAt: Date | null
-  profilePicture: string | null
   locationLon: string | null
   locationLat: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  profilePicture: string | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -69,13 +71,14 @@ export type UserCountAggregateOutputType = {
   status: number
   isVerified: number
   isOnline: number
+  fcmToken: number
   lastLoginAt: number
   lastActiveAt: number
-  profilePicture: number
   locationLon: number
   locationLat: number
   createdAt: number
   updatedAt: number
+  profilePicture: number
   _all: number
 }
 
@@ -89,13 +92,14 @@ export type UserMinAggregateInputType = {
   status?: true
   isVerified?: true
   isOnline?: true
+  fcmToken?: true
   lastLoginAt?: true
   lastActiveAt?: true
-  profilePicture?: true
   locationLon?: true
   locationLat?: true
   createdAt?: true
   updatedAt?: true
+  profilePicture?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -107,13 +111,14 @@ export type UserMaxAggregateInputType = {
   status?: true
   isVerified?: true
   isOnline?: true
+  fcmToken?: true
   lastLoginAt?: true
   lastActiveAt?: true
-  profilePicture?: true
   locationLon?: true
   locationLat?: true
   createdAt?: true
   updatedAt?: true
+  profilePicture?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -125,13 +130,14 @@ export type UserCountAggregateInputType = {
   status?: true
   isVerified?: true
   isOnline?: true
+  fcmToken?: true
   lastLoginAt?: true
   lastActiveAt?: true
-  profilePicture?: true
   locationLon?: true
   locationLat?: true
   createdAt?: true
   updatedAt?: true
+  profilePicture?: true
   _all?: true
 }
 
@@ -216,13 +222,14 @@ export type UserGroupByOutputType = {
   status: $Enums.UserStatus
   isVerified: boolean
   isOnline: boolean
+  fcmToken: string | null
   lastLoginAt: Date | null
   lastActiveAt: Date | null
-  profilePicture: string | null
   locationLon: string | null
   locationLat: string | null
   createdAt: Date
   updatedAt: Date
+  profilePicture: string | null
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -255,13 +262,14 @@ export type UserWhereInput = {
   status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   isOnline?: Prisma.BoolFilter<"User"> | boolean
+  fcmToken?: Prisma.StringNullableFilter<"User"> | string | null
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lastActiveAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   notifications?: Prisma.UserNotificationListRelationFilter
   refreshTokens?: Prisma.RefreshTokenListRelationFilter
   otps?: Prisma.UserOtpListRelationFilter
@@ -282,6 +290,7 @@ export type UserWhereInput = {
   communityMemberships?: Prisma.CommunitiesMembershipListRelationFilter
   likedCommunities?: Prisma.CommunityListRelationFilter
   communityFollowers?: Prisma.CommunityFollowerListRelationFilter
+  notificationToggle?: Prisma.NotificationToggleListRelationFilter
   ownedCommunities?: Prisma.CommunityListRelationFilter
   friendRequestsSent?: Prisma.FriendRequestListRelationFilter
   friendRequestsReceived?: Prisma.FriendRequestListRelationFilter
@@ -299,13 +308,14 @@ export type UserOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isOnline?: Prisma.SortOrder
+  fcmToken?: Prisma.SortOrderInput | Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   lastActiveAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLon?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLat?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   notifications?: Prisma.UserNotificationOrderByRelationAggregateInput
   refreshTokens?: Prisma.RefreshTokenOrderByRelationAggregateInput
   otps?: Prisma.UserOtpOrderByRelationAggregateInput
@@ -326,6 +336,7 @@ export type UserOrderByWithRelationInput = {
   communityMemberships?: Prisma.CommunitiesMembershipOrderByRelationAggregateInput
   likedCommunities?: Prisma.CommunityOrderByRelationAggregateInput
   communityFollowers?: Prisma.CommunityFollowerOrderByRelationAggregateInput
+  notificationToggle?: Prisma.NotificationToggleOrderByRelationAggregateInput
   ownedCommunities?: Prisma.CommunityOrderByRelationAggregateInput
   friendRequestsSent?: Prisma.FriendRequestOrderByRelationAggregateInput
   friendRequestsReceived?: Prisma.FriendRequestOrderByRelationAggregateInput
@@ -346,13 +357,14 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   isOnline?: Prisma.BoolFilter<"User"> | boolean
+  fcmToken?: Prisma.StringNullableFilter<"User"> | string | null
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lastActiveAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   notifications?: Prisma.UserNotificationListRelationFilter
   refreshTokens?: Prisma.RefreshTokenListRelationFilter
   otps?: Prisma.UserOtpListRelationFilter
@@ -373,6 +385,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   communityMemberships?: Prisma.CommunitiesMembershipListRelationFilter
   likedCommunities?: Prisma.CommunityListRelationFilter
   communityFollowers?: Prisma.CommunityFollowerListRelationFilter
+  notificationToggle?: Prisma.NotificationToggleListRelationFilter
   ownedCommunities?: Prisma.CommunityListRelationFilter
   friendRequestsSent?: Prisma.FriendRequestListRelationFilter
   friendRequestsReceived?: Prisma.FriendRequestListRelationFilter
@@ -390,13 +403,14 @@ export type UserOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isOnline?: Prisma.SortOrder
+  fcmToken?: Prisma.SortOrderInput | Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
   lastActiveAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLon?: Prisma.SortOrderInput | Prisma.SortOrder
   locationLat?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -414,13 +428,14 @@ export type UserScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
   isVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   isOnline?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  fcmToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   lastActiveAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-  profilePicture?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  profilePicture?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
 }
 
 export type UserCreateInput = {
@@ -432,13 +447,14 @@ export type UserCreateInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -459,6 +475,7 @@ export type UserCreateInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -476,13 +493,14 @@ export type UserUncheckedCreateInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -503,6 +521,7 @@ export type UserUncheckedCreateInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -520,13 +539,14 @@ export type UserUpdateInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -547,6 +567,7 @@ export type UserUpdateInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -564,13 +585,14 @@ export type UserUncheckedUpdateInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -591,6 +613,7 @@ export type UserUncheckedUpdateInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -608,13 +631,14 @@ export type UserCreateManyInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -626,13 +650,14 @@ export type UserUpdateManyMutationInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -644,13 +669,14 @@ export type UserUncheckedUpdateManyInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UserScalarRelationFilter = {
@@ -682,13 +708,14 @@ export type UserCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isOnline?: Prisma.SortOrder
+  fcmToken?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
   lastActiveAt?: Prisma.SortOrder
-  profilePicture?: Prisma.SortOrder
   locationLon?: Prisma.SortOrder
   locationLat?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  profilePicture?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -700,13 +727,14 @@ export type UserMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isOnline?: Prisma.SortOrder
+  fcmToken?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
   lastActiveAt?: Prisma.SortOrder
-  profilePicture?: Prisma.SortOrder
   locationLon?: Prisma.SortOrder
   locationLat?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  profilePicture?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -718,13 +746,14 @@ export type UserMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isOnline?: Prisma.SortOrder
+  fcmToken?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
   lastActiveAt?: Prisma.SortOrder
-  profilePicture?: Prisma.SortOrder
   locationLon?: Prisma.SortOrder
   locationLat?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  profilePicture?: Prisma.SortOrder
 }
 
 export type UserCreateNestedOneWithoutOtpsInput = {
@@ -949,6 +978,20 @@ export type UserUpdateOneRequiredWithoutLikedPostsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLikedPostsInput, Prisma.UserUpdateWithoutLikedPostsInput>, Prisma.UserUncheckedUpdateWithoutLikedPostsInput>
 }
 
+export type UserCreateNestedOneWithoutNotificationToggleInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationToggleInput, Prisma.UserUncheckedCreateWithoutNotificationToggleInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationToggleInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutNotificationToggleNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationToggleInput, Prisma.UserUncheckedCreateWithoutNotificationToggleInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationToggleInput
+  upsert?: Prisma.UserUpsertWithoutNotificationToggleInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationToggleInput, Prisma.UserUpdateWithoutNotificationToggleInput>, Prisma.UserUncheckedUpdateWithoutNotificationToggleInput>
+}
+
 export type UserCreateNestedOneWithoutNotificationsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutNotificationsInput, Prisma.UserUncheckedCreateWithoutNotificationsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutNotificationsInput
@@ -1134,13 +1177,14 @@ export type UserCreateWithoutOtpsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
@@ -1160,6 +1204,7 @@ export type UserCreateWithoutOtpsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -1177,13 +1222,14 @@ export type UserUncheckedCreateWithoutOtpsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
@@ -1203,6 +1249,7 @@ export type UserUncheckedCreateWithoutOtpsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -1236,13 +1283,14 @@ export type UserUpdateWithoutOtpsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
@@ -1262,6 +1310,7 @@ export type UserUpdateWithoutOtpsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -1279,13 +1328,14 @@ export type UserUncheckedUpdateWithoutOtpsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
@@ -1305,6 +1355,7 @@ export type UserUncheckedUpdateWithoutOtpsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -1322,13 +1373,14 @@ export type UserCreateWithoutRefreshTokensInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
   conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
@@ -1348,6 +1400,7 @@ export type UserCreateWithoutRefreshTokensInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -1365,13 +1418,14 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
   conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
@@ -1391,6 +1445,7 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -1424,13 +1479,14 @@ export type UserUpdateWithoutRefreshTokensInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
   conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
@@ -1450,6 +1506,7 @@ export type UserUpdateWithoutRefreshTokensInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -1467,13 +1524,14 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
   conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
@@ -1493,6 +1551,7 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -1510,13 +1569,14 @@ export type UserCreateWithoutHostedCallsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -1536,6 +1596,7 @@ export type UserCreateWithoutHostedCallsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -1553,13 +1614,14 @@ export type UserUncheckedCreateWithoutHostedCallsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -1579,6 +1641,7 @@ export type UserUncheckedCreateWithoutHostedCallsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -1601,13 +1664,14 @@ export type UserCreateWithoutReceivedCallsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -1627,6 +1691,7 @@ export type UserCreateWithoutReceivedCallsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -1644,13 +1709,14 @@ export type UserUncheckedCreateWithoutReceivedCallsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -1670,6 +1736,7 @@ export type UserUncheckedCreateWithoutReceivedCallsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -1703,13 +1770,14 @@ export type UserUpdateWithoutHostedCallsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -1729,6 +1797,7 @@ export type UserUpdateWithoutHostedCallsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -1746,13 +1815,14 @@ export type UserUncheckedUpdateWithoutHostedCallsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -1772,6 +1842,7 @@ export type UserUncheckedUpdateWithoutHostedCallsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -1800,13 +1871,14 @@ export type UserUpdateWithoutReceivedCallsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -1826,6 +1898,7 @@ export type UserUpdateWithoutReceivedCallsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -1843,13 +1916,14 @@ export type UserUncheckedUpdateWithoutReceivedCallsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -1869,6 +1943,7 @@ export type UserUncheckedUpdateWithoutReceivedCallsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -1886,13 +1961,14 @@ export type UserCreateWithoutCommentsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -1912,6 +1988,7 @@ export type UserCreateWithoutCommentsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -1929,13 +2006,14 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -1955,6 +2033,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -1988,13 +2067,14 @@ export type UserUpdateWithoutCommentsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -2014,6 +2094,7 @@ export type UserUpdateWithoutCommentsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -2031,13 +2112,14 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -2057,6 +2139,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -2074,13 +2157,14 @@ export type UserCreateWithoutOwnedCommunitiesInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -2101,6 +2185,7 @@ export type UserCreateWithoutOwnedCommunitiesInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
@@ -2117,13 +2202,14 @@ export type UserUncheckedCreateWithoutOwnedCommunitiesInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -2144,6 +2230,7 @@ export type UserUncheckedCreateWithoutOwnedCommunitiesInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -2165,13 +2252,14 @@ export type UserCreateWithoutLikedCommunitiesInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -2191,6 +2279,7 @@ export type UserCreateWithoutLikedCommunitiesInput = {
   savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -2208,13 +2297,14 @@ export type UserUncheckedCreateWithoutLikedCommunitiesInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -2234,6 +2324,7 @@ export type UserUncheckedCreateWithoutLikedCommunitiesInput = {
   savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -2267,13 +2358,14 @@ export type UserUpdateWithoutOwnedCommunitiesInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -2294,6 +2386,7 @@ export type UserUpdateWithoutOwnedCommunitiesInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
@@ -2310,13 +2403,14 @@ export type UserUncheckedUpdateWithoutOwnedCommunitiesInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -2337,6 +2431,7 @@ export type UserUncheckedUpdateWithoutOwnedCommunitiesInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
@@ -2372,13 +2467,14 @@ export type UserScalarWhereInput = {
   status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
   isVerified?: Prisma.BoolFilter<"User"> | boolean
   isOnline?: Prisma.BoolFilter<"User"> | boolean
+  fcmToken?: Prisma.StringNullableFilter<"User"> | string | null
   lastLoginAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lastActiveAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
   locationLon?: Prisma.StringNullableFilter<"User"> | string | null
   locationLat?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  profilePicture?: Prisma.StringNullableFilter<"User"> | string | null
 }
 
 export type UserCreateWithoutCommunityMembershipsInput = {
@@ -2390,13 +2486,14 @@ export type UserCreateWithoutCommunityMembershipsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -2416,6 +2513,7 @@ export type UserCreateWithoutCommunityMembershipsInput = {
   savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -2433,13 +2531,14 @@ export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -2459,6 +2558,7 @@ export type UserUncheckedCreateWithoutCommunityMembershipsInput = {
   savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -2492,13 +2592,14 @@ export type UserUpdateWithoutCommunityMembershipsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -2518,6 +2619,7 @@ export type UserUpdateWithoutCommunityMembershipsInput = {
   savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -2535,13 +2637,14 @@ export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -2561,6 +2664,7 @@ export type UserUncheckedUpdateWithoutCommunityMembershipsInput = {
   savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -2578,13 +2682,14 @@ export type UserCreateWithoutCommunityFollowersInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -2604,6 +2709,7 @@ export type UserCreateWithoutCommunityFollowersInput = {
   savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -2621,13 +2727,14 @@ export type UserUncheckedCreateWithoutCommunityFollowersInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -2647,6 +2754,7 @@ export type UserUncheckedCreateWithoutCommunityFollowersInput = {
   savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -2680,13 +2788,14 @@ export type UserUpdateWithoutCommunityFollowersInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -2706,6 +2815,7 @@ export type UserUpdateWithoutCommunityFollowersInput = {
   savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -2723,13 +2833,14 @@ export type UserUncheckedUpdateWithoutCommunityFollowersInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -2749,6 +2860,7 @@ export type UserUncheckedUpdateWithoutCommunityFollowersInput = {
   savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -2766,13 +2878,14 @@ export type UserCreateWithoutFollowingInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -2792,6 +2905,7 @@ export type UserCreateWithoutFollowingInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -2809,13 +2923,14 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -2835,6 +2950,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -2857,13 +2973,14 @@ export type UserCreateWithoutFollowersInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -2883,6 +3000,7 @@ export type UserCreateWithoutFollowersInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -2900,13 +3018,14 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -2926,6 +3045,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -2959,13 +3079,14 @@ export type UserUpdateWithoutFollowingInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -2985,6 +3106,7 @@ export type UserUpdateWithoutFollowingInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -3002,13 +3124,14 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -3028,6 +3151,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -3056,13 +3180,14 @@ export type UserUpdateWithoutFollowersInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -3082,6 +3207,7 @@ export type UserUpdateWithoutFollowersInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -3099,13 +3225,14 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -3125,6 +3252,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -3142,13 +3270,14 @@ export type UserCreateWithoutFriendRequestsSentInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -3169,6 +3298,7 @@ export type UserCreateWithoutFriendRequestsSentInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
@@ -3185,13 +3315,14 @@ export type UserUncheckedCreateWithoutFriendRequestsSentInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -3212,6 +3343,7 @@ export type UserUncheckedCreateWithoutFriendRequestsSentInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -3233,13 +3365,14 @@ export type UserCreateWithoutFriendRequestsReceivedInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -3260,6 +3393,7 @@ export type UserCreateWithoutFriendRequestsReceivedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
@@ -3276,13 +3410,14 @@ export type UserUncheckedCreateWithoutFriendRequestsReceivedInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -3303,6 +3438,7 @@ export type UserUncheckedCreateWithoutFriendRequestsReceivedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -3335,13 +3471,14 @@ export type UserUpdateWithoutFriendRequestsSentInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -3362,6 +3499,7 @@ export type UserUpdateWithoutFriendRequestsSentInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
@@ -3378,13 +3516,14 @@ export type UserUncheckedUpdateWithoutFriendRequestsSentInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -3405,6 +3544,7 @@ export type UserUncheckedUpdateWithoutFriendRequestsSentInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
@@ -3432,13 +3572,14 @@ export type UserUpdateWithoutFriendRequestsReceivedInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -3459,6 +3600,7 @@ export type UserUpdateWithoutFriendRequestsReceivedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
@@ -3475,13 +3617,14 @@ export type UserUncheckedUpdateWithoutFriendRequestsReceivedInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -3502,6 +3645,7 @@ export type UserUncheckedUpdateWithoutFriendRequestsReceivedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
@@ -3518,13 +3662,14 @@ export type UserCreateWithoutLikedPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -3545,6 +3690,7 @@ export type UserCreateWithoutLikedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -3561,13 +3707,14 @@ export type UserUncheckedCreateWithoutLikedPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -3588,6 +3735,7 @@ export type UserUncheckedCreateWithoutLikedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -3620,13 +3768,14 @@ export type UserUpdateWithoutLikedPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -3647,6 +3796,7 @@ export type UserUpdateWithoutLikedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -3663,13 +3813,14 @@ export type UserUncheckedUpdateWithoutLikedPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -3690,6 +3841,7 @@ export type UserUncheckedUpdateWithoutLikedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -3697,7 +3849,7 @@ export type UserUncheckedUpdateWithoutLikedPostsInput = {
   sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutNotificationsInput = {
+export type UserCreateWithoutNotificationToggleInput = {
   id?: string
   name: string
   email: string
@@ -3706,13 +3858,15 @@ export type UserCreateWithoutNotificationsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
   conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
@@ -3740,7 +3894,7 @@ export type UserCreateWithoutNotificationsInput = {
   sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutNotificationsInput = {
+export type UserUncheckedCreateWithoutNotificationToggleInput = {
   id?: string
   name: string
   email: string
@@ -3749,13 +3903,15 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
   conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
@@ -3775,6 +3931,202 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutNotificationToggleInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationToggleInput, Prisma.UserUncheckedCreateWithoutNotificationToggleInput>
+}
+
+export type UserUpsertWithoutNotificationToggleInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutNotificationToggleInput, Prisma.UserUncheckedUpdateWithoutNotificationToggleInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutNotificationToggleInput, Prisma.UserUncheckedCreateWithoutNotificationToggleInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutNotificationToggleInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutNotificationToggleInput, Prisma.UserUncheckedUpdateWithoutNotificationToggleInput>
+}
+
+export type UserUpdateWithoutNotificationToggleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutNotificationToggleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
+  otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedUpdateManyWithoutReceiverNestedInput
+  messagesSent?: Prisma.PrivateMessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedUpdateManyWithoutUserNestedInput
+  hostedCalls?: Prisma.CallingUncheckedUpdateManyWithoutHostNestedInput
+  receivedCalls?: Prisma.CallingUncheckedUpdateManyWithoutRecipientNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  follows?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followedBy?: Prisma.UserFollowUncheckedUpdateManyWithoutFollowedNestedInput
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedUpdateManyWithoutUserNestedInput
+  savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
+  likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
+  friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
+  friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput
+  likedPosts?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  sharedPosts?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  fcmToken?: string | null
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profilePicture?: string | null
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
+  ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
+  friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
+  friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
+  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput
+  likedPosts?: Prisma.LikeCreateNestedManyWithoutUserInput
+  sharedPosts?: Prisma.ShareCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutNotificationsInput = {
+  id?: string
+  name: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  isVerified?: boolean
+  isOnline?: boolean
+  fcmToken?: string | null
+  lastLoginAt?: Date | string | null
+  lastActiveAt?: Date | string | null
+  locationLon?: string | null
+  locationLat?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profilePicture?: string | null
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
+  otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
+  conversationsInitiated?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutInitiatorInput
+  conversationsReceived?: Prisma.PrivateConversationUncheckedCreateNestedManyWithoutReceiverInput
+  messagesSent?: Prisma.PrivateMessageUncheckedCreateNestedManyWithoutSenderInput
+  messageStatuses?: Prisma.PrivateMessageStatusUncheckedCreateNestedManyWithoutUserInput
+  hostedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutHostInput
+  receivedCalls?: Prisma.CallingUncheckedCreateNestedManyWithoutRecipientInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  follows?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowerInput
+  followedBy?: Prisma.UserFollowUncheckedCreateNestedManyWithoutFollowedInput
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  taggedInPosts?: Prisma.PostTagUserUncheckedCreateNestedManyWithoutUserInput
+  savedPosts?: Prisma.SavedPostUncheckedCreateNestedManyWithoutUserInput
+  communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
+  likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
+  communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -3808,13 +4160,14 @@ export type UserUpdateWithoutNotificationsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
   conversationsInitiated?: Prisma.PrivateConversationUpdateManyWithoutInitiatorNestedInput
@@ -3834,6 +4187,7 @@ export type UserUpdateWithoutNotificationsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -3851,13 +4205,14 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
   conversationsInitiated?: Prisma.PrivateConversationUncheckedUpdateManyWithoutInitiatorNestedInput
@@ -3877,6 +4232,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -3894,13 +4250,14 @@ export type UserCreateWithoutTaggedInPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -3920,6 +4277,7 @@ export type UserCreateWithoutTaggedInPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -3937,13 +4295,14 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -3963,6 +4322,7 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -3996,13 +4356,14 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -4022,6 +4383,7 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -4039,13 +4401,14 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -4065,6 +4428,7 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -4082,13 +4446,14 @@ export type UserCreateWithoutPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -4109,6 +4474,7 @@ export type UserCreateWithoutPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -4125,13 +4491,14 @@ export type UserUncheckedCreateWithoutPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -4152,6 +4519,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -4184,13 +4552,14 @@ export type UserUpdateWithoutPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -4211,6 +4580,7 @@ export type UserUpdateWithoutPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -4227,13 +4597,14 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -4254,6 +4625,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -4270,13 +4642,14 @@ export type UserCreateWithoutSavedPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -4296,6 +4669,7 @@ export type UserCreateWithoutSavedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -4313,13 +4687,14 @@ export type UserUncheckedCreateWithoutSavedPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -4339,6 +4714,7 @@ export type UserUncheckedCreateWithoutSavedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -4372,13 +4748,14 @@ export type UserUpdateWithoutSavedPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -4398,6 +4775,7 @@ export type UserUpdateWithoutSavedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -4415,13 +4793,14 @@ export type UserUncheckedUpdateWithoutSavedPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -4441,6 +4820,7 @@ export type UserUncheckedUpdateWithoutSavedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -4458,13 +4838,14 @@ export type UserCreateWithoutConversationsInitiatedInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -4484,6 +4865,7 @@ export type UserCreateWithoutConversationsInitiatedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -4501,13 +4883,14 @@ export type UserUncheckedCreateWithoutConversationsInitiatedInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -4527,6 +4910,7 @@ export type UserUncheckedCreateWithoutConversationsInitiatedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -4549,13 +4933,14 @@ export type UserCreateWithoutConversationsReceivedInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -4575,6 +4960,7 @@ export type UserCreateWithoutConversationsReceivedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -4592,13 +4978,14 @@ export type UserUncheckedCreateWithoutConversationsReceivedInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -4618,6 +5005,7 @@ export type UserUncheckedCreateWithoutConversationsReceivedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -4651,13 +5039,14 @@ export type UserUpdateWithoutConversationsInitiatedInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -4677,6 +5066,7 @@ export type UserUpdateWithoutConversationsInitiatedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -4694,13 +5084,14 @@ export type UserUncheckedUpdateWithoutConversationsInitiatedInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -4720,6 +5111,7 @@ export type UserUncheckedUpdateWithoutConversationsInitiatedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -4748,13 +5140,14 @@ export type UserUpdateWithoutConversationsReceivedInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -4774,6 +5167,7 @@ export type UserUpdateWithoutConversationsReceivedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -4791,13 +5185,14 @@ export type UserUncheckedUpdateWithoutConversationsReceivedInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -4817,6 +5212,7 @@ export type UserUncheckedUpdateWithoutConversationsReceivedInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -4834,13 +5230,14 @@ export type UserCreateWithoutMessagesSentInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -4860,6 +5257,7 @@ export type UserCreateWithoutMessagesSentInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -4877,13 +5275,14 @@ export type UserUncheckedCreateWithoutMessagesSentInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -4903,6 +5302,7 @@ export type UserUncheckedCreateWithoutMessagesSentInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -4936,13 +5336,14 @@ export type UserUpdateWithoutMessagesSentInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -4962,6 +5363,7 @@ export type UserUpdateWithoutMessagesSentInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -4979,13 +5381,14 @@ export type UserUncheckedUpdateWithoutMessagesSentInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -5005,6 +5408,7 @@ export type UserUncheckedUpdateWithoutMessagesSentInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -5022,13 +5426,14 @@ export type UserCreateWithoutMessageStatusesInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -5048,6 +5453,7 @@ export type UserCreateWithoutMessageStatusesInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -5065,13 +5471,14 @@ export type UserUncheckedCreateWithoutMessageStatusesInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -5091,6 +5498,7 @@ export type UserUncheckedCreateWithoutMessageStatusesInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -5124,13 +5532,14 @@ export type UserUpdateWithoutMessageStatusesInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -5150,6 +5559,7 @@ export type UserUpdateWithoutMessageStatusesInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -5167,13 +5577,14 @@ export type UserUncheckedUpdateWithoutMessageStatusesInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -5193,6 +5604,7 @@ export type UserUncheckedUpdateWithoutMessageStatusesInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -5210,13 +5622,14 @@ export type UserCreateWithoutProfileInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -5236,6 +5649,7 @@ export type UserCreateWithoutProfileInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -5253,13 +5667,14 @@ export type UserUncheckedCreateWithoutProfileInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -5279,6 +5694,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -5312,13 +5728,14 @@ export type UserUpdateWithoutProfileInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -5338,6 +5755,7 @@ export type UserUpdateWithoutProfileInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -5355,13 +5773,14 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -5381,6 +5800,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -5398,13 +5818,14 @@ export type UserCreateWithoutSharedPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -5425,6 +5846,7 @@ export type UserCreateWithoutSharedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -5441,13 +5863,14 @@ export type UserUncheckedCreateWithoutSharedPostsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -5468,6 +5891,7 @@ export type UserUncheckedCreateWithoutSharedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -5500,13 +5924,14 @@ export type UserUpdateWithoutSharedPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -5527,6 +5952,7 @@ export type UserUpdateWithoutSharedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -5543,13 +5969,14 @@ export type UserUncheckedUpdateWithoutSharedPostsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -5570,6 +5997,7 @@ export type UserUncheckedUpdateWithoutSharedPostsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -5586,13 +6014,14 @@ export type UserCreateWithoutFollowsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -5612,6 +6041,7 @@ export type UserCreateWithoutFollowsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -5629,13 +6059,14 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -5655,6 +6086,7 @@ export type UserUncheckedCreateWithoutFollowsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -5677,13 +6109,14 @@ export type UserCreateWithoutFollowedByInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpCreateNestedManyWithoutUserInput
@@ -5703,6 +6136,7 @@ export type UserCreateWithoutFollowedByInput = {
   communityMemberships?: Prisma.CommunitiesMembershipCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestCreateNestedManyWithoutReceiverInput
@@ -5720,13 +6154,14 @@ export type UserUncheckedCreateWithoutFollowedByInput = {
   status?: $Enums.UserStatus
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: string | null
   lastLoginAt?: Date | string | null
   lastActiveAt?: Date | string | null
-  profilePicture?: string | null
   locationLon?: string | null
   locationLat?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  profilePicture?: string | null
   notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
   refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput
   otps?: Prisma.UserOtpUncheckedCreateNestedManyWithoutUserInput
@@ -5746,6 +6181,7 @@ export type UserUncheckedCreateWithoutFollowedByInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedCreateNestedManyWithoutUserInput
   likedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutLikersInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedCreateNestedManyWithoutUserInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedCreateNestedManyWithoutUserInput
   ownedCommunities?: Prisma.CommunityUncheckedCreateNestedManyWithoutOwnerInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutSenderInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedCreateNestedManyWithoutReceiverInput
@@ -5779,13 +6215,14 @@ export type UserUpdateWithoutFollowsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -5805,6 +6242,7 @@ export type UserUpdateWithoutFollowsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -5822,13 +6260,14 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -5848,6 +6287,7 @@ export type UserUncheckedUpdateWithoutFollowsInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -5876,13 +6316,14 @@ export type UserUpdateWithoutFollowedByInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -5902,6 +6343,7 @@ export type UserUpdateWithoutFollowedByInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -5919,13 +6361,14 @@ export type UserUncheckedUpdateWithoutFollowedByInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -5945,6 +6388,7 @@ export type UserUncheckedUpdateWithoutFollowedByInput = {
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   likedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutLikersNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -5962,13 +6406,14 @@ export type UserUpdateWithoutLikedCommunitiesInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUpdateManyWithoutUserNestedInput
@@ -5988,6 +6433,7 @@ export type UserUpdateWithoutLikedCommunitiesInput = {
   savedPosts?: Prisma.SavedPostUpdateManyWithoutUserNestedInput
   communityMemberships?: Prisma.CommunitiesMembershipUpdateManyWithoutUserNestedInput
   communityFollowers?: Prisma.CommunityFollowerUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUpdateManyWithoutReceiverNestedInput
@@ -6005,13 +6451,14 @@ export type UserUncheckedUpdateWithoutLikedCommunitiesInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
   otps?: Prisma.UserOtpUncheckedUpdateManyWithoutUserNestedInput
@@ -6031,6 +6478,7 @@ export type UserUncheckedUpdateWithoutLikedCommunitiesInput = {
   savedPosts?: Prisma.SavedPostUncheckedUpdateManyWithoutUserNestedInput
   communityMemberships?: Prisma.CommunitiesMembershipUncheckedUpdateManyWithoutUserNestedInput
   communityFollowers?: Prisma.CommunityFollowerUncheckedUpdateManyWithoutUserNestedInput
+  notificationToggle?: Prisma.NotificationToggleUncheckedUpdateManyWithoutUserNestedInput
   ownedCommunities?: Prisma.CommunityUncheckedUpdateManyWithoutOwnerNestedInput
   friendRequestsSent?: Prisma.FriendRequestUncheckedUpdateManyWithoutSenderNestedInput
   friendRequestsReceived?: Prisma.FriendRequestUncheckedUpdateManyWithoutReceiverNestedInput
@@ -6048,13 +6496,14 @@ export type UserUncheckedUpdateManyWithoutLikedCommunitiesInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isOnline?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fcmToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastActiveAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLon?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationLat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profilePicture?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -6082,6 +6531,7 @@ export type UserCountOutputType = {
   communityMemberships: number
   likedCommunities: number
   communityFollowers: number
+  notificationToggle: number
   ownedCommunities: number
   friendRequestsSent: number
   friendRequestsReceived: number
@@ -6110,6 +6560,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   communityMemberships?: boolean | UserCountOutputTypeCountCommunityMembershipsArgs
   likedCommunities?: boolean | UserCountOutputTypeCountLikedCommunitiesArgs
   communityFollowers?: boolean | UserCountOutputTypeCountCommunityFollowersArgs
+  notificationToggle?: boolean | UserCountOutputTypeCountNotificationToggleArgs
   ownedCommunities?: boolean | UserCountOutputTypeCountOwnedCommunitiesArgs
   friendRequestsSent?: boolean | UserCountOutputTypeCountFriendRequestsSentArgs
   friendRequestsReceived?: boolean | UserCountOutputTypeCountFriendRequestsReceivedArgs
@@ -6264,6 +6715,13 @@ export type UserCountOutputTypeCountCommunityFollowersArgs<ExtArgs extends runti
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountNotificationToggleArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationToggleWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountOwnedCommunitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.CommunityWhereInput
 }
@@ -6313,13 +6771,14 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   status?: boolean
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: boolean
   lastLoginAt?: boolean
   lastActiveAt?: boolean
-  profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  profilePicture?: boolean
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
   otps?: boolean | Prisma.User$otpsArgs<ExtArgs>
@@ -6340,6 +6799,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   communityMemberships?: boolean | Prisma.User$communityMembershipsArgs<ExtArgs>
   likedCommunities?: boolean | Prisma.User$likedCommunitiesArgs<ExtArgs>
   communityFollowers?: boolean | Prisma.User$communityFollowersArgs<ExtArgs>
+  notificationToggle?: boolean | Prisma.User$notificationToggleArgs<ExtArgs>
   ownedCommunities?: boolean | Prisma.User$ownedCommunitiesArgs<ExtArgs>
   friendRequestsSent?: boolean | Prisma.User$friendRequestsSentArgs<ExtArgs>
   friendRequestsReceived?: boolean | Prisma.User$friendRequestsReceivedArgs<ExtArgs>
@@ -6358,13 +6818,14 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   status?: boolean
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: boolean
   lastLoginAt?: boolean
   lastActiveAt?: boolean
-  profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  profilePicture?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -6376,13 +6837,14 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   status?: boolean
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: boolean
   lastLoginAt?: boolean
   lastActiveAt?: boolean
-  profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  profilePicture?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -6394,16 +6856,17 @@ export type UserSelectScalar = {
   status?: boolean
   isVerified?: boolean
   isOnline?: boolean
+  fcmToken?: boolean
   lastLoginAt?: boolean
   lastActiveAt?: boolean
-  profilePicture?: boolean
   locationLon?: boolean
   locationLat?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  profilePicture?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "status" | "isVerified" | "isOnline" | "lastLoginAt" | "lastActiveAt" | "profilePicture" | "locationLon" | "locationLat" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "status" | "isVerified" | "isOnline" | "fcmToken" | "lastLoginAt" | "lastActiveAt" | "locationLon" | "locationLat" | "createdAt" | "updatedAt" | "profilePicture", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>
@@ -6425,6 +6888,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   communityMemberships?: boolean | Prisma.User$communityMembershipsArgs<ExtArgs>
   likedCommunities?: boolean | Prisma.User$likedCommunitiesArgs<ExtArgs>
   communityFollowers?: boolean | Prisma.User$communityFollowersArgs<ExtArgs>
+  notificationToggle?: boolean | Prisma.User$notificationToggleArgs<ExtArgs>
   ownedCommunities?: boolean | Prisma.User$ownedCommunitiesArgs<ExtArgs>
   friendRequestsSent?: boolean | Prisma.User$friendRequestsSentArgs<ExtArgs>
   friendRequestsReceived?: boolean | Prisma.User$friendRequestsReceivedArgs<ExtArgs>
@@ -6465,6 +6929,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     communityMemberships: Prisma.$CommunitiesMembershipPayload<ExtArgs>[]
     likedCommunities: Prisma.$CommunityPayload<ExtArgs>[]
     communityFollowers: Prisma.$CommunityFollowerPayload<ExtArgs>[]
+    notificationToggle: Prisma.$NotificationTogglePayload<ExtArgs>[]
     ownedCommunities: Prisma.$CommunityPayload<ExtArgs>[]
     friendRequestsSent: Prisma.$FriendRequestPayload<ExtArgs>[]
     friendRequestsReceived: Prisma.$FriendRequestPayload<ExtArgs>[]
@@ -6481,13 +6946,14 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     status: $Enums.UserStatus
     isVerified: boolean
     isOnline: boolean
+    fcmToken: string | null
     lastLoginAt: Date | null
     lastActiveAt: Date | null
-    profilePicture: string | null
     locationLon: string | null
     locationLat: string | null
     createdAt: Date
     updatedAt: Date
+    profilePicture: string | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -6902,6 +7368,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   communityMemberships<T extends Prisma.User$communityMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunitiesMembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   likedCommunities<T extends Prisma.User$likedCommunitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$likedCommunitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   communityFollowers<T extends Prisma.User$communityFollowersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityFollowersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityFollowerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notificationToggle<T extends Prisma.User$notificationToggleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationToggleArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationTogglePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   ownedCommunities<T extends Prisma.User$ownedCommunitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ownedCommunitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   friendRequestsSent<T extends Prisma.User$friendRequestsSentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$friendRequestsSentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FriendRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   friendRequestsReceived<T extends Prisma.User$friendRequestsReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$friendRequestsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FriendRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -6945,13 +7412,14 @@ export interface UserFieldRefs {
   readonly status: Prisma.FieldRef<"User", 'UserStatus'>
   readonly isVerified: Prisma.FieldRef<"User", 'Boolean'>
   readonly isOnline: Prisma.FieldRef<"User", 'Boolean'>
+  readonly fcmToken: Prisma.FieldRef<"User", 'String'>
   readonly lastLoginAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly lastActiveAt: Prisma.FieldRef<"User", 'DateTime'>
-  readonly profilePicture: Prisma.FieldRef<"User", 'String'>
   readonly locationLon: Prisma.FieldRef<"User", 'String'>
   readonly locationLat: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly profilePicture: Prisma.FieldRef<"User", 'String'>
 }
     
 
@@ -7812,6 +8280,30 @@ export type User$communityFollowersArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.CommunityFollowerScalarFieldEnum | Prisma.CommunityFollowerScalarFieldEnum[]
+}
+
+/**
+ * User.notificationToggle
+ */
+export type User$notificationToggleArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the NotificationToggle
+   */
+  select?: Prisma.NotificationToggleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the NotificationToggle
+   */
+  omit?: Prisma.NotificationToggleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationToggleInclude<ExtArgs> | null
+  where?: Prisma.NotificationToggleWhereInput
+  orderBy?: Prisma.NotificationToggleOrderByWithRelationInput | Prisma.NotificationToggleOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationToggleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationToggleScalarFieldEnum | Prisma.NotificationToggleScalarFieldEnum[]
 }
 
 /**

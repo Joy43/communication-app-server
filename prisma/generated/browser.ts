@@ -98,6 +98,11 @@ export type Gif = Prisma.GifModel
  */
 export type Location = Prisma.LocationModel
 /**
+ * Model NotificationToggle
+ * 
+ */
+export type NotificationToggle = Prisma.NotificationToggleModel
+/**
  * Model Notification
  * 
  */

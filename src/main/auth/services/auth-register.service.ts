@@ -17,7 +17,7 @@ export class AuthRegisterService {
 
   @HandleError('Registration failed', 'User')
   async register(dto: RegisterDto): Promise<TResponse<any>> {
-    const { email, password, name } = dto;
+    const { email, password, name, fcmToken } = dto;
 
     // Check if user email already exists
     const existingUser = await this.prisma.client.user.findUnique({
@@ -33,11 +33,11 @@ export class AuthRegisterService {
         email,
         name,
         password: await this.utils.hash(password),
+        fcmToken: fcmToken || null,
       },
     });
-   
 
-    // Generate OTP and save
+    //------Generate OTP and save to DB for email verification------
     const otp = await this.utils.generateOTPAndSave(newUser.id, 'VERIFICATION');
 
     // Send verification email

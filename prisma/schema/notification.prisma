@@ -5,8 +5,8 @@ model Notification {
   title   String
   message String
 
-  // Use JSON to store metadata
-  meta Json
+  //-------- Use JSON to store metadata --------
+  meta Json?
 
   users UserNotification[]
 
@@ -39,4 +39,24 @@ enum NotificationType {
   review
   payment
   userRegistration
+  follow
+  orderUpdate
+  uploadProof
+  paymentReminder
+  newOrder
+  serviceRequestAccepted
+  serviceRequestRejected
+  serviceRequestCancelled
+  paymentSuccessful
+  paymentFailed
+  inquiryResponse
+  reviewReceived
+  postLiked
+  postCommented
+  postShared
+  postReplied
+  donationReceived
+  communityCreated
+  communityJoined 
 }
+

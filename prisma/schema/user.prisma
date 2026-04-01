@@ -2,16 +2,17 @@ model User {
   id String @id @default(uuid())
 
   // ---------  Identity  --------
-  name     String 
+  name     String
   email    String @unique
-  password String 
+  password String
 
   // ------- Settings -------
   role       UserRole   @default(USER)
   status     UserStatus @default(ACTIVE)
   isVerified Boolean    @default(false)
-  isOnline       Boolean  @default(false)
- 
+  isOnline   Boolean    @default(false)
+  fcmToken   String?    @default("")
+
   lastLoginAt  DateTime?
   lastActiveAt DateTime?
 
@@ -20,7 +21,7 @@ model User {
   refreshTokens RefreshToken[]
   otps          UserOtp[]
 
-  // CHAT & CALL RELATIONS
+  //-------  CHAT & CALL RELATIONS --------
   conversationsInitiated PrivateConversation[] @relation("ConversationInitiator")
   conversationsReceived  PrivateConversation[] @relation("ConversationReceiver")
 
@@ -30,25 +31,23 @@ model User {
   /// Message delivery/read statuses
   messageStatuses PrivateMessageStatus[]
 
-
-  // location longitude
+  // location 
   locationLon String? @default("-71.0589")
-  // location latitude
-  locationLat String? @default("42.3601")
 
+  locationLat String? @default("42.3601")
 
   //  --------- Calling relations ---------
   hostedCalls   Calling[] @relation("HostedCalls")
   receivedCalls Calling[] @relation("ReceivedCalls")
   // ---- MANY-TO-MANY RELATIONSHIPS ----
-  followers Follow[] @relation("UserFollowers")
-  following Follow[] @relation("UserFollowing")
+  followers     Follow[]  @relation("UserFollowers")
+  following     Follow[]  @relation("UserFollowing")
 
   // ============== Following sytem ==================
   // Users this user follows
-  follows    UserFollow[] @relation("follows")
+  follows       UserFollow[]  @relation("follows")
   // Users following this user
-  followedBy UserFollow[] @relation("followedBy")
+  followedBy    UserFollow[]  @relation("followedBy")
   profile       Profile?
   comments      Comment[]
   taggedInPosts PostTagUser[]
@@ -57,17 +56,19 @@ model User {
   communityMemberships CommunitiesMembership[]
   likedCommunities     Community[]             @relation("CommunityLikers")
   communityFollowers   CommunityFollower[]
+  notificationToggle   NotificationToggle[]
   // -------- Timestamps ---------
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  createdAt            DateTime                @default(now())
+  updatedAt            DateTime                @default(now()) @updatedAt
+  profilePicture String? @default("https://example.com/default-profile-pic.png")
 
   // -------- Additional Relations --------
-  ownedCommunities Community[] @relation("CommunityOwner")
+  ownedCommunities       Community[]     @relation("CommunityOwner")
   friendRequestsSent     FriendRequest[] @relation("FriendRequestSender")
   friendRequestsReceived FriendRequest[] @relation("FriendRequestReceiver")
-  posts Post[]
-  likedPosts Like[]
-  sharedPosts Share[]
+  posts                  Post[]
+  likedPosts             Like[]
+  sharedPosts            Share[]
 
   @@map("users")
 }

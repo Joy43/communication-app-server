@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
 
 export class LoginDto {
   @ApiProperty({
@@ -17,4 +17,11 @@ export class LoginDto {
   @IsNotEmpty()
   @MinLength(6)
   password: string;
+  // -----fcmToken-----
+  @ApiProperty({
+    example: '1RERR23FFERE456RER78',
+    description: 'fcmToken',
+  })
+  @IsOptional()
+  fcmToken: string;
 }

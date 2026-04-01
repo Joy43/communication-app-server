@@ -67,6 +67,7 @@ export const ModelName = {
   Like: 'Like',
   Gif: 'Gif',
   Location: 'Location',
+  NotificationToggle: 'NotificationToggle',
   Notification: 'Notification',
   UserNotification: 'UserNotification',
   PostMetadata: 'PostMetadata',
@@ -312,6 +313,42 @@ export const LocationScalarFieldEnum = {
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
 
 
+export const NotificationToggleScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  userUpdates: 'userUpdates',
+  serviceCreate: 'serviceCreate',
+  review: 'review',
+  post: 'post',
+  message: 'message',
+  inquiry: 'inquiry',
+  userRegistration: 'userRegistration',
+  service: 'service',
+  follow: 'follow',
+  orderUpdate: 'orderUpdate',
+  uploadProof: 'uploadProof',
+  paymentReminder: 'paymentReminder',
+  newOrder: 'newOrder',
+  serviceRequestAccepted: 'serviceRequestAccepted',
+  serviceRequestRejected: 'serviceRequestRejected',
+  serviceRequestCancelled: 'serviceRequestCancelled',
+  paymentSuccessful: 'paymentSuccessful',
+  paymentFailed: 'paymentFailed',
+  inquiryResponse: 'inquiryResponse',
+  reviewReceived: 'reviewReceived',
+  postLiked: 'postLiked',
+  postCommented: 'postCommented',
+  postShared: 'postShared',
+  postReplied: 'postReplied',
+  donationReceived: 'donationReceived',
+  communityCreated: 'communityCreated',
+  communityJoined: 'communityJoined',
+  userId: 'userId'
+} as const
+
+export type NotificationToggleScalarFieldEnum = (typeof NotificationToggleScalarFieldEnum)[keyof typeof NotificationToggleScalarFieldEnum]
+
+
 export const NotificationScalarFieldEnum = {
   id: 'id',
   type: 'type',
@@ -515,13 +552,14 @@ export const UserScalarFieldEnum = {
   status: 'status',
   isVerified: 'isVerified',
   isOnline: 'isOnline',
+  fcmToken: 'fcmToken',
   lastLoginAt: 'lastLoginAt',
   lastActiveAt: 'lastActiveAt',
-  profilePicture: 'profilePicture',
   locationLon: 'locationLon',
   locationLat: 'locationLat',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  profilePicture: 'profilePicture'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -544,11 +582,12 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const JsonNullValueInput = {
+export const NullableJsonNullValueInput = {
+  DbNull: 'DbNull',
   JsonNull: 'JsonNull'
 } as const
 
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {

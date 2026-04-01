@@ -101,7 +101,26 @@ export const NotificationType = {
   message: 'message',
   review: 'review',
   payment: 'payment',
-  userRegistration: 'userRegistration'
+  userRegistration: 'userRegistration',
+  follow: 'follow',
+  orderUpdate: 'orderUpdate',
+  uploadProof: 'uploadProof',
+  paymentReminder: 'paymentReminder',
+  newOrder: 'newOrder',
+  serviceRequestAccepted: 'serviceRequestAccepted',
+  serviceRequestRejected: 'serviceRequestRejected',
+  serviceRequestCancelled: 'serviceRequestCancelled',
+  paymentSuccessful: 'paymentSuccessful',
+  paymentFailed: 'paymentFailed',
+  inquiryResponse: 'inquiryResponse',
+  reviewReceived: 'reviewReceived',
+  postLiked: 'postLiked',
+  postCommented: 'postCommented',
+  postShared: 'postShared',
+  postReplied: 'postReplied',
+  donationReceived: 'donationReceived',
+  communityCreated: 'communityCreated',
+  communityJoined: 'communityJoined'
 } as const
 
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
