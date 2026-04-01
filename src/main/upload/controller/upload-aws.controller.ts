@@ -25,7 +25,7 @@ import * as multer from 'multer';
 import { DeleteFilesRequestDto } from '../dto/delete-file.dto';
 import { UploadFilesRequestDto } from '../dto/upload-file-request.dto';
 import { UploadFilesResponseDto } from '../dto/upload-file-response.dto';
-import { UploadService } from '../service/upload.service';
+import { UploadService } from '../service/upload-aws.service';
 
 @ApiBearerAuth()
 @ValidateAuth()
