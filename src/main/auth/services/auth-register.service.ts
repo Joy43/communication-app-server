@@ -4,7 +4,11 @@ import { HandleError } from '@/core/error/handle-error.decorator';
 import { AuthMailService } from '@/lib/mail/services/auth-mail.service';
 import { PrismaService } from '@/lib/prisma/prisma.service';
 import { AuthUtilsService } from '@/lib/utils/services/auth-utils.service';
+import { UserRegistration } from '@/main/notifications/socketio-notification/interface/events-payload';
+import { EVENT_TYPES } from '@/main/notifications/socketio-notification/interface/events.name';
 import { Injectable } from '@nestjs/common';
+import { EventEmitter2 } from '@nestjs/event-emitter';
+import { UserRole, UserStatus } from '../../../../prisma/generated/enums';
 import { RegisterDto } from '../dto/register.dto';
 
 @Injectable()
@@ -13,6 +17,7 @@ export class AuthRegisterService {
     private readonly prisma: PrismaService,
     private readonly authMailService: AuthMailService,
     private readonly utils: AuthUtilsService,
+    private readonly eventEmitter: EventEmitter2,
   ) {}
 
   @HandleError('Registration failed', 'User')
@@ -52,7 +57,7 @@ export class AuthRegisterService {
         },
       );
     } catch (error) {
-      // Clean up the created user and OTP so the user can try registering again
+      
       await this.prisma.client.userOtp.deleteMany({
         where: { userId: newUser.id },
       });
@@ -65,7 +70,32 @@ export class AuthRegisterService {
       );
     }
 
-    //  ------- Return sanitized response -------
+    //   Get all SUPERADMIN users
+    const superAdmins = await this.prisma.client.user.findMany({
+      where: {
+        role: UserRole.SUPER_ADMIN,
+        status: UserStatus.ACTIVE,
+      },
+      select: { id: true, email: true },
+    });
+
+    // Emit registration event
+    this.eventEmitter.emit(EVENT_TYPES.USERREGISTRATION_CREATE, {
+      action: 'CREATE',
+      info: {
+        id: newUser.id,
+        email: newUser.email,
+        name: newUser.name,
+        role: newUser.role,
+        createdAt: newUser.createdAt,
+        recipients: superAdmins,
+      },
+      meta: {
+        registrationMethod: 'email',
+      },
+    } as unknown as UserRegistration);
+
+    // Return sanitized response
     return successResponse(
       {
         email: newUser.email,

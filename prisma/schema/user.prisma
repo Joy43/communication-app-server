@@ -60,7 +60,7 @@ model User {
   // -------- Timestamps ---------
   createdAt            DateTime                @default(now())
   updatedAt            DateTime                @default(now()) @updatedAt
-  profilePicture String? @default("https://example.com/default-profile-pic.png")
+  profilePicture String? @default("")
 
   // -------- Additional Relations --------
   ownedCommunities       Community[]     @relation("CommunityOwner")

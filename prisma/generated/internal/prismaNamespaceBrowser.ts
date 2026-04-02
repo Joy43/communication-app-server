@@ -336,6 +336,7 @@ export const NotificationToggleScalarFieldEnum = {
   paymentFailed: 'paymentFailed',
   inquiryResponse: 'inquiryResponse',
   reviewReceived: 'reviewReceived',
+  postCreated: 'postCreated',
   postLiked: 'postLiked',
   postCommented: 'postCommented',
   postShared: 'postShared',

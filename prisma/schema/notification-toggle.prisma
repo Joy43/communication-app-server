@@ -21,6 +21,7 @@ model NotificationToggle {
     paymentFailed           Boolean @default(true)
     inquiryResponse         Boolean @default(true)
     reviewReceived          Boolean @default(true)
+    postCreated              Boolean @default(true)
     postLiked               Boolean @default(true)
     postCommented           Boolean @default(true)
     postShared              Boolean @default(true)

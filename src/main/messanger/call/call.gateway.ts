@@ -26,7 +26,16 @@ export class CallGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   async handleConnection(client: Socket) {
     try {
-      const token = client.handshake.headers.authorization?.split(' ')[1];
+      const authHeader =
+        client.handshake.headers.authorization || client.handshake.auth?.token;
+
+      if (!authHeader) throw new Error('No authorization header provided');
+
+      const authHeaderString = String(authHeader);
+      const token = authHeaderString.startsWith('Bearer ')
+        ? authHeaderString.split(' ')[1]
+        : authHeaderString;
+
       if (!token) throw new Error('No token provided');
 
       const secret = process.env.JWT_SECRET;
@@ -34,6 +43,8 @@ export class CallGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
       const decoded = jwt.verify(token, secret) as jwt.JwtPayload;
       const userId = decoded.sub as string;
+
+      if (!userId) throw new Error('No user ID in token');
 
       this.users.set(userId, client.id);
       console.log(`User connected: ${userId}`);

@@ -1,4 +1,4 @@
-import { forwardRef, Inject, Logger } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   ConnectedSocket,
@@ -36,7 +36,6 @@ export class PrivateChatGateway
     private readonly privateChatService: PrivateChatService,
     private readonly configService: ConfigService,
     private readonly prisma: PrismaService,
-
   ) {}
 
   @WebSocketServer()
@@ -62,9 +61,10 @@ export class PrivateChatGateway
       return;
     }
 
-    const token = authHeader.startsWith('Bearer ')
-      ? authHeader.split(' ')[1]
-      : authHeader;
+    const authHeaderString = String(authHeader);
+    const token = authHeaderString.startsWith('Bearer ')
+      ? authHeaderString.split(' ')[1]
+      : authHeaderString;
 
     if (!token) {
       client.emit(PrivateChatEvents.ERROR, { message: 'Missing token' });
@@ -135,8 +135,6 @@ export class PrivateChatGateway
 
       // Remove from socket mapping
       this.userSocketMap.delete(userId);
-
-
 
       await this.privateChatService.markUserInactive(userId);
 
@@ -394,7 +392,6 @@ export class PrivateChatGateway
       userId,
     });
   }
-
 
   /** -------------------- Helpers -------------------- */
 

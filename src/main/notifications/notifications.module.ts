@@ -1,9 +1,16 @@
 import { Module } from '@nestjs/common';
-import { NotificationsService } from './notifications.service';
-import { NotificationsController } from './notifications.controller';
+
+import { FirebaseModule } from '@/lib/firebase/firebase.module';
+import { FirebaseNotificationModule } from './firebase-notification/firebase-notification.module';
+import { SocketioNotificationModule } from './socketio-notification/socketio-notification.module';
 
 @Module({
-  controllers: [NotificationsController],
-  providers: [NotificationsService],
+  controllers: [],
+  providers: [],
+  imports: [
+    FirebaseNotificationModule,
+    SocketioNotificationModule,
+    FirebaseModule,
+  ],
 })
 export class NotificationsModule {}

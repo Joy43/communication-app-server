@@ -47,6 +47,7 @@ export type NotificationToggleMinAggregateOutputType = {
   paymentFailed: boolean | null
   inquiryResponse: boolean | null
   reviewReceived: boolean | null
+  postCreated: boolean | null
   postLiked: boolean | null
   postCommented: boolean | null
   postShared: boolean | null
@@ -80,6 +81,7 @@ export type NotificationToggleMaxAggregateOutputType = {
   paymentFailed: boolean | null
   inquiryResponse: boolean | null
   reviewReceived: boolean | null
+  postCreated: boolean | null
   postLiked: boolean | null
   postCommented: boolean | null
   postShared: boolean | null
@@ -113,6 +115,7 @@ export type NotificationToggleCountAggregateOutputType = {
   paymentFailed: number
   inquiryResponse: number
   reviewReceived: number
+  postCreated: number
   postLiked: number
   postCommented: number
   postShared: number
@@ -148,6 +151,7 @@ export type NotificationToggleMinAggregateInputType = {
   paymentFailed?: true
   inquiryResponse?: true
   reviewReceived?: true
+  postCreated?: true
   postLiked?: true
   postCommented?: true
   postShared?: true
@@ -181,6 +185,7 @@ export type NotificationToggleMaxAggregateInputType = {
   paymentFailed?: true
   inquiryResponse?: true
   reviewReceived?: true
+  postCreated?: true
   postLiked?: true
   postCommented?: true
   postShared?: true
@@ -214,6 +219,7 @@ export type NotificationToggleCountAggregateInputType = {
   paymentFailed?: true
   inquiryResponse?: true
   reviewReceived?: true
+  postCreated?: true
   postLiked?: true
   postCommented?: true
   postShared?: true
@@ -320,6 +326,7 @@ export type NotificationToggleGroupByOutputType = {
   paymentFailed: boolean
   inquiryResponse: boolean
   reviewReceived: boolean
+  postCreated: boolean
   postLiked: boolean
   postCommented: boolean
   postShared: boolean
@@ -374,6 +381,7 @@ export type NotificationToggleWhereInput = {
   paymentFailed?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   inquiryResponse?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   reviewReceived?: Prisma.BoolFilter<"NotificationToggle"> | boolean
+  postCreated?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   postLiked?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   postCommented?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   postShared?: Prisma.BoolFilter<"NotificationToggle"> | boolean
@@ -408,6 +416,7 @@ export type NotificationToggleOrderByWithRelationInput = {
   paymentFailed?: Prisma.SortOrder
   inquiryResponse?: Prisma.SortOrder
   reviewReceived?: Prisma.SortOrder
+  postCreated?: Prisma.SortOrder
   postLiked?: Prisma.SortOrder
   postCommented?: Prisma.SortOrder
   postShared?: Prisma.SortOrder
@@ -445,6 +454,7 @@ export type NotificationToggleWhereUniqueInput = Prisma.AtLeast<{
   paymentFailed?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   inquiryResponse?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   reviewReceived?: Prisma.BoolFilter<"NotificationToggle"> | boolean
+  postCreated?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   postLiked?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   postCommented?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   postShared?: Prisma.BoolFilter<"NotificationToggle"> | boolean
@@ -479,6 +489,7 @@ export type NotificationToggleOrderByWithAggregationInput = {
   paymentFailed?: Prisma.SortOrder
   inquiryResponse?: Prisma.SortOrder
   reviewReceived?: Prisma.SortOrder
+  postCreated?: Prisma.SortOrder
   postLiked?: Prisma.SortOrder
   postCommented?: Prisma.SortOrder
   postShared?: Prisma.SortOrder
@@ -518,6 +529,7 @@ export type NotificationToggleScalarWhereWithAggregatesInput = {
   paymentFailed?: Prisma.BoolWithAggregatesFilter<"NotificationToggle"> | boolean
   inquiryResponse?: Prisma.BoolWithAggregatesFilter<"NotificationToggle"> | boolean
   reviewReceived?: Prisma.BoolWithAggregatesFilter<"NotificationToggle"> | boolean
+  postCreated?: Prisma.BoolWithAggregatesFilter<"NotificationToggle"> | boolean
   postLiked?: Prisma.BoolWithAggregatesFilter<"NotificationToggle"> | boolean
   postCommented?: Prisma.BoolWithAggregatesFilter<"NotificationToggle"> | boolean
   postShared?: Prisma.BoolWithAggregatesFilter<"NotificationToggle"> | boolean
@@ -551,6 +563,7 @@ export type NotificationToggleCreateInput = {
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -584,6 +597,7 @@ export type NotificationToggleUncheckedCreateInput = {
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -617,6 +631,7 @@ export type NotificationToggleUpdateInput = {
   paymentFailed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   inquiryResponse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   reviewReceived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  postCreated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postLiked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postCommented?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postShared?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -650,6 +665,7 @@ export type NotificationToggleUncheckedUpdateInput = {
   paymentFailed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   inquiryResponse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   reviewReceived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  postCreated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postLiked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postCommented?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postShared?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -683,6 +699,7 @@ export type NotificationToggleCreateManyInput = {
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -716,6 +733,7 @@ export type NotificationToggleUpdateManyMutationInput = {
   paymentFailed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   inquiryResponse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   reviewReceived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  postCreated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postLiked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postCommented?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postShared?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -748,6 +766,7 @@ export type NotificationToggleUncheckedUpdateManyInput = {
   paymentFailed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   inquiryResponse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   reviewReceived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  postCreated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postLiked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postCommented?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postShared?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -781,6 +800,7 @@ export type NotificationToggleCountOrderByAggregateInput = {
   paymentFailed?: Prisma.SortOrder
   inquiryResponse?: Prisma.SortOrder
   reviewReceived?: Prisma.SortOrder
+  postCreated?: Prisma.SortOrder
   postLiked?: Prisma.SortOrder
   postCommented?: Prisma.SortOrder
   postShared?: Prisma.SortOrder
@@ -814,6 +834,7 @@ export type NotificationToggleMaxOrderByAggregateInput = {
   paymentFailed?: Prisma.SortOrder
   inquiryResponse?: Prisma.SortOrder
   reviewReceived?: Prisma.SortOrder
+  postCreated?: Prisma.SortOrder
   postLiked?: Prisma.SortOrder
   postCommented?: Prisma.SortOrder
   postShared?: Prisma.SortOrder
@@ -847,6 +868,7 @@ export type NotificationToggleMinOrderByAggregateInput = {
   paymentFailed?: Prisma.SortOrder
   inquiryResponse?: Prisma.SortOrder
   reviewReceived?: Prisma.SortOrder
+  postCreated?: Prisma.SortOrder
   postLiked?: Prisma.SortOrder
   postCommented?: Prisma.SortOrder
   postShared?: Prisma.SortOrder
@@ -932,6 +954,7 @@ export type NotificationToggleCreateWithoutUserInput = {
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -964,6 +987,7 @@ export type NotificationToggleUncheckedCreateWithoutUserInput = {
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -1025,6 +1049,7 @@ export type NotificationToggleScalarWhereInput = {
   paymentFailed?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   inquiryResponse?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   reviewReceived?: Prisma.BoolFilter<"NotificationToggle"> | boolean
+  postCreated?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   postLiked?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   postCommented?: Prisma.BoolFilter<"NotificationToggle"> | boolean
   postShared?: Prisma.BoolFilter<"NotificationToggle"> | boolean
@@ -1058,6 +1083,7 @@ export type NotificationToggleCreateManyUserInput = {
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -1090,6 +1116,7 @@ export type NotificationToggleUpdateWithoutUserInput = {
   paymentFailed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   inquiryResponse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   reviewReceived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  postCreated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postLiked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postCommented?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postShared?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1122,6 +1149,7 @@ export type NotificationToggleUncheckedUpdateWithoutUserInput = {
   paymentFailed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   inquiryResponse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   reviewReceived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  postCreated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postLiked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postCommented?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postShared?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1154,6 +1182,7 @@ export type NotificationToggleUncheckedUpdateManyWithoutUserInput = {
   paymentFailed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   inquiryResponse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   reviewReceived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  postCreated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postLiked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postCommented?: Prisma.BoolFieldUpdateOperationsInput | boolean
   postShared?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1188,6 +1217,7 @@ export type NotificationToggleSelect<ExtArgs extends runtime.Types.Extensions.In
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -1222,6 +1252,7 @@ export type NotificationToggleSelectCreateManyAndReturn<ExtArgs extends runtime.
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -1256,6 +1287,7 @@ export type NotificationToggleSelectUpdateManyAndReturn<ExtArgs extends runtime.
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -1290,6 +1322,7 @@ export type NotificationToggleSelectScalar = {
   paymentFailed?: boolean
   inquiryResponse?: boolean
   reviewReceived?: boolean
+  postCreated?: boolean
   postLiked?: boolean
   postCommented?: boolean
   postShared?: boolean
@@ -1300,7 +1333,7 @@ export type NotificationToggleSelectScalar = {
   userId?: boolean
 }
 
-export type NotificationToggleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "userUpdates" | "serviceCreate" | "review" | "post" | "message" | "inquiry" | "userRegistration" | "service" | "follow" | "orderUpdate" | "uploadProof" | "paymentReminder" | "newOrder" | "serviceRequestAccepted" | "serviceRequestRejected" | "serviceRequestCancelled" | "paymentSuccessful" | "paymentFailed" | "inquiryResponse" | "reviewReceived" | "postLiked" | "postCommented" | "postShared" | "postReplied" | "donationReceived" | "communityCreated" | "communityJoined" | "userId", ExtArgs["result"]["notificationToggle"]>
+export type NotificationToggleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "userUpdates" | "serviceCreate" | "review" | "post" | "message" | "inquiry" | "userRegistration" | "service" | "follow" | "orderUpdate" | "uploadProof" | "paymentReminder" | "newOrder" | "serviceRequestAccepted" | "serviceRequestRejected" | "serviceRequestCancelled" | "paymentSuccessful" | "paymentFailed" | "inquiryResponse" | "reviewReceived" | "postCreated" | "postLiked" | "postCommented" | "postShared" | "postReplied" | "donationReceived" | "communityCreated" | "communityJoined" | "userId", ExtArgs["result"]["notificationToggle"]>
 export type NotificationToggleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -1339,6 +1372,7 @@ export type $NotificationTogglePayload<ExtArgs extends runtime.Types.Extensions.
     paymentFailed: boolean
     inquiryResponse: boolean
     reviewReceived: boolean
+    postCreated: boolean
     postLiked: boolean
     postCommented: boolean
     postShared: boolean
@@ -1793,6 +1827,7 @@ export interface NotificationToggleFieldRefs {
   readonly paymentFailed: Prisma.FieldRef<"NotificationToggle", 'Boolean'>
   readonly inquiryResponse: Prisma.FieldRef<"NotificationToggle", 'Boolean'>
   readonly reviewReceived: Prisma.FieldRef<"NotificationToggle", 'Boolean'>
+  readonly postCreated: Prisma.FieldRef<"NotificationToggle", 'Boolean'>
   readonly postLiked: Prisma.FieldRef<"NotificationToggle", 'Boolean'>
   readonly postCommented: Prisma.FieldRef<"NotificationToggle", 'Boolean'>
   readonly postShared: Prisma.FieldRef<"NotificationToggle", 'Boolean'>
