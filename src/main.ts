@@ -55,11 +55,13 @@ async function bootstrap() {
     bodyParser.raw({ type: 'application/json' }),
   );
 
-  const port = parseInt(configService.get<string>(ENVEnum.PORT) ?? '3000', 10);
+const port =
+  parseInt(configService.get<string>(ENVEnum.PORT) ?? '', 10) ||
+  parseInt(process.env.PORT || '3000', 10);
 
-  await app.listen(port);
+await app.listen(port, '0.0.0.0');
 
-  logger.log(`🚀 Server running on: http://localhost:${port}`);
-  logger.log(`📚 Swagger docs: http://localhost:${port}/docs`);
+logger.log(`🚀 Server running on: http://0.0.0.0:${port}`);
+logger.log(`📚 Swagger docs: http://0.0.0.0:${port}/docs`);
 }
 bootstrap();

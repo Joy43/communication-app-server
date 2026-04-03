@@ -52,7 +52,7 @@ export class AuthLoginService {
         fcmToken: dto.fcmToken || user.fcmToken,
       },
     });
-
+ console.log('updatedUser', updatedUser);
     //  Generate Token
     const token = await this.utils.generateTokenPairAndSave({
       email,
