@@ -1,56 +1,38 @@
-# ====== BUILD STAGE ======
-FROM node:24-slim AS builder
+FROM node:20-slim
 
-# Enable corepack and activate pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# Set working directory
 WORKDIR /app
 
-# Install system dependencies for build
-RUN apt update && apt install -y openssl
+RUN apt-get update && apt-get install -y openssl curl && rm -rf /var/lib/apt/lists/*
 
-# Copy package, lock file & prisma folder
-COPY package.json pnpm-lock.yaml .npmrc ./
+# Copy package files
+COPY package*.json ./
+RUN npm ci
+
+# Copy Prisma configuration
 COPY prisma.config.ts ./
 COPY prisma ./prisma
 
-# Allow pnpm to build packages
-RUN pnpm config set allowed-builds '*' -g
+# Generate Prisma client
+ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy?schema=public"
+RUN npx prisma generate
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Copy application source
+COPY tsconfig*.json ./
+COPY nest-cli.json ./
+COPY src ./src
 
-# Copy rest of the project files
-COPY . .
+# Build application
+RUN npm run build
 
-# Build the app (NestJS -> dist/)
-RUN pnpm build
+# Create user
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 --ingroup nodejs --shell /bin/sh nestjs && \
+    chown -R nestjs:nodejs /app
 
-# ====== PRODUCTION STAGE ======
-FROM node:24-slim AS production
-
-# Enable corepack and activate pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# Set working directory
-WORKDIR /app
-
-# Install system dependencies needed at runtime
-RUN apt update && apt install -y openssl curl
-
-# Copy necessary files from builder stage
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/prisma.config.ts ./
-COPY --from=builder /app/prisma ./prisma
-
-# Install dependencies
-RUN pnpm install --frozen-lockfile
-
-# Expose the port
+USER nestjs
 EXPOSE 3000
 
-# Run the app
-CMD ["pnpm", "start"]
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s \
+  CMD curl -f http://localhost:3000/health || exit 1
+
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]

@@ -34,7 +34,7 @@ import { UploadService } from '../service/upload-aws.service';
 export class UploadController {
   constructor(private readonly uploadService: UploadService) {}
 
-  @Post()
+  @Post('aws')
   @ApiOperation({ summary: 'Upload multiple OR single files to S3' })
   @ApiConsumes('multipart/form-data')
   @ApiBody({ type: UploadFilesRequestDto })

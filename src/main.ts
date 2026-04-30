@@ -62,6 +62,6 @@ const port =
 await app.listen(port, '0.0.0.0');
 
 logger.log(`🚀 Server running on: http://0.0.0.0:${port}`);
-logger.log(`📚 Swagger docs: http://0.0.0.0:${port}/docs`);
+logger.log(`📚 Swagger docs: http://localhost:${port}/docs`);
 }
 bootstrap();

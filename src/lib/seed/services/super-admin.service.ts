@@ -32,7 +32,7 @@ export class SuperAdminService implements OnModuleInit {
       },
     });
 
-    // * create super admin
+    // ------------ create super admin user ------------
     if (!superAdminExists) {
       await this.prisma.client.user.create({
         data: {
@@ -40,6 +40,7 @@ export class SuperAdminService implements OnModuleInit {
           email: superAdminEmail,
           password: await this.authUtils.hash(superAdminPass),
           role: 'SUPER_ADMIN',
+          profilePicture:"https://static.keygames.com/0/116220/102218/672x448/pretty-avatar-maker.webp",
           isVerified: true,
           lastLoginAt: new Date(),
           lastActiveAt: new Date(),
@@ -51,7 +52,7 @@ export class SuperAdminService implements OnModuleInit {
       return;
     }
 
-    // * Log & update if super admin already exists
+    // ------------ Log & update if super admin already exists ------------
     await this.prisma.client.user.update({
       where: {
         email: superAdminEmail,

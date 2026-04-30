@@ -157,7 +157,7 @@ export class PostController {
   getAds(@Query() pagination: PaginationDto) {
     return this.postService.getAds(pagination);
   }
-//-------- follow -------------
+//-------- uplade ads -------------
   @ApiTags('Ads')
   @ValidateUser()
   @ApiBearerAuth()
@@ -196,7 +196,7 @@ export class PostController {
   ) {
     return this.postService.followUser(targetUserId, currentUserId);
   }
-//-------- follow -------------
+//-------- un follow follow -------------
   @ApiTags('Follow')
   @ValidateUser()
   @ApiBearerAuth()
@@ -208,7 +208,7 @@ export class PostController {
   ) {
     return this.postService.unfollowUser(targetUserId, currentUserId);
   }
-//------- follow -------------
+//------- get user follow -------------
   @ApiTags('Follow')
   @ApiOperation({ summary: "Get a user's followers" })
   @ApiQuery({ name: 'page', required: false })

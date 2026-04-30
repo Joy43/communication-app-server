@@ -1,23 +1,50 @@
-api.nestjsstarter.com {
-  tls internal # TODO: remove in production
-
-  reverse_proxy /socket.io* api:3000
-
-  @api {
-    not path /socket.io*
-  }
-
-  handle @api {
-    # Allow up to 500MB upload
-    request_body {
-      max_size 500MB
+api.naqel.app {
+    handle /uploads/* {
+        root * /var/www/uploads
+        file_server
     }
 
-    reverse_proxy api:3000 {
-      header_up X-Real-IP {remote}
-      header_up X-Forwarded-For {remote}
-      header_up X-Forwarded-Proto {scheme}
-      header_up Host {host}
+    # Proxy everything else to NestJS
+    handle {
+        reverse_proxy adelbenali_api:3000 {
+            transport http {
+                versions 1.1
+            }
+            header_up Host {host}
+            header_up X-Real-IP {remote}
+            header_up X-Forwarded-For {remote}
+            header_up X-Forwarded-Proto {scheme}
+        }
     }
-  }
+
+    header {
+        X-Frame-Options "SAMEORIGIN"
+        X-Content-Type-Options "nosniff"
+        X-XSS-Protection "1; mode=block"
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    }
+    
+    encode gzip
+}
+
+admin.naqel.app {
+    reverse_proxy adelbenali_frontend:3000 {
+        transport http {
+            versions 1.1
+        }
+        
+        header_up Host {host}
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+    }
+    
+    header {
+        X-Frame-Options "SAMEORIGIN"
+        X-Content-Type-Options "nosniff"
+        X-XSS-Protection "1; mode=block"
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    }
+    
+    encode gzip
 }
