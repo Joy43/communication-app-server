@@ -15,8 +15,6 @@ export class UpdateProfileDto {
   @MaxLength(50)
   name?: string;
 
-  
-
   @ApiPropertyOptional({
     example: 'Bio about user',
     description: 'Optional bio',

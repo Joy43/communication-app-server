@@ -5,6 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as bodyParser from 'body-parser';
+import * as os from 'os';
 import { AppModule } from './app.module';
 import { ENVEnum } from './common/enum/env.enum';
 import { AllExceptionsFilter } from './core/filter/http-exception.filter';
@@ -55,13 +56,29 @@ async function bootstrap() {
     bodyParser.raw({ type: 'application/json' }),
   );
 
-const port =
-  parseInt(configService.get<string>(ENVEnum.PORT) ?? '', 10) ||
-  parseInt(process.env.PORT || '3000', 10);
+  const port =
+    parseInt(configService.get<string>(ENVEnum.PORT) ?? '', 10) ||
+    parseInt(process.env.PORT || '3000', 10);
 
-await app.listen(port, '0.0.0.0');
+  await app.listen(port, '0.0.0.0');
 
-logger.log(`🚀 Server running on: http://0.0.0.0:${port}`);
-logger.log(`📚 Swagger docs: http://localhost:${port}/docs`);
+  //------ Get local IP address-----
+  const networkInterfaces = os.networkInterfaces();
+  let localIp = 'localhost';
+  for (const interfaceName of Object.keys(networkInterfaces)) {
+    const interfaces = networkInterfaces[interfaceName];
+    if (interfaces) {
+      for (const iface of interfaces) {
+        if (iface.family === 'IPv4' && !iface.internal) {
+          localIp = iface.address;
+          break;
+        }
+      }
+    }
+  }
+
+  logger.log(`🚀 Server running on: http://localhost:${port}`);
+  logger.log(`📱 Expo Client API: EXPO_PUBLIC_BASE_API=http://${localIp}:${port}`);
+  logger.log(`📚 Swagger docs: http://localhost:${port}/docs`);
 }
 bootstrap();
