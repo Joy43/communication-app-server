@@ -17,7 +17,8 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   // enable cors
-  const corsOrigin = configService.get<string>('CORS_ORIGIN') || process.env.CORS_ORIGIN;
+  const corsOrigin =
+    configService.get<string>('CORS_ORIGIN') || process.env.CORS_ORIGIN;
   const defaultOrigins = [
     'http://localhost:3000',
     'http://localhost:3001',
@@ -27,11 +28,12 @@ async function bootstrap() {
   ];
 
   app.enableCors({
-    origin: corsOrigin === '*'
-      ? true
-      : corsOrigin
-        ? [...defaultOrigins, ...corsOrigin.split(',').map((o) => o.trim())]
-        : defaultOrigins,
+    origin:
+      corsOrigin === '*'
+        ? true
+        : corsOrigin
+          ? [...defaultOrigins, ...corsOrigin.split(',').map((o) => o.trim())]
+          : defaultOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
@@ -85,7 +87,9 @@ async function bootstrap() {
   }
 
   logger.log(`🚀 Server running on: http://localhost:${port}`);
-  logger.log(`📱 Expo Client API: EXPO_PUBLIC_BASE_API=http://${localIp}:${port}`);
+  logger.log(
+    `📱 Expo Client API: EXPO_PUBLIC_BASE_API=http://${localIp}:${port}`,
+  );
   logger.log(`📚 Swagger docs: http://localhost:${port}/docs`);
 }
 bootstrap();

@@ -15,7 +15,6 @@ import { LoggerMiddleware } from './core/middleware/logger.middleware';
 import { LibModule } from './lib/lib.module';
 import { MainModule } from './main/main.module';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
