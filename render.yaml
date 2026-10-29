@@ -1,0 +1,61 @@
+services:
+  - type: web
+    name: communication-app-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: communication-app-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 90d
+      - key: CORS_ORIGIN
+        value: "*"
+      # Optional: Provide REDIS_URL directly (e.g. from Upstash or Render Key-Value)
+      - key: REDIS_URL
+        sync: false
+      - key: REDIS_HOST
+        value: localhost
+      - key: REDIS_PORT
+        value: 6379
+      # Mail & Super Admin (Set these in Render Dashboard)
+      - key: MAIL_USER
+        sync: false
+      - key: MAIL_PASS
+        sync: false
+      - key: SUPER_ADMIN_EMAIL
+        sync: false
+      - key: SUPER_ADMIN_PASS
+        sync: false
+      # AWS S3 / Cloudinary (Set these in Render Dashboard)
+      - key: AWS_REGION
+        sync: false
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: AWS_S3_BUCKET_NAME
+        sync: false
+      - key: Cloud_Name
+        sync: false
+      - key: API_key
+        sync: false
+      - key: API_Secret
+        sync: false
+
+databases:
+  - name: communication-app-db
+    databaseName: nestjs_starter_db
+    user: postgres
+    plan: free
+    region: oregon

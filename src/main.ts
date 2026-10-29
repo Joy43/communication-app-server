@@ -17,14 +17,21 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   // enable cors
+  const corsOrigin = configService.get<string>('CORS_ORIGIN') || process.env.CORS_ORIGIN;
+  const defaultOrigins = [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://localhost:3002',
+    'http://localhost:5173',
+    'http://localhost:5174',
+  ];
+
   app.enableCors({
-    origin: [
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'http://localhost:3002',
-      'http://localhost:5173',
-      'http://localhost:5174',
-    ],
+    origin: corsOrigin === '*'
+      ? true
+      : corsOrigin
+        ? [...defaultOrigins, ...corsOrigin.split(',').map((o) => o.trim())]
+        : defaultOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });

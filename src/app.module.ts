@@ -41,13 +41,43 @@ import { MainModule } from './main/main.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        const host = configService.getOrThrow<string>(ENVEnum.REDIS_HOST);
-        const port = configService.getOrThrow<string>(ENVEnum.REDIS_PORT);
+        const redisUrl =
+          configService.get<string>('REDIS_URL') || process.env.REDIS_URL;
+
+        if (redisUrl) {
+          try {
+            const parsed = new URL(redisUrl);
+            return {
+              connection: {
+                host: parsed.hostname,
+                port: parseInt(parsed.port || '6379', 10),
+                username: parsed.username || undefined,
+                password: parsed.password || undefined,
+                tls: parsed.protocol === 'rediss:' ? {} : undefined,
+              },
+            };
+          } catch {
+            // fallback if not a valid URL
+          }
+        }
+
+        const host =
+          configService.get<string>(ENVEnum.REDIS_HOST) ||
+          process.env.REDIS_HOST ||
+          'localhost';
+        const port =
+          configService.get<string>(ENVEnum.REDIS_PORT) ||
+          process.env.REDIS_PORT ||
+          '6379';
+        const password =
+          configService.get<string>('REDIS_PASSWORD') ||
+          process.env.REDIS_PASSWORD;
 
         return {
           connection: {
             host,
             port: parseInt(port, 10),
+            ...(password ? { password } : {}),
           },
         };
       },
